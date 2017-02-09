@@ -1,0 +1,56 @@
+#coa-seq{
+	position: relative;
+	max-width: 100%;
+	width: 100%;
+	overflow: hidden;
+	overflow-y: auto;
+	margin: 0;
+	padding: 0;
+	height: 1100px;
+}
+
+#coa-seq .seq-canvas,
+#coa-seq .seq-canvas > *{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+#coa-seq .seq-canvas{
+	position: absolute;
+	width: 100%;
+	white-space: nowrap;
+}
+
+#coa-seq .seq-canvas > *{
+	display: inline-block;
+	vertical-align: top;
+	width: 100%;
+	white-space: normal;
+}
+
+.dataTable tr.selected{
+	background-color: #e8e8e8;
+}
+.dataTable tr:hover{
+	cursor: pointer;
+	cursor: hand;
+}
+.dataTables_wrapper .row:first-child{
+	display: block !important;
+}
+.dataTables_wrapper .row:first-child .col-sm-6:last-child{
+	float: right;
+	padding: 0;
+}
+.dataTables_wrapper .col-sm-7,
+.dataTables_wrapper .col-sm-5
+{
+	padding: 0;
+}
+#coa-seq{
+	margin-top:	10px;
+}
+#coa-seq li > button{
+	float: left;
+}

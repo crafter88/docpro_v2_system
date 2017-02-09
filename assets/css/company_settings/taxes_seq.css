@@ -1,0 +1,47 @@
+#tax-seq{
+	position: relative;
+	max-width: 100%;
+	width: 100%;
+	height: 1000px;
+	overflow: hidden;
+	overflow-y: auto;
+	margin: 0 auto;
+	padding: 0;
+}
+
+#tax-seq .seq-canvas,
+#tax-seq .seq-canvas > *{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+#tax-seq .seq-canvas{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	white-space: nowrap;
+}
+
+#tax-seq .seq-canvas > *{
+	display: inline-block;
+	width: 100%;
+	height: 100%;
+	white-space: normal;
+	vertical-align: top;
+}
+
+.seq-selected{
+	 background-color: #000 !important; 
+	 color: #FFF !important;
+}
+
+.btn-seq{
+	width: 100% !important; 
+	padding: 20px !important;
+}
+
+#setup-tab-1,
+#setup-tab-2{
+	padding: 0 !important;
+}

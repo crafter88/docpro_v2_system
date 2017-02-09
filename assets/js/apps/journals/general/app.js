@@ -1,0 +1,1 @@
+angular.module('journals', ['ngSanitize', 'ui.select']);

@@ -1,0 +1,40 @@
+/*** BLACK THEME  AND CUSTOM ARROW DOWN ***/
+div.side-menu-container a{
+	color: #FFF !important;
+	background-color: #000 !important;
+}
+div.side-menu-container a:hover, div.side-menu-container a:hover span.arrow-down{
+	color: #000 !important;
+	background-color: #FFF !important;
+}
+.dropdown-element a{
+	padding-left: 50px !important;
+}
+div.side-menu-container a:after{
+	content: '' !important;
+}
+span.arrow-down{
+	width: 100% !important;
+	position: absolute !important;
+	bottom: 0 !important;
+	color: #FFF;
+	left: 0;
+	padding: 0;
+	font-size: 8px !important;
+	height:	15px;
+}
+div#menu-label a:hover{
+	background-color: #000 !important;
+	color: #FFF !important;
+}
+div.master-page-container, div.side-menu, div.side-menu nav, div.side-menu .navbar-header{
+	background-color: #000 !important;
+}
+li.profile-img img{
+	height: 50px !important; 
+	width: 50px !important; 
+	margin-top: 20px !important;
+}
+div.profile-info div[role=group], div.profile-info div[role=group] button{
+	width: 100%;
+}

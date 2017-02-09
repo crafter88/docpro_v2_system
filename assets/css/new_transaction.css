@@ -1,0 +1,93 @@
+table.dataTable.no-footer {
+	border-bottom: 1px solid #DDD !important;
+}
+#summary-table_filter{
+	margin-top: -60px !important;
+	vertical-align: middle;
+}
+#summary-table thead th{
+	padding-left: 0;
+	padding-right: 0;
+	text-align: center;
+}
+#summary-table_wrapper, #summary-table_wrapper .row:first-child, #summary-table_wrapper .row:first-child [class*="col-"]{
+	margin-bottom: 0;
+}
+.content-table td{
+	vertical-align: middle !important;
+	text-align: right;
+}
+#card-2-form .col-md-12 div:not(:first-child) label{
+	font-style: italic !important;
+	font-size: 11px !important;
+}
+#tablist-2 li a{
+	font-size: 11px;
+	padding-top: 20px !important;
+	padding-bottom: 20px !important;
+}
+.step.tabs-left .nav-tabs > li {
+	min-width: 200px !important;
+	width: 200px !important;
+}
+#main-content .side-body{
+	margin: 0 0 0 55px; 
+	padding-top: 60px; 
+	padding-left: 0;
+}
+#main-content .side-body .row:first-child > div{
+	background-color: #F0F0F0;
+}
+#main-content .side-body .row:first-child .col-md-12 a{
+	border: none;
+}
+#main-content .row .col-md-12{
+	padding: 0 !important;
+}
+#main-content .row:nth-child(2) .card:first-child .card-title{
+	float: none; 
+	margin: 10px auto; 
+	display: table;
+	padding: 0;
+}
+#main-content .row:nth-child(2) .card-body > form div:first-child, #main-content .row:nth-child(2) .card-body > form div:nth-child(2){
+	width: 33%; 
+	text-align: center;
+}
+#main-content .row:nth-child(2) .card-body > form div:nth-child(3){
+	width: 33.2%; 
+	text-align: center;
+}
+#main-content .row:nth-child(2) .card-body > form div label{
+	margin-right: 20px;
+}
+#main-content .row:nth-child(3) .card-title{
+	width: 100%; 
+	padding-top: 0; 
+	padding-bottom: 0;
+}
+#main-content .row:nth-child(3) .card-title .title{
+	margin-top: 20px;
+}
+#main-content .row:nth-child(3) .card-title .title span{
+	float: right;
+}
+#card-2-form .col-md-12 div:first-child label{
+	text-align: left; 
+	color: #012D4E; 
+	font-size: 14px;
+}
+#main-content .row:nth-child(3) .card-body table:first-child td:nth-child(4){
+	text-align: right; 
+	width: 10%;
+}
+#main-content .row:nth-child(3) .card-body table:first-child td:nth-child(6){
+	text-align: right; 
+	width: 1%;
+}
+#main-content .row:nth-child(3) .card-body table:nth-child(2) tr:nth-child(3) td:nth-child(5){
+	width: 20%;
+}
+#main-content .tab-pane:not(#documents) .row:nth-child(4) div:nth-child(2){
+	width: 100%;
+}

@@ -1,0 +1,66 @@
+table.dataTable.no-footer {
+	border-bottom: 1px solid #DDD !important;
+}
+#summary-table_filter{
+	margin-top: -60px !important;
+	vertical-align: middle;
+}
+#summary-table thead th{
+	padding-left: 0;
+	padding-right: 0;
+	text-align: center;
+}
+#summary-table_wrapper, #summary-table_wrapper .row:first-child, #summary-table_wrapper .row:first-child [class*="col-"]{
+	margin-bottom: 0;
+}
+.content-table td{
+	vertical-align: middle !important;
+	text-align: right;
+}
+#main-content .side-body{
+	margin: 0 0 0 55px; 
+	padding-top: 60px; 
+	padding-left: 0;
+}
+#main-content .side-body .row:first-child > div{
+	background-color: #F0F0F0;
+}
+#main-content .side-body .row:first-child .col-md-12 a{
+	font-size: 18px;
+	border: none;
+}
+#main-content .row .col-md-12{
+	padding: 0 !important;
+}
+#main-content .row:nth-child(2) .card-title{
+	float: none; 
+	margin: 10px auto; 
+	display: table;
+	padding: 0;
+}
+#main-content .row:nth-child(2) .card-body > form div:first-child, #main-content .row:nth-child(2) .card-body > form div:nth-child(2){
+	width: 33%; 
+	text-align: center;
+}
+#main-content .row:nth-child(2) .card-body > form div:nth-child(3){
+	width: 33.2%; 
+	text-align: center;
+}
+#main-content .row:nth-child(2) .card-body > form div label{
+	margin-right: 20px;
+}
+#main-content .row:nth-child(3) .card-body > table tr td:first-child{
+	width: 13%; 
+	vertical-align: middle; 
+	border-right: 1px solid #000;
+}
+#main-content .row:nth-child(3) .card-body > table tr td:last-child:not(#main-content .row:nth-child(3) .card-body > table tr:nth-child(7) td:last-child, #main-content .row:nth-child(3) .card-body > table tr:nth-child(8) td:last-child){
+	vertical-align: middle; 
+	border-left: 1px solid #000;
+}
+#main-content .row:nth-child(3) .card-body #double-table div:first-child table tr td:first-child{
+	border-right: 1px solid #000;
+}
+#main-content .row:nth-child(3) .card-body #double-table div:nth-child(2) > div table thead:first-child th:first-child{
+	text-align: center;
+}

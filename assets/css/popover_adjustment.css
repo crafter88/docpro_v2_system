@@ -1,0 +1,67 @@
+.popover{
+	padding: 0;
+}
+.popover .popover-content{
+	padding-bottom: 3px !important;
+	padding-top: 8px !important;
+}
+.popover label{
+	font-size: 12px !important;
+}
+.popover input{
+	font-size: 12px !important;
+	height: 28px !important;
+}
+.popover span{
+	font-weight: normal !important;
+}
+.popover .popover-content > div > button{
+	margin-top: 5px;
+}
+/*.popover .selectize-input > div{
+	margin-top: 3px;
+}*/
+.popover h4{
+	font-size: 16px !important;
+}
+.popover button{
+	line-height: 12px !important;
+}
+.popover .selectize-input{
+	min-height: 28px;
+	height: 28px;
+	font-size: 11px;
+	line-height: 16px;
+}
+.popover .selectize-input .item{
+	display: block;
+}
+.popover .selectize-control{
+	height: 28px;
+}
+.popover .selectize-dropdown-content{
+	font-size: 12px;
+}
+.popover .selectize-input.not-full input{
+	margin-top: -6px !important;
+}
+.popover .selectize-input.dropdown-active,
+.popover .selectize-dropdown{
+	z-index: 99999999999999999999999 !important;
+}
+.popover .selectize-input.dropdown-active,
+.popover .selectize-dropdown.display-block{
+	padding: 3px;
+	text-align: center;
+	display: block !important;
+	cursor: pointer;
+	cursor: hand;
+}
+.popover .selectize-input.items.has-options.full.has-items .item,
+.popover .selectize-input.items.has-options.full.has-items:after
+{
+	line-height: 11px !important;
+}
+.popover input{
+	border-radius: 0 !important;
+}

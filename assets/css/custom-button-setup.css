@@ -1,0 +1,24 @@
+.flat-blue .btn.btn-info{
+	background-color: #4262ff !important;
+}
+.flat-blue .btn.btn-primary {
+	background-color: #000 !important;
+}
+.flat-blue .btn.btn-success.setup-btn-circle{
+	background-color: #009688 !important;
+}
+.flat-blue .btn.btn-warning {
+	background-color: #ffb600 !important;
+}
+
+.btn.btn-dark{
+	background-color: #000 !important;
+	color: #FFF !important;
+}
+
+.setup-tab.active button.btn.btn-success.setup-btn-circle{
+	background-color: #009688 !important;
+}
+.setup-tab button.btn.btn-success.setup-btn-circle{
+	background-color: #FFF !important;
+}

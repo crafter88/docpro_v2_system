@@ -1,0 +1,248 @@
+#journal-summary-table_wrapper tbody td{
+	font-size: 12px;
+}
+#bp-table_wrapper tbody td{
+	font-size: 12px;
+}
+#transaction-details-table_wrapper tbody td{
+	font-size: 12px;
+}
+#journal-summary-table_wrapper tbody td:hover{
+	cursor: pointer;
+	cursor: hand;
+}
+#bp-table_wrapper tbody td:hover{
+	cursor: pointer;
+	cursor: hand;
+}
+#transaction-details-table_wrapper tbody td:hover{
+	cursor: pointer;
+	cursor: hand;
+}
+#bp-trans-prod-serv td input,
+#bp-trans-vat td input,
+#bp-trans-discount td input,
+#bp-trans-ewt td input,
+#bp-trans-fwt td input,
+#bp-trans-doc-ref td input,
+#bbp-trans-bank td input,
+#bp-trans-other td input
+{
+	font-size: 12px !important;
+}
+#bp-trans-prod-serv td,
+#bp-trans-vat td,
+#bp-trans-discount td,
+#bp-trans-ewt td,
+#bp-trans-fwt td,
+#bp-trans-doc-ref td,
+#bbp-trans-bank td,
+#bp-trans-other td
+{
+	font-size: 12px !important;
+}
+#bp-trans-prod-serv td .form-control,
+#bp-trans-vat td .form-control,
+#bp-trans-discount td .form-control,
+#bp-trans-ewt td .form-control,
+#bp-trans-fwt td .form-control,
+#bp-trans-doc-ref td .form-control,
+#bbp-trans-bank td .form-control,
+#bp-trans-other td .form-control
+{
+	height: 30px;
+}
+#bp-document-details th{
+	font-size: 12px;
+}
+
+#summary-document-details-card th{
+	font-size: 12px;
+}
+
+#summary-prod-serv td input,
+#summary-vat td input,
+#summary-discount td input,
+#summary-ewt td input,
+#summary-fwt td input,
+#summary-doc-ref td input,
+#summary-bank td input,
+#summary-other td input
+{
+	font-size: 12px !important;
+}
+#summary-prod-serv td,
+#summary-vat td,
+#summary-discount td,
+#summary-ewt td,
+#summary-fwt td,
+#summary-doc-ref td,
+#summary-bank td,
+#summary-other td
+{
+	font-size: 12px !important;
+}
+
+#summary-prod-serv td .form-control,
+#summary-vat td .form-control,
+#summary-discount td .form-control,
+#summary-ewt td .form-control,
+#summary-fwt td .form-control,
+#summary-doc-ref td .form-control,
+#summary-bank td .form-control,
+#summary-other td .form-control
+{
+	height: 30px;
+}
+#summary-prod-serv td[colspan="6"]{
+	width: 100%;
+}
+.form-control, .form-group .form-control{
+	background-image: none;
+}
+#new-transactions #product-services-table td,
+#new-transactions #vat-table td,
+#new-transactions #discounts-table td,
+#new-transactions #expanded-tax-table td,
+#new-transactions #final-withholding-tax-table td,
+#new-transactions #document-reference-table td,
+#new-transactions #bank-details-table td,
+#new-transactions #other-details-table td,
+#new-transactions #journal-entry-table td
+{
+	border-bottom: 1px solid #E8E8E8 !important;
+}
+#new-transactions add-vat-btn button[disabled],
+#new-transactions add-expanded-tax-btn button[disabled],
+#new-transactions add-final-withholding-tax-btn button[disabled]
+{
+	color: #FFF !important;
+}
+
+/*DATATABLE*/
+.dataTables_wrapper table.dataTable thead{
+	background: #009688 !important;
+}
+.dataTables_wrapper .table>thead:first-child>tr:first-child>th{
+	color: #FFF !important;
+}
+.dataTables_wrapper .table>thead:first-child>tr:first-child>th.sorting_asc,
+.dataTables_wrapper .table>thead:first-child>tr:first-child>th.sorting_desc
+{
+	color: #000 !important;
+}
+.dataTables_wrapper table tr.selected td{
+	background-color: #E0F2F1 !important;
+	color: #000 !important;
+}
+#summary-document-details-card table thead,
+#bp-document-details table thead
+{
+	border-bottom: none !important;
+}
+#summary-document-details-card table thead th,
+#bp-document-details table thead th
+{
+	background-color: #009688 !important;
+	color: #FFF !important;
+}
+#summary-journal-entries-card table thead,
+#bp-journal-entries table thead
+{
+	border-bottom: none !important;
+}
+#summary-journal-entries-card table thead th,
+#bp-journal-entries table thead th
+{
+	background-color: #009688 !important;
+	color: #FFF !important;
+}
+input.total{
+	font-weight: bold !important;
+}
+#new-transactions table th{
+	background-color: #009688 !important;
+	color: #FFF !important;
+	font-size: 12px !important;
+}
+#new-transactions table thead{
+	border-bottom: 0 !important;
+}
+#summary table td input,
+#business-partners table td input
+{
+	font-size: 12px !important;
+}
+#summary table td input.form-control,
+#business-partners table td input.form-control
+{
+	height: 30px !important;
+}
+.side-body .invoice{
+	margin: 0 !important;
+	padding: 0 !important;
+}
+.side-body #documents .invoice{
+	padding-top: 20px !important;
+}
+#summary-document .invoice table td input.form-control,
+#business-partners .invoice table td input.form-control,
+#documents table td input.form-control
+{
+	height: 20px !important;
+}
+#summary-document .invoice .card-body > .col-md-12 table td input.form-control,
+#business-partners .invoice .card-body > .col-md-12 table td input.form-control,
+#documents .invoice .card-body > .col-md-12 table td input.form-control{
+	height: 30px !important;
+}
+/*div::-webkit-scrollbar{
+	width: 4px !important;
+	height: 3px !important;
+	background-color: #C1C1C1;
+}
+div::-webkit-scrollbar:double-button{
+	background-color: #C1C1C1;
+}
+div::-webkit-scrollbar-button{
+	width: 3px;
+}
+div::-webkit-scrollbar-track{
+	width: 3px;
+	background-color: #C1C1C1 !important;
+}
+div::-webkit-scrollbar-track-piece{
+	width: 3px;
+	color: #000;
+}
+div::-webkit-scrollbar-thumb{
+	width: 3px;
+	background-color: #000;
+}
+div::-webkit-scrollbar-corner{
+	width: 3px;
+}
+div::-webkit-resizer{
+	width: 3px;
+	background-color: #C1C1C1 !important;
+}
+
+::-webkit-scrollbar-track{
+	width: 3px;
+	background-color: #C1C1C1 !important;
+}
+::-webkit-scrollbar-track-piece{
+	width: 3px;
+	color: #000;
+}
+::-webkit-scrollbar-thumb{
+	width: 3px;
+	background-color: #000;
+}
+::-webkit-scrollbar-corner{
+	width: 3px;
+}
+::-webkit-resizer{
+	width: 3px;
+	background-color: #C1C1C1 !important;
+}*/

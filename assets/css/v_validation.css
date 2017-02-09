@@ -1,0 +1,76 @@
+input.v-invalid{
+	border: 1px solid red !important;
+	box-shadow: 0px 0px 5px 0.1px rgba(255, 0, 0, 0.62) !important;
+}
+input.v-invalid-format{
+	border: 1px solid orange !important;
+	box-shadow: 0px 0px 5px 0.1px rgba(255, 193, 7, 0.78) !important;
+}
+div.v-invalid{
+	border: 1px solid red !important;
+	box-shadow: 0px 0px 5px 0.1px rgba(255, 0, 0, 0.62) !important;
+}
+div.selectize-control.v-invalid
+{
+	border: none !important;
+	box-shadow: none !important;
+}
+div.selectize-input.v-invalid
+{
+	border: 1px solid red !important;
+	box-shadow: 0px 0px 5px 0.1px rgba(255, 0, 0, 0.62) !important;
+}
+div.selectize-control.v-select-required.v-invalid div.selectize-input.items.not-full.v-invalid{
+	border: 1px solid red !important;
+	box-shadow: 0px 0px 5px 0.1px rgba(255, 0, 0, 0.62) !important;
+}
+div.selectize-input.v-invalid input
+{
+	border: none !important;
+}
+
+/*NEW TRANSACTION*/
+#new-transactions .form-group.label-floating input.v-invalid{
+	border: 1px solid red !important;
+	border-bottom: 1px solid red !important;
+	box-shadow: 0px 0px 5px 0.1px rgba(255, 0, 0, 0.62) !important;
+}
+#new-transactions .form-group.label-floating input.v-invalid-format{
+	border: 1px solid orange !important;
+	border-bottom: 1px solid orange !important;
+	box-shadow: 0px 0px 5px 0.1px rgba(255, 193, 7, 0.78) !important;
+}
+#new-transactions div.v-invalid{
+	border: 1px solid red !important;
+	border-bottom: 1px solid red !important;
+	box-shadow: 0px 0px 5px 0.1px rgba(255, 0, 0, 0.62) !important;
+}
+#new-transactions div.selectize-control.v-invalid
+{
+	border: none !important;
+	box-shadow: none !important;
+}
+#new-transactions div.selectize-input.v-invalid
+{
+	border: 1px solid red !important;
+	border-bottom: 1px solid red !important;
+	box-shadow: 0px 0px 5px 0.1px rgba(255, 0, 0, 0.62) !important;
+}
+#new-transactions div.selectize-control.v-select-required.v-invalid div.selectize-input.items.not-full.v-invalid{
+	border: 1px solid red !important;
+	border-bottom: 1px solid red !important;
+	box-shadow: 0px 0px 5px 0.1px rgba(255, 0, 0, 0.62) !important;
+}
+#new-transactions div.selectize-input.v-invalid input
+{
+	border: none !important;
+}
+
+.modal .modal-content .modal-body input.v-invalid{
+	border: 1px solid red !important;
+	box-shadow: 0px 0px 5px 0.1px rgba(255, 0, 0, 0.62) !important;
+}
+.modal .modal-content .modal-body input.v-invalid-format{
+	border: 1px solid orange !important;
+	box-shadow: 0px 0px 5px 0.1px rgba(255, 193, 7, 0.78) !important;
+}

@@ -1,0 +1,1 @@
+angular.module('transactions', ['ngSanitize', 'ui.select']);

@@ -1,0 +1,118 @@
+/*
+Browser Button
+*/ 
+.card-body .row a{
+  width: 24%;
+}
+
+/* RESPONSIVE CSS
+-------------------------------------------------- */
+
+@media screen and (min-width: 1401px) {
+  
+}
+@media screen and (max-width: 1400px) {
+  nav.navbar-top ul.navbar-nav {
+    width: 53% !important;
+  }
+  .card .card-body{
+    padding:45px;
+    padding-top: 48px;
+  }
+}
+@media screen and (max-width: 1200px) {
+  nav.navbar-top ul.navbar-nav {
+    width: 81% !important;
+  }
+  .side-body{
+    padding:85px;
+  }
+  .card{
+    width: 100%;
+  }
+  .card .card-body{
+    padding-left:50px;
+    padding-top: 70px;
+  }
+  a.btn.btn-default{
+    left: 27px;
+  }
+  .card-body .row a{
+    width: 100%;
+  }
+
+  /**General Ledger*/
+  .card .card-body{
+    padding-top: 16px;
+  }
+  #generalledger-table_previous{
+    width: 42%;
+  }
+  #generalledger-table_previous a{
+    width: 100%;
+  }
+  #generalledger-table_next{
+    width: 42%;
+  }
+  #generalledger-table_next a{
+    width: 100%;
+  }
+  .card{
+    left: -7%;
+    width: 115%;
+  }
+}
+@media screen and (max-width: 960px){
+  .card{
+    left: -4%;
+    width: 116%;
+  }
+}
+@media screen and (max-width: 768px) {
+  nav.navbar-top ul.navbar-nav {
+    width: 75% !important;
+  }
+  #main-content .side-body{
+    padding-top: 20% !important;
+  }
+  .card-body .row a{
+    width: 100%;
+  }
+  .card{
+    left: -15%;
+    width: 130%;
+  }
+
+}
+@media screen and (max-width: 640px) {
+  #main-content .side-body{
+    padding-top: 22% !important;
+  }
+}
+
+@media (min-device-width: 412px) and (max-device-width: 690px){
+  /**Nexus 6P*/
+  
+}
+
+/**Iphone 6 plus*/
+@media screen and (max-width: 414px){
+  .card{
+    left: -45%;
+    width: 190%;
+    margin-top: 30%;
+  }
+  #user-table-row{
+    padding-right: 0px !important;
+    padding-left: 0px !important;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  /**Iphone 5*/
+  .card{
+    left: -78%;
+    width: 257%;
+    margin-top: 53%;
+  }
+}

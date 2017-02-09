@@ -1,0 +1,57 @@
+/** NAVBAR **/
+.navbar-top{
+	padding: 0 !important;
+}
+.navbar-top .navbar-header{
+	background-color: #010835 !important;
+}
+.navbar-top .navbar-header button{
+	background-color: #010835 !important; 
+	color: #FFF !important;
+}
+.navbar-top .navbar-body #btn-company{
+	margin-left: 20px !important; 
+	margin-top: 5px !important;
+}
+.navbar-top .navbar-body #label-company, .navbar-top .navbar-body #label-branch{
+	margin-left: 0px; 
+	height: 60px; 
+	vertical-align: middle; 
+	font-size: 15px; 
+	font-weight: bold; 
+	line-height: 60px; 
+	color: #000834;
+}
+.navbar-top .navbar-body #btn-branch{
+	margin-left: 20px; 
+	padding-left: 20px; 
+	margin-top: 5px; 
+	border-left: 1px solid rgba(0, 8, 52, 0.2);
+}
+.navbar-top .navbar-body #btn-company .dropdown-menu, .navbar-top .navbar-body #btn-branch .dropdown-menu{
+	z-index: 10000;
+}
+.navbar-top .navbar-body #btn-company .dropdown-menu li:first-child, .navbar-top .navbar-body #btn-branch .dropdown-menu li:first-child{
+	margin: 0 auto;
+	text-align: center;
+}
+#label-time{
+	//border-right: 1px solid rgba(0, 8, 52, 0.2);
+}
+#label-logout{
+	/**border-left: 1px solid rgba(0, 8, 52, 0.2);**/
+}
+#label-logout i{
+	padding: 20px !important;
+}
+
+/** SIDEBAR **/
+.sidebar-inverse{
+	margin-top: 60px;
+}
+
+/** MAIN CONTENT **/
+#main-content .side-body{
+	margin: 0 0 0 35px;
+}
+

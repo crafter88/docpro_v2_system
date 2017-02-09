@@ -1,0 +1,135 @@
+nav.navbar-top ul.navbar-nav{
+	width: 89% !important;
+}
+.side-menu, .side-menu nav{
+	background-color: #000 !important;
+}
+.app-container.expanded .side-body, .app-container .side-body {
+	margin-left: 55px !important;
+}
+.tooltip{
+	position: fixed !important;
+}
+div.popover .arrow{
+	display: none !important;
+}
+ul#sidebar-container > li a span{
+	background-color: #000 !important;
+}
+ul#sidebar-container li.active a{
+	background-color: #000 !important;
+	color: #FFF !important;
+}
+ul#sidebar-container div.popover{
+	margin-top: 10px !important;
+	border-radius: 0 !important;
+	background-color: #1D1D1D !important;
+	color: #FFF !important;
+	overflow-y: auto !important;
+	border: 1px solid #565656 !important;
+}
+ul#sidebar-container div.popover-content .navbar-nav{
+	height: 130px !important;
+}
+div#app-container.expanded a#popover-tables:after, div#app-container.expanded a#popover-company-settings:after, div#app-container.expanded a#popover-docpro-settings:after, div#app-container.expanded a#popover-books-of-accounts:after{
+	font-family: FontAwesome !important;
+	content: "\f106" !important;
+	position: absolute !important;
+	right: 1em !important;
+}
+h3.popover-title{
+	display: none !important;
+}
+div#app-container.no-popover ul#sidebar-container div.popover {
+	display: none !important;
+}
+ul#sidebar-container > li a:hover, ul#sidebar-container > li a:hover span, ul#sidebar-container .navbar-nav > li:hover span{
+	color: #FFF !important;
+	background-color: #696969 !important;
+}
+.side-menu .navbar .navbar-nav > li:hover > a, .side-menu .navbar.navbar-default .navbar-nav > li:hover > a{
+	color: #FFF !important;
+}
+ul#sidebar-container > li:hover span{
+	color: #FFF !important;
+	background-color: #000 !important;
+}
+ul#sidebar-container div.popover div.popover-content{
+	padding: 9px 0 !important;
+}
+ul#sidebar-container div.popover .navbar-nav li:hover a{
+	color: #FFF !important;
+	background-color: #000 !important;
+}
+ul#sidebar-container .panel-body .navbar-nav > li a{
+	padding-left: 50px !important;
+}
+nav.navbar-top .navbar-body > a{
+	margin-left: 25px; 
+	margin-top: 10px;
+	padding: 13px 40px;
+}
+nav.navbar-top .navbar-body > span{
+	font-size: 1.5em; 
+	line-height: 60px; 
+	vertical-align: middle; 
+	color: #000; 
+	margin-left: 6px;
+	font-size: 14px !important;
+	font-weight: bold;
+	display: none;
+}
+ul#sidebar-container div.popover-content .navbar-nav{
+	height: 130px !important;
+}
+
+/** POPOVER **/
+.popover.sidebar-popover-content{
+	margin-left: -5px !important;
+	border-radius: 0 !important;
+	background-color: #000;
+	color: #FFF !important;
+	font-size: 13px;
+	width: 18vw;
+	z-index: 99999;
+	overflow-y: auto;
+	height: auto;
+	max-height: 390px;
+}
+.popover.sidebar-popover-content .popover-content{
+	padding-left: 0;
+	padding-right: 0;
+}
+.popover.sidebar-popover-content a{
+	color: #FFF !important;
+}
+.popover.sidebar-popover-content .sidebar-popover{
+	padding: 10px;
+	padding-left: 20px;
+	cursor: hand;
+	cursor: pointer;
+}
+.popover.sidebar-popover-content .sidebar-popover a{
+	padding: 10px;
+	padding-left: 20px;
+}
+.popover.sidebar-popover-content .sidebar-popover:hover{
+	background-color: #696969 !important;
+}
+
+.side-menu a{
+	padding: 0 !important;
+}
+ul#sidebar-container > li a span{
+	margin-left: 21px;
+}
+ul#sidebar-container > li.active a span{
+	margin-left: 17px;
+}
+div.ui-tooltip{
+	margin-left: -20px;
+}
+
+ul.sidebar-container li a:hover{
+	background-color: #696969 !important;
+}

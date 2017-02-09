@@ -1,0 +1,244 @@
+/** custom CSS onepage */
+
+/** main_page custom css */
+
+h1 span {
+	color: #A9A9A9;
+}
+
+.features .column-one .circle-one{
+  height: 174px;
+  position:relative;
+  margin:0 auto;
+  border:8px solid #ebebeb;
+  background: url(../img/icons/image0.png) #f3f3f3 no-repeat center center;
+  -moz-border-radius:174px;
+  -webkit-border-radius:174px;
+  border-radius: 174px;
+  width: 174px;
+  cursor:pointer;
+    -webkit-transition: all 0.2s ease-in;
+	-moz-transition: all 0.2s ease-in;
+	-ms-transition: all 0.2s ease-in;
+	-o-transition: all 0.2s ease-in;
+	transition: all 0.2s ease-in;
+}
+
+.features .column-one .circle-one:hover{
+	background: url(../img/icons/image0.png) #A9A9A9 no-repeat center center;
+
+}
+
+.features .column-two .circle-two{
+  height: 174px;
+  position:relative;
+  margin:0 auto;
+  border:8px solid #ebebeb;
+  background: url(../img/icons/image2.png) #f3f3f3 no-repeat center center;
+  -moz-border-radius:174px;
+  -webkit-border-radius:174px;
+  border-radius: 174px;
+  width: 174px;
+    cursor:pointer;
+    -webkit-transition: all 0.2s ease-in;
+	-moz-transition: all 0.2s ease-in;
+	-ms-transition: all 0.2s ease-in;
+	-o-transition: all 0.2s ease-in;
+	transition: all 0.2s ease-in;
+}
+
+
+.features .column-two .circle-two:hover{
+  background: url(../img/icons/image2.png) #A9A9A9 no-repeat center center;
+}
+
+.features .column-three .circle-three{ 
+  height: 174px;
+  position:relative;
+  margin:0 auto;
+  border:8px solid #ebebeb;
+  background: url(../img/icons/image1.png) #f3f3f3 no-repeat center center;
+  -moz-border-radius:174px;
+  -webkit-border-radius:174px;
+  border-radius: 174px;
+  width: 174px;
+  cursor:pointer;
+  -webkit-transition: all 0.2s ease-in;
+	-moz-transition: all 0.2s ease-in;
+	-ms-transition: all 0.2s ease-in;
+	-o-transition: all 0.2s ease-in;
+	transition: all 0.2s ease-in;
+}
+
+
+
+.features .column-three .circle-three:hover{ 
+  background: url(../img/icons/image1.png) #A9A9A9 no-repeat center center;
+}
+
+.menu{
+  position:relative;
+  width:100%;
+  height:90px;
+  background:#000000;
+  z-index:1000;
+}
+
+.menu-content .logo {
+   color:white;
+   background:#2f363e;
+   font-weight:700;
+   font-size:30px;
+   width:400px;
+   line-height: 85px;
+   float:left;
+   list-style: none;
+   height: 90px;
+   margin-left: 0px;
+}
+
+#company_name{
+	text-align: center;
+	margin-left: 0px;
+}
+
+.cd-pricing {
+	background-color: #000000;
+
+}
+
+.subscription {
+	background-color: #000000;
+}
+
+.subscription p.title{
+  background-color: #000000;
+  margin-top:40px;
+  width:100%;
+  font-size:15px;
+  text-align:center;
+}
+
+.cd-pricing-header {
+	background-color: #000000 !important;
+}
+
+.grid .text{
+  background: #000000;
+}
+
+.grid .text:hover{
+  opacity: 0.5;
+}
+
+.logo {
+	background: white !important;
+}
+
+.footer{
+  position:relative;
+  width:100%;
+  height:90px;
+  background:#000000;
+}
+
+.gallery{
+  position:relative;
+  width:100%;
+  background: #808080;  
+}
+
+.subscription:before {
+	width: 100%;
+	height: 420px;
+  	z-index: -1;
+  	position: absolute;
+  	content: " ";
+  	
+	background: url('../img/background/bg2.jpg');
+	background-repeat: no-repeat;
+	background-position: center center;
+	-webkit-filter: blur(5px);
+    -moz-filter: blur(5px);
+    -o-filter: blur(5px);
+    -ms-filter: blur(5px);
+    filter: blur(5px);1
+}
+
+#free-container {
+	width: 100% !important;
+}
+
+/* faq custom css */
+
+#faq1 {
+  position: absolute;
+  z-index: 4;
+  }
+
+#faq2 {
+  position: absolute;
+  z-index: 3;
+}
+
+#faq3 {
+  position: absolute;
+  z-index: 2;
+}
+
+#faq4 {
+  position: absolute;
+  z-index: 1;
+}
+
+.subtopic {
+  display: inline-block;
+  background-color: #FFFFFF;
+  height: 500px;
+  clear: both;
+}
+
+details > summary {
+  font-size: 18px;
+  text-decoration: underline;
+  margin-bottom: 5px;
+}
+
+summary:hover {
+  cursor: pointer; cursor: hand;
+}
+
+.subtopic p {
+  color: #000000;
+  margin-left: 24px;
+  margin-top: 5px;
+}
+
+.faqlink {
+  height: 500px;
+  margin-left: 24px;
+  font-size: 18px;
+  
+}
+
+/* privacy_policy custom css */
+
+.privacy_pol {
+  font-weight: bold;
+}
+
+.privacy_policy_content {
+  color: #000000;
+  text-align: justify;
+}
+
+/** terms & conditions custom css */
+
+#tac {
+  text-align: justify;
+  color: #000000;
+}
+
+#tac p {
+  color: #000000;
+}

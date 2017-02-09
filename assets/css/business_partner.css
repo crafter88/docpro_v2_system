@@ -1,0 +1,30 @@
+table.dataTable.no-footer {
+	border-bottom: 1px solid #DDD !important;
+}
+#summary-table_filter{
+	margin-top: -60px !important;
+	vertical-align: middle;
+}
+#summary-table_wrapper, #summary-table_wrapper .row:first-child, #summary-table_wrapper .row:first-child [class*="col-"]{
+	margin-bottom: 0;
+}
+#main-content .side-body{
+	margin: 0 0 0 55px; 
+	padding-top: 60px; 
+	padding-left: 0;
+}
+#main-content .side-body .row:first-child > div{
+	background-color: #F0F0F0;
+}
+#main-content .side-body .row:first-child .col-md-12 a{
+	border: none;
+}
+#main-content .row .col-md-12{
+	padding: 0 !important;
+}
+#main-content .row:nth-child(2) .card:first-child .card-title{
+	float: none; 
+	margin: 10px auto; 
+	display: table;
+	padding: 0;
+}

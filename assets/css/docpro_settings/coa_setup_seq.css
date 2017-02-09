@@ -1,0 +1,36 @@
+#coa-seq{
+	position: relative;
+	max-width: 100%;
+	width: 100%;
+	overflow: hidden;
+	overflow-y: auto;
+	margin: 0;
+	padding: 0;
+	height: 1100px;
+}
+
+#coa-seq .seq-canvas,
+#coa-seq .seq-canvas > *{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+#coa-seq .seq-canvas{
+	position: absolute;
+	width: 100%;
+	white-space: nowrap;
+}
+
+#coa-seq .seq-canvas > *{
+	display: inline-block;
+	vertical-align: top;
+	width: 100%;
+	white-space: normal;
+}
+
+.btn-seq{
+	width: 100% !important; 
+	padding: 6px 12px !important;
+	font-size: 11px !important;
+}

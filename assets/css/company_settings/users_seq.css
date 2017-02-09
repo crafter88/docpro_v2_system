@@ -1,0 +1,58 @@
+#users-seq{
+	position: relative;
+	width: 100%;
+	min-height: 1000px;
+	max-width: 100%;
+	overflow: hidden;
+	margin: 0 auto;
+	padding: 0;
+	overflow-y: auto;
+}
+
+#users-seq .seq-canvas,
+#users-seq .seq-canvas > *{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+#users-seq .seq-canvas{
+	position: absolute;
+	min-height: 100%;
+	width: 100%;
+	white-space: nowrap;
+}
+
+#users-seq .seq-canvas > *{
+	display: inline-block;
+	vertical-align: top;
+	width: 100%;
+	min-height: 100%;
+	white-space: normal;
+}
+
+.seq-selected{
+	 background-color: #000 !important; 
+	 color: #FFF !important;
+}
+
+.btn-seq{
+	width: 100% !important; 
+	padding: 6px 12px !important;
+	font-size: 11px !important;
+}
+
+#setup-tab-1,
+#setup-tab-2{
+	padding: 0 !important;
+}
+
+.dataTables_wrapper .row:first-child,
+.dataTables_wrapper .row:first-child .col-sm-6
+{
+	margin-bottom: 0 !important;
+}
+
+.dataTables_length{
+	margin: 0 !important;
+}

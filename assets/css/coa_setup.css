@@ -1,0 +1,356 @@
+/* Style the Sequence container */
+#coa_sequence {
+  position: relative;
+  width: 100%;
+  min-height: 420px;
+  max-width: 100%;
+  overflow: hidden;
+  margin: 0 auto;
+  padding: 0;
+  //font-family: sans-serif;
+}
+
+/* Reset */
+#coa_sequence .seq-canvas,
+#coa_sequence .seq-canvas > * {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Make the canvas the same dimensions as the container and prevent lines from
+   wrapping so each step can sit side-by-side */
+#coa_sequence .seq-canvas {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  white-space: nowrap;
+}
+
+/* Make the steps the same size as the container and sit side-by-side */
+#coa_sequence .seq-canvas > * {
+  display: inline-block;
+  vertical-align: top;
+  width: 100%;
+  min-height: 100%;
+  white-space: normal;
+  text-align: center;
+}
+
+/* Used to vertically center align the .content element */
+#coa_sequence .seq-canvas > li:before {
+  content: "";
+  display: inline-block;
+  vertical-align: top;
+  height: 100%;
+}
+
+/* Vertically center align the .content element */
+#coa_sequence .content {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0 4%;
+}
+
+/* Others */
+.table-input input[type=text], 
+.table-input input[type=password]{
+  border: none;
+  background-color: transparent;
+  box-shadow: none;
+  text-align: center;
+  border-radius: 0;
+}
+.table-input td{
+  padding: 0 !important;
+}
+.table-input th{
+  background-color: #EFEFEF;
+  border-bottom: 0 !important;
+  border-top: 0 !important;
+  text-align: center;
+}
+.table-input th:first-child{
+  border-left: 0 !important;
+}
+.table-input th:last-child{
+  border-right: 0 !important;
+}
+.table-input td button{
+  border-radius: 50%;
+  margin: 18% 0% 0% 27%;
+} 
+.btn-input-add{
+  border-radius: 0;
+  margin-bottom: 10px;
+}
+
+.table-small{
+  font-size: 11px;
+}
+.table-medium{
+  font-size: 13px;
+}
+
+
+.table-scrollable .header-fixed {
+    width: 100% 
+}
+
+.table-scrollable .header-fixed > thead,
+.table-scrollable .header-fixed > tbody,
+.table-scrollable .header-fixed > thead > tr,
+.table-scrollable .header-fixed > tbody > tr,
+.table-scrollable .header-fixed > thead > tr > th,
+.table-scrollable .header-fixed > tbody > tr > td {
+    display: block;
+}
+
+.table-scrollable .header-fixed > tbody > tr:after,
+.table-scrollable .header-fixed > thead > tr:after {
+    content: ' ';
+    display: block;
+    visibility: hidden;
+    clear: both;
+}
+
+.table-scrollable .header-fixed > tbody {
+    overflow-y: auto;
+    height: 150px;
+}
+
+.table-scrollable .header-fixed > tbody > tr > td,
+.table-scrollable .header-fixed > thead > tr > th {
+    width: 20%;
+    float: left;
+}
+
+.scrollable-div{
+  overflow: auto;
+  width: 100%;
+}
+.business-partner{
+  min-width: 2000px;
+}
+.business-partner th:nth-child(2){
+  width: 9%;
+}
+.business-partner th:nth-child(3){
+  width: 11%;
+}
+.business-partner th:nth-child(4), 
+.business-partner th:nth-child(5), 
+.business-partner th:nth-child(6), 
+.business-partner th:nth-child(7){
+  width: 7%;
+}
+.business-partner th:nth-child(8), .business-partner th:nth-child(9){
+  width: 12%;
+}
+.business-partner th:nth-child(10){
+  width: 20%;
+}
+.business-partner th:nth-child(11){
+  width: 8%;
+}
+.business-partner th:nth-child(1){
+  width: 2%;
+}
+
+.selectize-control.single .selectize-input {
+  background: transparent;
+  border: none;
+  background-image: none;
+  box-shadow: none;
+  border: 1px solid #CCC;
+  padding: 6px 12px;
+}
+
+.table-input select{
+  width: 100% !important;
+  border: 0 !important;
+}
+.table-input textarea{
+  height: 35px;
+  border: none;
+}
+
+#coa_sequence li .col-md-12, 
+#sequence2 li .col-md-12,
+#sequence3 li .col-md-12{
+  padding: 0;
+}
+
+.n_a:hover, .applicable:hover{
+  cursor: pointer;
+  cursor: hand;
+}
+.n_a{
+  color: red; 
+  margin: 30px 10px 0 0; 
+  float: right;
+}
+.applicable{
+  color: blue; 
+  margin: 30px 10px 0 0; 
+  float: right;
+}
+
+.panel-nameplate{
+  padding: 5px; 
+  background-color: #F3F3F3;
+}
+.panel-label{
+  font-family: 'Roboto Condensed', sans-serif; 
+  padding-left: 10px; 
+  padding-top: 6px; 
+  text-align: center; 
+  color: #2C3E50;  
+  font-weight: bold; 
+  margin-top: 8px;
+}
+.table-label{
+  padding: 6px 12px; 
+  border-radius: 0; 
+  margin: 18px 0 0 0; 
+  float: right; 
+  background-color: #EFEFEF; 
+  color: #2c3e50;
+}
+button[class*=setup_]{
+  float: right;
+}
+button.seq-next,
+button.required,
+button[type=submit]{
+  float: right;
+}
+button.seq-prev{
+  float: left;
+}
+
+.main-content{
+  background-color: rgba(0, 0, 0, 0.58); 
+  min-height: 100vh;
+}
+.main-content > div.container{
+  display: block;
+}
+.main-content > div.container > div.row{
+  margin: 50px 0;
+}
+.main-content > div.container > div.row > div.col-md-12 > div{
+  border: 1px solid #D5D5D5; 
+  background-color: #FFF; 
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  padding: 10px;
+}
+.main-content > div.container > div.row > div.col-md-12 > div > img{
+  display: table; 
+  height: 100px; 
+  float: left;
+}
+.main-content > div.container > div.row > div.col-md-12 > div > div.progress{
+  border-radius: 0;
+}
+#setup-label{
+  width: 90.81%; 
+  text-align: center; 
+  margin-bottom: 0; 
+  border-bottom-left-radius: 0; 
+  border-bottom-right-radius: 0;
+}
+#setup-label p:nth-child(1){
+  padding-right: 108px;
+}
+#setup-label p:nth-child(2){
+  font-size: 18px; 
+  padding-right: 108px;
+}
+#banner-nameplate{
+  border-bottom: 2px solid #E8E8E8; 
+  margin-bottom: 20px; 
+  margin-top: -20px;
+}
+#coa_sequence li{
+  overflow: auto;
+}
+#coa_sequence li div.content{
+  width: 99%; 
+  margin: 0;
+  padding-top: 0;
+}
+#coa_sequence ul li:nth-child(2) div.content, #coa_sequence ul li:nth-last-child(3) div.content{
+
+  padding-bottom: 15px;
+}
+#coa_sequence ul li div.content .row:nth-child(1){
+  margin: 0;
+}
+#coa_sequence ul li div.content .row:nth-child(2){
+  margin: 0;
+  padding: 0;
+}
+/*#coa_sequence ul li div.content .row:nth-child(1) > div{
+  min-height: 300px; 
+  margin-bottom: 10px;
+}*/
+#coa_sequence ul li div.content .row:nth-child(1) > div div:nth-child(2){
+  padding-top: 10px;
+}
+
+.table-input .input-group-addon{
+  border: none;
+  background-color: #F1F1F1;
+  border-left: 1px solid #F3F3F3;
+}
+
+.table-input input:disabled, .table-input select:disabled{
+  background-color: #F1F1F1;
+  color: #828282;
+}
+
+.row > [class*="col-"]{
+  margin-bottom: 0 !important;
+}
+
+.form-group-sm select.form-control{
+  line-height: 20px !important;
+  padding-left: 28px !important;
+}
+
+.dataTables_wrapper .row:nth-child(2) > .col-sm-12{
+  padding: 0;
+}
+
+/** COA CUSTOM CSS **/
+.add-btn-container{
+  float: left;
+  margin-left: 16px;
+}
+
+button.next-button, button.prev-button{
+  position: fixed; 
+  min-width: 10px; 
+  top: 40%; 
+  right: 0; 
+  font-size: 11px; 
+  background-color: #000 !important; 
+  color: #FFF !important;
+  border-radius: 0 !important;
+}
+
+button.prev-button{
+  left: 0;
+}
+
+label.category-label{
+  text-transform: uppercase;
+}
+
+.dataTables_wrapper tr:hover{
+  cursor: hand;
+  cursor: pointer;
+}
+
+

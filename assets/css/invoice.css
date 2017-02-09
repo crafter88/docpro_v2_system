@@ -1,0 +1,23 @@
+.invoice table td label{
+	margin: 0;
+	font-size: 12px !important;
+}
+.invoice table td .form-group{
+	padding: 0;
+}
+.invoice table td input{
+	padding: 0 !important;
+	height: 30px !important;
+	font-size: 12px !important;
+}
+.invoice table th{
+	font-size: 12px !important;
+}
+.invoice_prod_serv{
+	font-size: 12px !important;
+}
+.product_services td,
+.invoice_prod_serv td
+{
+	font-size: 12px !important;
+}

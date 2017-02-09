@@ -1,0 +1,93 @@
+.side-menu, .side-menu nav{
+	background-color: #000 !important;
+}
+.app-container.expanded .side-body {
+	margin-left: 75px;
+}
+.tooltip{
+	position: fixed;
+}
+div.popover .arrow{
+	display: none;
+}
+ul#sidebar-container > li a span{
+	background-color: #000 !important;
+}
+ul#sidebar-container li.active a{
+	background-color: #000 !important;
+	color: #FFF !important;
+}
+ul#sidebar-container div.popover{
+	margin-top: 10px !important;
+	border-radius: 0;
+	background-color: #1D1D1D;
+	color: #FFF;
+	overflow-y: auto;
+	border: 1px solid #565656;
+}
+div#app-container.expanded a#popover-tables:after, div#app-container.expanded a#popover-company-settings:after, div#app-container.expanded a#popover-docpro-settings:after, div#app-container.expanded a#popover-books-of-accounts:after{
+	font-family: FontAwesome;
+	content: "\f106";
+	position: absolute;
+	right: 1em;
+}
+h3.popover-title{
+	display: none !important;
+}
+div#app-container.no-popover ul#sidebar-container div.popover {
+	display: none !important;
+}
+ul#sidebar-container > li a:hover, ul#sidebar-container > li a:hover span, ul#sidebar-container .navbar-nav > li:hover span{
+	color: #FFF !important;
+	background-color: #212121 !important;
+}
+.side-menu .navbar .navbar-nav > li:hover > a, .side-menu .navbar.navbar-default .navbar-nav > li:hover > a{
+	color: #FFF !important;
+}
+ul#sidebar-container > li:hover span{
+	color: #FFF !important;
+	background-color: #000 !important;
+}
+ul#sidebar-container div.popover div.popover-content{
+	padding: 9px 0 !important;
+}
+ul#sidebar-container div.popover .navbar-nav li:hover a{
+	color: #FFF !important;
+	background-color: #000 !important;
+}
+ul#sidebar-container .panel-body .navbar-nav > li a{
+	padding-left: 70px !important;
+}
+
+/** Main Content **/
+#main-content .side-body{
+	margin: 0 0 0 35px !important;
+}
+#main-content .side-body .row:first-child .col-md-6{
+	padding-right: 0 !important;
+}
+#main-content .side-body [class*="tile"]{
+	width: 100% !important;
+}
+#main-content .side-body .row:nth-child(2) [class*="tile"]{
+	height: 234px;
+}
+#main-content .side-body .row .slide-over{
+	color: #FFF;
+}
+#main-content .side-body .row:first-child .col-md-6:first-child{
+	padding-right: 0;
+}
+#main-content .side-body .row:first-child .col-md-6:nth-child(2){
+	padding-right: 0;
+	padding-left: 5px !important;
+}
+#main-content .side-body .row:nth-child(2) .col-sm-4:first-child, .col-sm-4:nth-child(2){
+	padding-right: 0;
+}
+#main-content .side-body .row:nth-child(2) .col-sm-4:nth-child(2){
+	padding-left: 5px;
+}
+#main-content .side-body .row:nth-child(2) .col-sm-4:nth-child(3){
+	padding-left: 2px;
+}

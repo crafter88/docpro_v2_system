@@ -1,0 +1,24 @@
+#main-content .side-body {
+    margin: 0 0 0 55px;
+    padding-top: 60px;
+}
+
+#main-content .side-body .row:first-child .col-md-12 {
+    border: 1px solid #D5D5D5 !important;
+}
+
+#main-content .side-body .row:first-child .col-md-12 a {
+    border: none;
+}
+
+.side-body .row:first-child .btn.btn-default {
+    background-color: #FFF;
+}
+
+#main-content .side-body .row:first-child {
+    background-color: #F0F0F0;
+}
+
+#main-content .row .col-md-12 {
+    padding: 0 !important;
+}

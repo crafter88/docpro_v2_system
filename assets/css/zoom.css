@@ -1,0 +1,5 @@
+body{
+    zoom: 90%;
+    -moz-transform: scale(0.9);
+    -moz-transform-origin: 0 0;
+}

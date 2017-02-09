@@ -1,0 +1,124 @@
+.side-menu, .side-menu nav{
+	background-color: #000 !important;
+}
+.tooltip{
+	position: fixed !important;
+}
+div.popover .arrow{
+	display: none !important;
+}
+ul#sidebar-container > li a span{
+	background-color: #000 !important;
+}
+ul#sidebar-container li.active a{
+	background-color: #000 !important;
+	color: #FFF !important;
+}
+ul#sidebar-container div.popover{
+	margin-top: 10px !important;
+	border-radius: 0;
+	background-color: #1D1D1D;
+	color: #FFF;
+	overflow-y: auto;
+	border: 1px solid #565656;
+}
+div#app-container.expanded a#popover-tables:after, div#app-container.expanded a#popover-company-settings:after, div#app-container.expanded a#popover-docpro-settings:after, div#app-container.expanded a#popover-books-of-accounts:after{
+	font-family: FontAwesome;
+	content: "\f106";
+	position: absolute;
+	right: 1em;
+}
+h3.popover-title{
+	display: none;
+}
+div#app-container.no-popover ul#sidebar-container div.popover {
+	display: none !important;
+}
+ul#sidebar-container > li a:hover, ul#sidebar-container > li a:hover span, ul#sidebar-container .navbar-nav > li:hover span{
+	color: #FFF !important;
+	background-color: #212121 !important;
+}
+#main-content .side-body .row:first-child .col-md-12 a{
+	border: none;
+}
+.side-menu .navbar .navbar-nav > li:hover > a, .side-menu .navbar.navbar-default .navbar-nav > li:hover > a{
+	color: #FFF !important;
+}
+ul#sidebar-container > li:hover span{
+	color: #FFF !important;
+	background-color: #000 !important;
+}
+ul#sidebar-container div.popover div.popover-content{
+	padding: 9px 0 !important;
+}
+ul#sidebar-container div.popover .navbar-nav li:hover a{
+	color: #FFF !important;
+	background-color: #000 !important;
+}
+ul#sidebar-container .panel-body .navbar-nav > li a{
+	padding-left: 70px;
+}
+
+/** MAIN CONTENT **/
+#main-content .side-body{
+	margin: 0 0 0 55px; 
+	padding-top: 60px;
+}
+
+#main-content .side-body .row:first-child{
+	background-color: #F0F0F0;
+}
+#main-content .side-body .row:first-child .col-md-12{
+	border: 1px solid #D5D5D5 !important;
+}
+#main-content .side-body .row:nth-child(2) .card-title{
+	float: none; 
+	margin: 10px auto; 
+	display: table;
+}
+#main-content .row .col-md-12{
+	padding: 0 !important;
+}
+.side-body .row:first-child .btn.btn-default {
+	background-color: #FFF;
+}
+
+/** TABLE **/
+#summary-table_wrapper .row:first-child{
+	margin: 0;
+	background-color: transparent !important;
+}
+#summary-table_wrapper .row:first-child .col-sm-6{
+	margin: 0;
+	padding: 0;
+}
+#summary-table_length{
+	margin: 0;
+}
+#summary-table_filter{
+	margin: 0;
+}
+select[name=summary-table_length]{
+	padding-left: 28px;
+}
+
+#journal-entries-table_wrapper .row:first-child{
+	margin: 0;
+	background-color: transparent !important;
+}
+#journal-entries-table_wrapper .row:first-child .col-sm-6{
+	margin: 0;
+	padding: 0;
+}
+#journal-entries-table_length{
+	margin: 0;
+}
+#journal-entries-table_filter{
+	margin: 0;
+}
+select[name=journal-entries-table_length]{
+	padding-left: 28px;
+}
+input.total{
+	font-weight: bold !important;
+}

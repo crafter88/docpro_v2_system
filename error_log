@@ -1,0 +1,5 @@
+[08-Feb-2017 02:00:37 UTC] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 32 bytes) in /home/docpro01docpro/public_html/accountingsystem/system/database/drivers/mysqli/mysqli_result.php on line 183
+[08-Feb-2017 02:00:44 UTC] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 32 bytes) in /home/docpro01docpro/public_html/accountingsystem/system/database/drivers/mysqli/mysqli_result.php on line 183
+[08-Feb-2017 02:00:55 UTC] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 32 bytes) in /home/docpro01docpro/public_html/accountingsystem/system/database/drivers/mysqli/mysqli_result.php on line 183
+[08-Feb-2017 02:53:58 UTC] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 32 bytes) in /home/docpro01docpro/public_html/accountingsystem/system/database/drivers/mysqli/mysqli_result.php on line 183
+[08-Feb-2017 05:04:41 UTC] PHP Fatal error:  Call to undefined method Modes_Of_Payment_Model::query() in /home/docpro01docpro/public_html/accountingsystem/application/models/Modes_Of_Payment_Model.php on line 12

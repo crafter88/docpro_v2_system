@@ -1,0 +1,8 @@
+#costum-sidebar-close,
+#sidebar-container
+{
+	background: #FFF url('../img/sidebar_bg.png') repeat !important;
+}
+ul#sidebar-container > li a span{
+	background: transparent !important;
+}

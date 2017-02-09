@@ -1,0 +1,18 @@
+tr.vat:last-child td:nth-child(1),
+tr.vat:last-child td:nth-child(2),
+tr.ewt:last-child td:nth-child(1),
+tr.ewt:last-child td:nth-child(2),
+tr.fwt:last-child td:nth-child(1),
+tr.fwt:last-child td:nth-child(2)
+{
+	/*padding-bottom: 5px;*/
+}
+tr.vat:first-child td:nth-child(1),
+tr.vat:first-child td:nth-child(2),
+tr.ewt:first-child td:nth-child(1),
+tr.ewt:first-child td:nth-child(2),
+tr.fwt:first-child td:nth-child(1),
+tr.fwt:first-child td:nth-child(2)
+{
+	/*padding-top: 5px;*/
+}
