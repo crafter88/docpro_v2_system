@@ -8,7 +8,7 @@ class Home extends MY_Controller{
 	}
 	
 	public function get_home(){
-		return $this->load->view($this->layout, ['top_navbar'=>'fragments/top_navbar/home_top_navbar', 'head_css'=>'fragments/head_css/home', 'content'=>'fragments/content/home', 'active_nav'=>'home', 'user'=>$this->session->userdata('user')]);
+		return $this->load->view($this->layout, ['top_navbar'=>'fragments/top_navbar/home_top_navbar', 'head_css'=>'fragments/head_css/home', 'content'=>'fragments/content/home', 'active_nav'=>'1', 'user'=>$this->session->userdata('user'), 'title' => 'Dashboard']);
 	}
 	
 	public function get_memo_slider(){

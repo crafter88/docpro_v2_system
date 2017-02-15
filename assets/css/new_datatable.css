@@ -1,0 +1,29 @@
+table.dataTable thead th
+{
+	font-size: 12px;
+	text-align: center;
+	background-color: #808080;
+	color: #FFF;
+}
+table.dataTable thead th input
+{
+	color: #000;
+	padding: 3px 6px;
+	width: 100%;
+}
+.table-bordered>thead>tr>th
+{
+	border-bottom: 2px solid #999 !important;
+}
+.table-search input
+{
+	border: 1px solid #d2d6de !important;
+}
+.table-search span
+{
+	background-color: #EEE !important;
+}
+table.dataTable.table-condensed>thead>tr#filterrow>th
+{
+	padding-right: 5px;
+}

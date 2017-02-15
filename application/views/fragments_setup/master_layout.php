@@ -78,10 +78,51 @@
 		<link href='<?php echo base_url(); ?>assets/css/company_setup/welcome.css' rel='stylesheet' type='text/css'>
 		<link href='<?php echo base_url(); ?>assets/css/alert.css' rel='stylesheet' type='text/css'>
 		<link href='<?php echo base_url(); ?>assets/css/v_validation.css' rel='stylesheet' type='text/css'>
+		<style type="text/css">
+			@keyframes rotate {
+			    from {transform: rotate(0deg);}
+			    to {transform: rotate(360deg);}
+			}
+			#loader
+			{
+				position: fixed;
+				left: 0px;
+				top: 0px;
+				width: 100%;
+				height: 100%;
+				z-index: 99999999;
+				background: #141414;
+			}
+			#loader-img
+			{
+				animation-name: rotate;
+				animation-duration: 1s;
+				animation-iteration-count: infinite;
+				animation-timing-function: linear;
+			}
+			img[alt='www.000webhost.com']
+			{
+				display: none !important;
+			}
+		</style>
+		<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery.min.js"></script>
+		<!-- <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/modernizr.js"></script> -->
+		<script type="text/javascript">
+			$(window).load(function() {
+			$('#loader').fadeOut('slow',function(){$(this).remove();});
+		});
+		</script>
 		<script>var window_location = window.location.origin</script>
 	</head>
 	<body class='flat-blue'>
 <!-- CONTENT -->
+		<div id='loader' style='text-align: center; display: table;'>
+			<div style='display: table-cell; vertical-align: middle;'>
+				<p><img src="<?php echo base_url(); ?>assets/img/s_a_l.png" style='height: 18vh'></p>
+				<p style='color: #FFF;'>DOCPRO Business Solutions</p>
+				<p id='loader-img'><img src="<?php echo base_url(); ?>assets/img/roll.png" style='height: 3vh'></p>
+			</div>
+		</div>
 
 		<?php if(isset($content)) $this->load->view($content); ?>
 

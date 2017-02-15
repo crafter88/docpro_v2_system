@@ -2181,7 +2181,7 @@ ul.faq li > div h3 {
   color: #888;
 }
 
-ul.pagination > li > a {
+ul.pagination > li:not(.paginate_button) > a {
   border: 1px solid #F1F1F1;
   margin-right:5px;
   border-radius: 5px;
@@ -2189,13 +2189,13 @@ ul.pagination > li > a {
   padding: 5px 14px;
 }
 
-ul.pagination > li > a i{
+ul.pagination > li:not(.paginate_button) > a i{
   margin-left:5px;
   margin-right:5px;
 }
 
-ul.pagination > li.active > a, 
-ul.pagination > li:hover > a {
+ul.pagination > li:not(.paginate_button).active > a, 
+ul.pagination > li:not(.paginate_button):hover > a {
   background-color: #c52d2f !important;
   border-color: #c52d2f !important;
   color: #fff;

@@ -1,23 +1,12 @@
 <!-- LOADER -->
 <input id='c_id' type="hidden" name="c_id" value="<?php echo $user->cb_id; ?>">
-<div id='loader' class="modal show" tabindex="-1" role="dialog" style="background-color: #FFF;">
-  	<div class='col-md-12' style='text-align: center; margin-top: 10%;'>
-		<h3>Loading</h3>
-		<div id="fountainG">
-			<div id="fountainG_1" class="fountainG"></div>
-			<div id="fountainG_2" class="fountainG"></div>
-			<div id="fountainG_3" class="fountainG"></div>
-			<div id="fountainG_4" class="fountainG"></div>
-			<div id="fountainG_5" class="fountainG"></div>
-			<div id="fountainG_6" class="fountainG"></div>
-			<div id="fountainG_7" class="fountainG"></div>
-			<div id="fountainG_8" class="fountainG"></div>
-		</div>
-	</div>
-</div>
+
 <div id='setup-banner'>
-	<span style="font-weight: bold; font-size: 18px; color: #FFF;"><img src='<?php echo base_url(); ?>assets/img/250x250.png' id='banner-logo'/> DocPro Accounting System</span>
-	<a href="<?php echo base_url(); ?>setup/account/logout" style="float: right; color: #FFF; margin-top: 10px; margin-right: 15px; text-decoration: none;"><i class='fa fa-power-off'></i> Logout</a>
+	<span style="font-weight: bold; font-size: 18px; color: #FFF;">
+		<img src='<?php echo base_url(); ?>assets/img/s_a_l.png' id='banner-logo'/>
+		<span style="font-family: 'Times New Roman'; font-size: 24px;"><span style="color: blue;">DOC</span>Pro Accounting System</span>
+	</span>
+	<a href="<?php echo base_url(); ?>setup/account/logout" style="float: right; color: #FFF; margin-top: 15px; margin-right: 15px; text-decoration: none;"><i class='fa fa-power-off'></i> Logout</a>
 </div>
 <div id='setup-logo' class='logo' style="display: none;">
 	<img src="<?php echo base_url() ?>assets/img/logo_setup.png" style='width: 150px;'>
@@ -29,30 +18,30 @@
 	<div class='row'>
 		<div class='col-md-12' style="text-align: center; padding: 0;">
 			<div id='content' class="side-body padding-top" ng-app='myApp' ng-controller='myCtrl'>
-				<div class='card' style="width: 80%; margin: 0 auto;">
+				<div class='card setup-menu' style="margin: 0 auto;">
 					<div class='card-body' style="padding-top: 10px;">
 						<div id='setup-nav' class='col-md-12'>
-							<div id='setup-tab-1' class='setup-tab col-md-3 active' style="float: left;">
+							<div id='setup-tab-1' class='setup-tab col-md-3 active' style="float: left; width: 25%;">
 								<button type='button' class='btn btn-default btn-sm'>
 									<img src="<?php echo base_url(); ?>assets/img/building.png" style='height: 37px; display: block; margin: 0 auto;'>
 									Company
 								</button>
 							</div>
-							<div id='setup-tab-2' class='setup-tab col-md-3' style="float: left;">
+							<div id='setup-tab-2' class='setup-tab col-md-3' style="float: left; width: 25%;">
 								<button type='button' class='btn btn-default btn-sm'>
 									<img src="<?php echo base_url(); ?>assets/img/administration.png" style='height: 37px; display: block; margin: 0 auto;'>
 
 									Administration
 								</button>
 							</div>
-							<div id='setup-tab-3' class='setup-tab col-md-3' style="float: left;">
+							<div id='setup-tab-3' class='setup-tab col-md-3' style="float: left; width: 25%;">
 								<button class='btn btn-default btn-sm'>
 									<img src="<?php echo base_url(); ?>assets/img/chart_of_accounts.png" style='height: 37px; display: block; margin: 0 auto;'>
 
 									Chart of Accounts
 								</button>
 							</div>
-							<div id='setup-tab-4' class='setup-tab col-md-3' style="float: left;">
+							<div id='setup-tab-4' class='setup-tab col-md-3' style="float: left; width: 25%;">
 								<button class='go_to_seq_4 btn btn-default btn-sm btn-raised ripple-effect btn-seq seq-selected' disabled>
 									<img src="<?php echo base_url(); ?>assets/img/taxes-8.png" style='height: 37px; display: block; margin: 0 auto;'>
 									Taxes
@@ -60,7 +49,7 @@
 							</div>
 						</div>
 						<div id='progress-bar' class="progress progress-striped" style="margin-top: 0;">
-						  	<div class="progress-bar progress-bar-success" style="width: 25%; margin-top: 0;"></div>
+						  	<div class="progress-bar progress-bar-info" style="width: 25%; margin-top: 0;"></div>
 						</div>
 					</div>
 				</div>
@@ -73,11 +62,11 @@
 										<li id='setup-1' setup-title='Company Profile' class='setup-1'>
 											<div class='content'> 
 												<div class="row">
-													<div class='col-xs-12' style="border-top: 1px solid #e8e8e8;background-color: #e9ebee;padding: 0 50px 30px 50px;">
+													<div class='col-xs-12' style="border-top: 1px solid #e8e8e8;background-color: #e9ebee; padding: 0;">
 														<h3 class='seq-heading'><span style="font-size: 25px;">P</span>ROFILE</h3>
 														<div class='notice'><span><b>Note: </b>You must enter your TIN and specify your business tax type</span></div>
 														<div class='col-md-12'>
-															<table id='profile-table' class='table table-bordered table-sm' style="width: 150%;">
+															<table id='profile-table' class='table table-condensed table-sm' style="width: 150%;">
 																<thead>
 																	<th></th>
 																	<th>Name</th>
@@ -91,7 +80,7 @@
 															</table>
 														</div>
 													</div>
-													<div class='col-xs-12' style="border-top: 1px solid #e8e8e8;background-color: #e9ebee;padding: 0 50px 30px 50px;">
+													<div class='col-xs-12' style="border-top: 1px solid #e8e8e8;background-color: #e9ebee;padding: 0;">
 														<h3 class='seq-heading' style="font-weight: bold;"><span style="font-size: 25px;">B</span>RANCHES</h3>
 														<div class='col-md-12'>
 															<button id='add-branch-btn' type='button' class='btn btn-info btn-xs btn-raised ripple-effect title' custom-title='Add Branch' style="float: left; margin-left: 10px; margin-top: 25px;">Add</button>
@@ -99,7 +88,7 @@
 															  <span class="input-group-addon"><i class='fa fa-search'></i></span>
 															  <input id='s_branch' type="text" class="form-control" placeholder="Search Branch">
 															</div>
-															<table id='branch-table' class='table table-bordered table-sm' style="width: 150%;">
+															<table id='branch-table' class='table table-condensed table-sm' style="width: 150%;">
 																<thead>
 																	<th style='width: 45px;'></th>
 																	<th>Name</th>
@@ -118,7 +107,7 @@
 										<li id='setup-2' setup-title='Administration' class='setup-1'>
 											<div class='content'> 
 												<div class="row">
-													<div class='col-xs-12' style="border-top: 1px solid #e8e8e8;background-color: #e9ebee;padding: 0 50px 30px 50px;">
+													<div class='col-xs-12' style="border-top: 1px solid #e8e8e8;background-color: #e9ebee;padding: 0;">
 														<h3 class='seq-heading' style="font-weight: bold;"><span style="font-size: 25px;">U</span>SERS</h3>
 														<div class='col-md-12'>
 															<button id='add-user-btn' type='button' class='btn btn-info btn-xs btn-raised ripple-effect title' custom-title='Add User' style="float: left; margin-left: 10px; margin-top: 25px;">Add</button>
@@ -126,7 +115,7 @@
 															  <span class="input-group-addon"><i class='fa fa-search'></i></span>
 															  <input id='s_user' type="text" class="form-control" placeholder="Search User">
 															</div>
-															<table id='users-table' class='table table-bordered' style="width: 150%;">
+															<table id='users-table' class='table table-condensed' style="width: 150%;">
 																<thead>
 																	<th style="width: 45px;"></th>
 																	<th>Sequence</th>
@@ -148,7 +137,7 @@
 										<li id='setup-3' setup-title='Chart of Accounts' class='setup-2'>
 											<div class='content' style='width: 98%;'> 
 												<div class="row">
-													<div class='col-md-12' style="border-top: 1px solid #E8E8E8; padding: 10px 0;padding: 0 50px 30px 50px;">
+													<div class='col-md-12' style="border-top: 1px solid #E8E8E8; padding: 0 50px 30px 50px;">
 														<div class='row' style="margin-top: 36px;">
 															<div id='coa-tab-1' class='coa-tab active'>
 																<span class='coa-no'>1</span>
@@ -195,13 +184,13 @@
 															<div id='coa-seq'>
 																<ul class='seq-canvas'>
 																	<li>
-																		<div class='col-md-12' style='margin-top: 25px; padding-left: 43px; padding-right: 48px;'>
+																		<div class='col-md-12' style='margin-top: 25px; padding: 0;'>
 																			<button id='add-lvl-1-btn' type='button' class='btn btn-info btn-xs btn-raised ripple-effect' style='float: left; z-index: 9999999; margin-left: 12px; margin-top: 25px;'>Add</button>
 																			<div class="input-group input-group-sm input-search">
 																			  <span class="input-group-addon"><i class='fa fa-search'></i></span>
 																			  <input id='s_coa_1' type="text" class="form-control" placeholder="Search Element">
 																			</div>
-																			<table id='coa-lvl1' class='table table-bordered' style="width: 100%;">
+																			<table id='coa-lvl1' class='table table-condensed' style="width: 100%;">
 																				<thead>
 																					<th></th>
 																					<!-- <th>Seq</th>
@@ -212,7 +201,7 @@
 																		</div>
 																	</li>
 																	<li>
-																		<div class='col-md-12' style='margin-top: 25px; padding-left: 43px; padding-right: 48px;'>
+																		<div class='col-md-12' style='margin-top: 25px; padding: 0;'>
 																			<div id='lvl-2-alert' class='col-md-12' style="margin-top: 10px; margin-left: 10px;">
 																				<span class='alert alert-danger coa-alert'>Please select level 1</span>
 																			</div>
@@ -221,7 +210,7 @@
 																			  <span class="input-group-addon"><i class='fa fa-search'></i></span>
 																			  <input id='s_coa_2' type="text" class="form-control" placeholder="Search Classification">
 																			</div>
-																			<table id='coa-lvl2' class='table table-bordered' style="width: 100%;">
+																			<table id='coa-lvl2' class='table table-condensed' style="width: 100%;">
 																				<thead>
 																					<th></th>
 																					<!-- <th>Seq</th>
@@ -233,7 +222,7 @@
 																		</div>
 																	</li>
 																	<li>
-																		<div class='col-md-12' style='margin-top: 25px; padding-left: 43px; padding-right: 48px;'>
+																		<div class='col-md-12' style='margin-top: 25px; padding-left: 0;'>
 																			<div id='lvl-3-alert' class='col-md-12' style="margin-top: 10px; margin-left: 10px;">
 																				<span class='alert alert-danger coa-alert'>Please select level 2</span>
 																			</div>
@@ -242,7 +231,7 @@
 																			  <span class="input-group-addon"><i class='fa fa-search'></i></span>
 																			  <input id='s_coa_3' type="text" class="form-control" placeholder="Search Line Item">
 																			</div>
-																			<table id='coa-lvl3' class='table table-bordered' style="width: 100%;">
+																			<table id='coa-lvl3' class='table table-condensed' style="width: 100%;">
 																				<thead>
 																					<th></th>
 																					<!-- <th>Seq</th>
@@ -255,7 +244,7 @@
 																		</div>
 																	</li>
 																	<li>
-																		<div class='col-md-12' style='margin-top: 25px; padding-left: 43px; padding-right: 48px;'>
+																		<div class='col-md-12' style='margin-top: 25px; padding-left: 0;'>
 																			<div id='lvl-4-alert' class='col-md-12' style="margin-top: 10px; margin-left: 10px;">
 																				<span class='alert alert-danger coa-alert'>Please select level 3</span>
 																			</div>
@@ -264,7 +253,7 @@
 																			  <span class="input-group-addon"><i class='fa fa-search'></i></span>
 																			  <input id='s_coa_4' type="text" class="form-control" placeholder="Search SubClassification">
 																			</div>
-																			<table id='coa-lvl4' class='table table-bordered' style="width: 100%;">
+																			<table id='coa-lvl4' class='table table-condensed' style="width: 100%;">
 																				<thead>
 																					<th></th>
 																					<!-- <th>Seq</th>
@@ -279,7 +268,7 @@
 																		</div>
 																	</li>
 																	<li style="display: none;">
-																		<div class='col-md-12' style='margin-top: 25px; padding-left: 43px; padding-right: 48px;'>
+																		<div class='col-md-12' style='margin-top: 25px; padding-left: 0;'>
 																			<div id='lvl-5-alert' class='col-md-12' style="margin-top: 10px; margin-left: 10px;">
 																				<span class='alert alert-danger coa-alert'>Please select level 4</span>
 																			</div>
@@ -288,7 +277,7 @@
 																			  <span class="input-group-addon"><i class='fa fa-search'></i></span>
 																			  <input id='s_coa_5' type="text" class="form-control" placeholder="Search Subsidiary Name">
 																			</div>
-																			<table id='coa-lvl5' class='table table-bordered' style="width: 100%;">
+																			<table id='coa-lvl5' class='table table-condensed' style="width: 100%;">
 																				<thead>
 																					<th></th>
 																					<!-- <th>Seq</th>
@@ -312,7 +301,7 @@
 										<li id='setup-4' setup-title='Taxes' class='setup-2'>
 											<div class='content'> 
 												<div class="row">
-													<div class='col-md-12' style="border-top: 1px solid #E8E8E8; padding: 10px 0;padding: 0 50px 30px 50px;">
+													<div class='col-md-12' style="border-top: 1px solid #E8E8E8; padding: 0 50px 30px 50px;">
 														<div class='row' style="margin-top: 36px;">
 															<div id='tax-tab-1' class='tax-tab active'>
 																<span class='tax-no'>1</span>
@@ -339,13 +328,13 @@
 															<div id='tax-seq'>
 																<ul class='seq-canvas'>
 																	<li style="padding-right: 7px;">
-																		<div class='col-md-12' style="margin-top: 25px; opacity: 1; padding-left: 43px; padding-right: 48px;">
+																		<div class='col-md-12' style="margin-top: 25px; opacity: 1; padding: 0;">
 																			<button id='add-tax-types-btn' type='button' class='btn btn-info btn-xs btn-raised ripple-effect' style='float: left; z-index: 9999999; margin-left: 12px; margin-top: 25px;'>Add</button>
 																			<div class="input-group input-group-sm input-search">
 																			  <span class="input-group-addon"><i class='fa fa-search'></i></span>
 																			  <input id='s_tax_type' type="text" class="form-control" placeholder="Search Tax Type">
 																			</div>
-																			<table id='tax-types' class='table table-bordered' style="width: 100%;">
+																			<table id='tax-types' class='table table-condensed' style="width: 100%;">
 																				<thead>
 																					<th></th>
 																					<th>Seq</th>
@@ -357,7 +346,7 @@
 																		</div>
 																	</li>
 																	<li>
-																		<div class='col-md-12' style="margin-top: 25px; opacity: 1; padding-left: 43px; padding-right: 48px;">
+																		<div class='col-md-12' style="margin-top: 25px; opacity: 1; padding: 0;">
 																			<div id='tax-alert' class='col-md-12' style="margin-top: 10px; margin-left: 10px;">
 																				<span class='alert alert-danger coa-alert'>Please select Tax Type</span>
 																			</div>
@@ -366,7 +355,7 @@
 																			  <span class="input-group-addon"><i class='fa fa-search'></i></span>
 																			  <input id='s_tax' type="text" class="form-control" placeholder="Search Tax">
 																			</div>
-																			<table id='tax' class='table table-bordered' style="width: 100%;">
+																			<table id='tax' class='table table-condensed' style="width: 100%;">
 																				<thead>
 																					<th></th>
 																					<th>Seq</th>
@@ -484,7 +473,7 @@
 			<tr>
 				<td style='padding-top: 5px; width: 140px; text-align: right; padding-right: 20px; padding-left: 20px;'><label><span class='asterisk-required'>*</span> Contact Number</label></td>
 				<td style='padding-top: 5px;'>
-					<input class='form-control v-format' f='^([0-9]{3}\-[0-9]{3}\-[0-9]{4}|[0-9]{11})$' title='Landline (xxx-xxx-xxxx) OR Mobile (09xxxxxxxxx)' type='text' name='contact_number'>
+					<input class='form-control v-required v-format' f='^([0-9]{3}\-[0-9]{3}\-[0-9]{4}|[0-9]{11})$' title='Landline (xxx-xxx-xxxx) OR Mobile (09xxxxxxxxx)' type='text' name='contact_number'>
 				</td>
 			</tr>
 			<tr>
@@ -1337,7 +1326,7 @@
 	        		<div class='row'>
 	        			<div class='col-md-4' style='margin: 0 0 50px 0; text-align: center;'>
 	        				<img src="<?php echo base_url(); ?>assets/img/1.png" style='width: 150px; margin-top: 10%'>
-	        				<p style="font-weight: bold; font-size: 35px; margin: 0;">Docpro</p>
+	        				<p style="font-weight: bold; font-size: 35px; margin: 0;">DOCPro</p>
 	        				<p style="font-size: 18px; margin: 0;">Business Solutions</p>
 	        			</div>
 	        			<div class='col-md-8' style="margin: 0; padding-left: 0;">
@@ -1351,18 +1340,9 @@
 				        			<button type='button' data-dismiss='modal' class="btn btn-default btn-raised" style="text-transform: none;">No</button>
 				        		</div>
 	        				</div>
-	        				<div id='w-loading' style="display: none;">
-	        					<h1 style="width: 100%; text-align: center; margin-top: 10%; font-weight: bold;">Processing</h1>
-	        					<div id="fountainG">
-									<div id="fountainG_1" class="fountainG"></div>
-									<div id="fountainG_2" class="fountainG"></div>
-									<div id="fountainG_3" class="fountainG"></div>
-									<div id="fountainG_4" class="fountainG"></div>
-									<div id="fountainG_5" class="fountainG"></div>
-									<div id="fountainG_6" class="fountainG"></div>
-									<div id="fountainG_7" class="fountainG"></div>
-									<div id="fountainG_8" class="fountainG"></div>
-								</div>
+	        				<div id='w-loading' style="display: none; text-align: center;">
+	        					<h1 style="width: 100%; margin-top: 10%; font-weight: bold;">PROCESSING</h1>
+	        					<img src="<?php echo base_url(); ?>assets/img/squares.gif" style='height: 100px;'>
 	        				</div>
 	        			</div>
 	        		</div>

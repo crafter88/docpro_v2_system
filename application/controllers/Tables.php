@@ -7,7 +7,7 @@ class Tables extends MY_Controller{
 	}
 	
 	public function get_tables(){
-		$this->load->view($this->layout, ['top_navbar'=>'fragments/top_navbar/global_top_navbar', 'head_css'=>'fragments/head_css/tables', 'content'=>'fragments/content/tables', 'back_button'=>'../home', 'active_nav'=>'tables', 'user'=>$this->session->userdata('user')]);
+		$this->load->view($this->layout, ['top_navbar'=>'fragments/top_navbar/global_top_navbar', 'head_css'=>'fragments/head_css/tables', 'content'=>'fragments/content/tables', 'back_button'=>'../home', 'active_nav'=>'8', 'user'=>$this->session->userdata('user'), 'title' => 'Tables']);
 	}
 	
 	public function get_value_added_tax(){

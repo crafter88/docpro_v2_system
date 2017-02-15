@@ -1,5 +1,25 @@
 <script>
+    var stopPropagation = function(evt) {
+        if (evt.stopPropagation !== undefined) {
+            evt.stopPropagation();
+        } else {
+            evt.cancelBubble = true;
+        }
+    }
     $(document).ready(function(){
+        $('#banks-table thead tr#filterrow th').each( function () {
+            if($(this).index() !== 0){
+                var title = $('#banks-table thead th').eq( $(this).index() ).text();
+                $(this).html( '<input type="text" onclick="stopPropagation(event);" placeholder="Search '+title+'" />' );
+            }
+        });
+        $("#banks-table thead input").on( 'keyup change', function () {
+            table
+                .column( $(this).parent().index()+':visible' )
+                .search( this.value )
+                .draw();
+        } );
+
         var table = $('#banks-table').DataTable({
             ajax: window_location+'/company_settings/banks/get',
             columns:[
@@ -18,15 +38,20 @@
                         },
                         {'data': 'b_seq'}, {'data': 'b_code'}, {'data': 'b_name'}, {'data': 'b_shortname'}, {'data': 'co_b_no'}, {'data': 'co_b_class'}
                     ],
-            columnDefs: [{targets: 0, width: '100px'}, {targets: 1, width: '40px'}],
+            // columnDefs: [{targets: 0, width: '100px'}, {targets: 1, width: '40px'}],
             scrollX: true,
             order: [['2', 'asc']],
+            orderCellsTop: true,
             initComplete: function(context, src){
                 initRipple();
                 init_tooltip();
             }
         });
-        
+
+        $('.general-search').on( 'keyup', function () {
+            table.search( this.value ).draw();
+        });
+
         var tmp = $.fn.popover.Constructor.prototype.show;
             $.fn.popover.Constructor.prototype.show = function () {
               tmp.call(this);

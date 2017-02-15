@@ -63,7 +63,7 @@
 	</div>
 </div>
 <div class='row'>
-	<div class='col-md-12' style='background-color: #00009b; color: #FFF;'><h1 style='margin: 0; padding: 20px; text-align: center; color: #FFF;'>Contact Us</h1></div>
+	<div class='col-md-12' style='background-color: #141414; color: #FFF; border-top: 1px solid blue; border-bottom: 1px solid blue;'><h1 style='margin: 0; padding: 20px; text-align: center; color: #FFF; font-size: 28px;'>CONTACT US</h1></div>
 	<div class='col-md-7' style='padding-top: 10px; background-color: #141414; min-height: 428px;'>
 		<h4 style="color: #FFF; padding-left: 9px;">Send us your questions</h4>
 		<div style="max-height: 500px;">

@@ -8,7 +8,7 @@ class Transactions extends MY_Controller{
 	}
 	
 	public function get_transactions(){
-		return $this->load->view($this->layout, ['head_css'=>'fragments/head_css/transactions', 'top_navbar'=>'fragments/top_navbar/global_top_navbar', 'content'=>'fragments/content/transactions', 'footer_js'=>'fragments/footer_js/transactions', 'back_button'=>'home', 'title'=>'Transactions', 'active_nav'=>'transaction', 'user'=>$this->session->userdata('user')]);
+		return $this->load->view($this->layout, ['head_css'=>'fragments/head_css/transactions', 'top_navbar'=>'fragments/top_navbar/global_top_navbar', 'content'=>'fragments/content/transactions', 'footer_js'=>'fragments/footer_js/transactions', 'back_button'=>'home', 'title'=>'Transactions', 'active_nav'=>'2', 'user'=>$this->session->userdata('user')]);
 	}
 
 	public function get_journals_summary(){

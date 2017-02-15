@@ -1,32 +1,72 @@
 <input id='mc_id' type="hidden" name="mc_id" value="<?php echo $user->main_company->cb_id; ?>">
 <input id='bc_id' type="hidden" name="bc_id" value="<?php echo $user->cb_id; ?>">
-<div class='side-body padding-top hide-table-setting'>
-	<div class='card custom-card col-md-9 main-table-panel'>
-		<div class='card-body hide-table-setting' style='padding: 10px 0 0 0;'>
-			<div id='custom-card-title' class='row' style="margin: 30px 0 0 0; text-align: center;">
-				<div class='panel panel-default' style="border: none; border-bottom: 2px solid #000">
-					<div class='panel-body'>
-						<p style="font-size: 24px; margin: 0;">Banks</p>
-					</div>
-				</div>
-			</div>
-			<div class='col-md-12' id='company-table-row' style="padding: 0;">
-				<button id='add' type='button' class='btn btn-info btn-sm btn-raised ripple-effect title' custom-title='Add' <?php if($user->main_company->cb_id !== $user->cb_id){ echo 'disabled'; } ?>><i class='fa fa-plus'></i></button>
-				<table id='banks-table' class='table table-hovered table-bordered' style='min-width: 100%;'>
-					<thead>
-						<th>Options</th>
-						<th>Sequence</th>
-						<th>Code</th>
-						<th>Name</th>
-						<th>Shortname</th>
-						<th>Number</th>
-						<th>Classification</th>
-					</thead>
-				</table>
-			</div>
-		</div>
+<div id='m_c_d' class='appear'>
+    <div class='n_cp_n_cm' class='container' style="margin: 0;">
+    	<div class="box">
+            <div class="box-header with-border box-normal">
+                <h3 class="box-title"> </h3>
+                <div class="box-tools pull-right">
+                	<div class="btn-group">
+                  		<button type="button" class="btn btn-box-tool dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    		<i class="fa fa-wrench"></i> Settings
+                    	</button>
+                  		<ul class="dropdown-menu" role="menu">
+                    		<li><a href="#">Show Filters</a></li>
+                    		<li><a href="#">Advance Search</a></li>
+                    		<li class="divider"></li>
+                    		<li><a href="#">Show All Columns</a></li>
+                  		</ul>
+                	</div>
+              	</div>
+            </div>
+    		<div class='box-body hide-table-setting'>
+    			<div class='row'>
+    				<div class='col-md-12' id='company-table-row' style="padding-right: 20px;">
+    					<div class='row'>
+    						<div class='col-md-12'>
+    							
+    						</div>
+    					</div>
+    					<div class='row'>
+    						<div class='col-md-1' style="margin-bottom: 10px;">
+    							<button id='add' type='button' class='btn btn-info btn-sm btn-raised ripple-effect title' custom-title='Add New' <?php if($user->main_company->cb_id !== $user->cb_id){ echo 'disabled'; } ?> style='height: 34px; margin: 0;'><i class='fa fa-plus'></i> Add New</button>
+    						</div>
+    						<div class='col-md-11' style="margin-bottom: 10px;">
+    							<div class="input-group table-search">
+								  <span class="input-group-addon" id="basic-addon1"><i class='fa fa-search'></i></span>
+								  <input type="text" class="form-control general-search" placeholder="General Search..." aria-describedby="basic-addon1">
+								</div>
+    						</div>
+    					</div>
+    					<table id='banks-table' class='table table-hovered table-bordered table-condensed' style='width: 100%;'>
+    						<thead>
+    							<tr>
+    								<th>Options</th>
+	    							<th>Sequence</th>
+	    							<th>Code</th>
+	    							<th>Name</th>
+	    							<th>Shortname</th>
+	    							<th>Number</th>
+	    							<th>Classification</th>
+    							</tr>
+    							<tr id="filterrow">
+	    							<th></th>
+	    							<th>Sequence</th>
+	    							<th>Code</th>
+	    							<th>Name</th>
+	    							<th>Shortname</th>
+	    							<th>Number</th>
+	    							<th>Classification</th>
+	    						</tr>
+    						</thead>
+
+    					</table>
+    				</div>
+    			</div>
+    		</div>
+    	</div>
 	</div>
-	<div class='col-md-1' style="width: 1px; padding: 0;">
+	<!-- <div class='col-md-1' style="width: 1px; padding: 0;">
 		<button type='button' class='btn btn-dark btn-sm ripple-effect table-setting-toggle'>Table Setting</button>
 	</div>
 	<div class='col-md-2 table-setting-panel'>
@@ -61,7 +101,7 @@
 				</table>
 			</div>
 		</div>
-	</div>
+	</div> -->
 </div>
 
 <div id='add-popover' class='modal fade' role='dialog' tabindex='-1'>

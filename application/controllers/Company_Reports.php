@@ -7,7 +7,7 @@ class Company_Reports extends MY_Controller{
 	}
 	
 	public function get_company_reports(){
-		$this->load->view($this->layout, ['top_navbar'=>'fragments/top_navbar/global_top_navbar', 'head_css'=>'fragments/head_css/company_reports', 'content'=>'fragments/content/company_reports', 'back_button'=>'../home', 'active_nav'=>'companyreports', 'user'=>$this->session->userdata('user')]);
+		$this->load->view($this->layout, ['top_navbar'=>'fragments/top_navbar/global_top_navbar', 'head_css'=>'fragments/head_css/company_reports', 'content'=>'fragments/content/company_reports', 'back_button'=>'../home', 'active_nav'=>'5', 'user'=>$this->session->userdata('user'), 'title' => 'Company Reports']);
 	}
 
 	public function get_statement_of_accounts(){

@@ -120,7 +120,7 @@
 }
 
 /*DATATABLE*/
-.dataTables_wrapper table.dataTable thead{
+/*.dataTables_wrapper table.dataTable thead{
 	background: #009688 !important;
 }
 .dataTables_wrapper .table>thead:first-child>tr:first-child>th{
@@ -196,53 +196,4 @@ input.total{
 #documents .invoice .card-body > .col-md-12 table td input.form-control{
 	height: 30px !important;
 }
-/*div::-webkit-scrollbar{
-	width: 4px !important;
-	height: 3px !important;
-	background-color: #C1C1C1;
-}
-div::-webkit-scrollbar:double-button{
-	background-color: #C1C1C1;
-}
-div::-webkit-scrollbar-button{
-	width: 3px;
-}
-div::-webkit-scrollbar-track{
-	width: 3px;
-	background-color: #C1C1C1 !important;
-}
-div::-webkit-scrollbar-track-piece{
-	width: 3px;
-	color: #000;
-}
-div::-webkit-scrollbar-thumb{
-	width: 3px;
-	background-color: #000;
-}
-div::-webkit-scrollbar-corner{
-	width: 3px;
-}
-div::-webkit-resizer{
-	width: 3px;
-	background-color: #C1C1C1 !important;
-}
-
-::-webkit-scrollbar-track{
-	width: 3px;
-	background-color: #C1C1C1 !important;
-}
-::-webkit-scrollbar-track-piece{
-	width: 3px;
-	color: #000;
-}
-::-webkit-scrollbar-thumb{
-	width: 3px;
-	background-color: #000;
-}
-::-webkit-scrollbar-corner{
-	width: 3px;
-}
-::-webkit-resizer{
-	width: 3px;
-	background-color: #C1C1C1 !important;
-}*/
+*/

@@ -1,5 +1,5 @@
 .flat-blue .btn.btn-info{
-	background-color: #4262ff !important;
+	background-color: #2196F3 !important;
 }
 .flat-blue .btn.btn-primary {
 	background-color: #000 !important;
@@ -21,4 +21,8 @@
 }
 .setup-tab button.btn.btn-success.setup-btn-circle{
 	background-color: #FFF !important;
+}
+
+.flat-blue .btn{
+	text-transform: initial !important;
 }

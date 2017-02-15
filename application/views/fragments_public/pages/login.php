@@ -5,7 +5,7 @@
 				<img src="<?php echo base_url(); ?>assets/img/s_a_l.png" style='height: 100px; background-color: #DDD; border-radius: 100%; padding: 20px 15px; margin: 15px;'>
 			</div>
 			<?php 
-				echo isset($auth_msg) ? "<span class='label label-danger' style='margin-bottom: 20px; background-color: maroon;'>Incorrect username/password</span>" : '' 
+				echo $this->session->userdata('auth_msg') ? "<span class='label label-danger' style='margin-bottom: 20px; background-color: maroon;'>$auth_msg</span>" : '' 
 			?>
 			<form action="<?php echo base_url(); ?>postlogin" role="form" method='POST'>
 				<table class='table'>

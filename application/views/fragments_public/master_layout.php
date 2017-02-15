@@ -55,7 +55,7 @@
 			color: #000 !important;
 		}
 		#top-bar.white #top-menu ul li.active a{
-			color: #00009b !important;
+			color: #FFF !important;
 		}
 		#top-menu
 		{
@@ -72,9 +72,9 @@
 		}
 		#top-menu ul li.active a
 		{
-			color: blue;
+			color: #FFF;
 			font-weight: 900;
-			background-color: transparent;
+			/*background-color: transparent;*/
 		}
 		#top-menu ul li:hover a{
 			text-decoration: none;
@@ -107,8 +107,8 @@
 		.bb1
 		{
 			height: 100px; 
-			webkit-filter: grayscale(85%); 
-			filter: grayscale(85%);
+			/*webkit-filter: grayscale(85%); */
+			/*filter: grayscale(85%);*/
 			transition: all 0.1s ease-in;
 			cursor: hand;
 			cursor: pointer;
@@ -116,8 +116,8 @@
 		.bb2
 		{
 			width: 300px; 
-			webkit-filter: grayscale(85%); 
-			filter: grayscale(85%);
+			/*webkit-filter: grayscale(85%); */
+			/*filter: grayscale(85%);*/
 			transition: all 0.1s ease-in;
 			cursor: hand;
 			cursor: pointer;
@@ -370,6 +370,7 @@
 			color: #FFF !important;
 		}
 	</style>
+	<link rel="stylesheet" type="text/css" href='<?php echo base_url(); ?>assets/css/v_validation.css'>
 	<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery.min.js"></script>
 	<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/modernizr.js"></script>
 	<script type="text/javascript">
@@ -377,13 +378,14 @@
 		$('#loader').fadeOut('slow',function(){$(this).remove();});
 	});
 	</script>
+	<?php if(isset($head_css)){ $this->load->view($head_css); } ?>
 </head>
 <body>
 	<div id='loader' style='text-align: center; display: table;'>
 		<div style='display: table-cell; vertical-align: middle;'>
-			<p><img src="<?php echo base_url(); ?>assets/img/s_a_l.png" style='height: 25vh'></p>
+			<p><img src="<?php echo base_url(); ?>assets/img/s_a_l.png" style='height: 18vh'></p>
 			<p style='color: #FFF;'>DOCPRO Business Solutions</p>
-			<p id='loader-img'><img src="<?php echo base_url(); ?>assets/img/roll.png" style='height: 4vh'></p>
+			<p id='loader-img'><img src="<?php echo base_url(); ?>assets/img/roll.png" style='height: 3vh'></p>
 		</div>
 	</div>
 	<div class='container'>
@@ -409,9 +411,9 @@
 
     				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style='padding-right: 0;'>
      					<ul class="nav navbar-nav">
-     						<li class="active"><a class='down' data-target='home' href="http://localhost:81#home">HOME</a></li>
-     						<li><a class='down' data-target='about' href="http://localhost:81#about">ABOUT</a></li>
-     						<li><a class='down' data-target='contact' href="http://localhost:81#contact">CONTACT</a></li>
+     						<li class="active"><a class='down' data-target='home' href="http://docprobaguio.com">HOME</a></li>
+     						<li><a class='down' data-target='about' href="http://docprobaguio.com#about">ABOUT</a></li>
+     						<li><a class='down' data-target='contact' href="http://docprobaguio.com#contact">CONTACT</a></li>
         					<li><a target='_blank' href="http://cacac.com.ph/">CLEMENTE, AQUINO AND COMPANY</a></li>
         					
         					

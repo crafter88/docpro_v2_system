@@ -21,7 +21,7 @@ class Login extends MY_Controller{
         $user = Users_Model::Login($this->input->post('username'), $this->input->post('password'));
         if($user === false){
             $this->session->set_flashdata('auth_msg', 'Incorrect username/password');
-            redirect('login', 'refresh');
+            redirect('login');
     	}else{
             $this->session->set_userdata('logged_in', ['id'=>$user->u_id, 'username'=>$user->u_name, 'level'=>$user->u_type, 'company'=>$user->cb_id]);
             $this->session->set_userdata('user', $user);
@@ -41,5 +41,7 @@ class Login extends MY_Controller{
             redirect('home', 'refresh');
            
     	}
+        $this->session->set_flashdata('auth_msg', "Account doesn't exist");
+        redirect('login');
     }
 }

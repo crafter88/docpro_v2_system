@@ -1,5 +1,5 @@
 <div class='row'>
-	<div class='col-md-12 banner' style='height: 80vh; background-image: url(assets/img/71_5.png); display: table; width: 100%; background-position: 31% 8%; background-size: cover;'>
+	<div class='col-md-12 banner' style='height: 85vh; background-image: url(assets/img/71_5.png); display: table; width: 100%; background-position: 31% 8%; background-size: cover;'>
 		<div style='display: table-cell; vertical-align: middle'>
 			<h1 style="font-family: 'Times New Roman'; font-weight: normal; text-align: center; color: #FFF; font-size: 38px; margin: 0 auto; width: 38vw; background-color: rgba(0, 0, 0, 1); line-height: 70px;">DOCPRO Accounting System</h1>
 			<p style='text-align: center; color: #FFF; width: 38vw; background-color: rgba(0, 0, 0, 0.85); margin: 0 auto; line-height: 40px;'>WHERE ALL YOUR ACCOUNTING DOCUMENTS COMES TOGETHER</p>
@@ -8,8 +8,8 @@
 	</div>
 </div>
 <div class='row'>
-	<div class='col-md-12' style='text-align: center; padding: 30px;'>
-		<p style='margin: 0; font-family: lato; font-size: 18px; color: #2c3e50;'>POWERED BY</p>
+	<div class='col-md-12' style='text-align: center; padding: 15px;'>
+		<p style='margin: 0; font-family: lato; font-size: 12px; color: #2c3e50; font-weight: bold;'>POWERED BY</p>
 		<a href="<?php echo base_url(); ?>#about"><img class='bb1' src="<?php echo base_url(); ?>assets/img/docpro.png"></a>
 		<a href="http://cacac.com.ph" target='_blank'><img class='bb2' src="<?php echo base_url(); ?>assets/img/cac.png"></a>
 	</div>

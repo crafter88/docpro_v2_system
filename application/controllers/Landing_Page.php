@@ -25,7 +25,7 @@ class Landing_Page extends MY_Controller
 	}
 	public function subscribe()
 	{
-		$this->load->view($this->layout, ['content' => 'fragments_public/pages/subscribe', 'footer_js' => 'fragments_public/js/subscribe_js']);
+		$this->load->view($this->layout, ['content' => 'fragments_public/pages/subscribe', 'footer_js' => 'fragments_public/js/subscribe_js', 'head_css' => 'fragments_public/css/subscribe_css']);
 	}
 	public function login()
 	{

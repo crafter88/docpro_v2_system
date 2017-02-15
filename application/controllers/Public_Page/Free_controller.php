@@ -59,8 +59,8 @@ class Free_controller extends MY_Controller{
 						'cb_address'	=> $co_ba_number.';'.$co_ba_street.';'.$co_ba_brangay.';'.$co_ba_city.';'.$co_ba_province.';'.$co_ba_zip,
 						'cb_class' 		=> 'company',
 						'cb_bp_type'	=> '',
-						'cb_cno'		=> $this->input->post('co_number'),
-						'cb_email'		=> $this->input->post('co_email')
+						'cb_cno'		=> '',
+						'cb_email'		=> ''
 					];
 
 		$user = [
