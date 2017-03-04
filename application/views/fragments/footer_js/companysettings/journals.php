@@ -1,5 +1,26 @@
+<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/company_settings/table/journals.js"></script>
 <script>
+    var stopPropagation = function(evt) {
+        if (evt.stopPropagation !== undefined) {
+            evt.stopPropagation();
+        } else {
+            evt.cancelBubble = true;
+        }
+    }
+
     $(document).ready(function(){
+        (function(){
+            $('#journals-table thead tr#searchfilterrow th').each( function () {
+                var title = $('#journals-table thead th').eq( $(this).index() ).text();
+                $(this).html( '<input type="text" onclick="stopPropagation(event);" placeholder="Search '+title+'" />' );
+            });
+            $("#journals-table thead input").on( 'keyup change', function () {
+                table.column($(this).parent().index()+':visible')
+                     .search(this.value)
+                     .draw();
+            } );
+        })();
+
         var table = $('#journals-table').DataTable({
             ajax: window_location+'/company_settings/journals/get',
             columns:[
@@ -20,14 +41,19 @@
                         {'data': 'j_code'}, {'data': 'j_name'}, {'data': 'j_shortname'}
                     ],
             columnDefs: [{targets: 0, width: '70px'}],
-            order: [['0', 'asc']],
             scrollX: true,
-            initComplete: function(){
-                initRipple();
-                init_tooltip();
+            order: [['1', 'asc']],
+            orderCellsTop: true,
+            bPaginate: false,
+            language: {
+                info: 'Total number of records: <b> _MAX_ </b>',
+                infoEmpty: 'Total number of records: <b> 0 </b>'
             }
 
         });
+
+        init_table_settings(table);
+        init_general_search(table);
         
         var tmp = $.fn.popover.Constructor.prototype.show;
             $.fn.popover.Constructor.prototype.show = function () {
@@ -54,10 +80,10 @@
                 callback: function(){
 
                 },
-                container: '.navbar-body'
+                container: 'body'
             }).on('show.bs.popover', function(){
                 $('.popover').not(this).popover('hide');
-                $('.card-body button').attr('disabled', true);
+                $('.box-body button').attr('disabled', true);
             });
             $(this).popover('toggle');
             initRipple();
@@ -84,10 +110,10 @@
                     popover.find('input[name=view-name]').val(data.j_name);
                     popover.find('input[name=view-shortname]').val(data.j_shortname);
                 },
-                container: '.navbar-body'
+                container: 'body'
             }).on('show.bs.popover', function(){
                 $('.popover').not(this).popover('hide');
-                $('.card-body button').attr('disabled', true);
+                $('.box-body button').attr('disabled', true);
             });
             $(this).popover('toggle');
             initRipple();
@@ -114,10 +140,10 @@
                     popover.find('input[name=edit-shortname]').val(data.j_shortname);
                     popover.find('input[name=edit-id]').val(data.j_id);
                 },
-                container: '.navbar-body'
+                container: 'body'
             }).on('show.bs.popover', function(){
                 $('.popover').not(this).popover('hide');
-                $('.card-body button').attr('disabled', true);
+                $('.box-body button').attr('disabled', true);
             });
             $(this).popover('toggle');
             initRipple();
@@ -145,20 +171,18 @@
                     popover.find('input[name=update-shortname]').val(data.j_shortname);
                     popover.find('input[name=update-id]').val(data.j_id);
                 },
-                container: '.navbar-body'
+                container: 'body'
             }).on('show.bs.popover', function(){
                 $('.popover').not(this).popover('hide');
-                $('.card-body button').attr('disabled', true);
+                $('.box-body button').attr('disabled', true);
             });
             $(this).popover('toggle');
             initRipple();
             initSingleSubmit();
         });
-        $('div').on('click', '.close-popover', function(){
+        $('body').on('click', '.close-popover', function(){
             $('.popover').popover('hide');
-            $('.card-body button').removeAttr('disabled');
+            $('.box-body button').removeAttr('disabled');
         });
-        $('#switch-state').bootstrapSwitch();
-        init_table_option(table, $(this).closest('side-body'));
     });
 </script>

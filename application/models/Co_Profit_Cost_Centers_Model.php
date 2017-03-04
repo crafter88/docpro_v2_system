@@ -37,4 +37,13 @@ class Co_Profit_Cost_Centers_Model extends CI_Model{
     public static function get_departments($user){
         return self::$db->get_where('co_departments', ['cb_id' => $user->cb_id, 'flag' => '1'])->result();
     }
+    public static function get_filter1($user){
+        return self::$db->get_where('co_departments', ['cb_id' => $user->cb_id, 'flag' => '1'])->result();
+    }
+    public static function filter_table($user, $filter){
+        if($filter){
+            return self::$db->from('co_profit_cost_centers copcc')->join('co_departments cod', 'copcc.co_de_id=cod.co_de_id')->where(['cod.cb_id' => $user->main_company->cb_id, 'copcc.flag' => '1', 'cod.co_de_id' => $filter])->get()->result();
+        }
+        return self::$db->from('co_profit_cost_centers copcc')->join('co_departments cod', 'copcc.co_de_id=cod.co_de_id')->where(['cod.cb_id' => $user->main_company->cb_id, 'copcc.flag' => '1'])->get()->result();
+    }
 }

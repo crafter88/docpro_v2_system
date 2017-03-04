@@ -1,6 +1,7 @@
 <input id='mc_id' type="hidden" name="mc_id" value="<?php echo $user->main_company->cb_id; ?>">
 <input id='bc_id' type="hidden" name="bc_id" value="<?php echo $user->cb_id; ?>">
-<div class='side-body padding-top'>
+<input type="hidden" id='seq-active' name="seq-active" value='<?php echo $seq_active; ?>'>
+<!-- <div class='side-body padding-top'>
 	<div class='card custom-card'>
 		<div class='card-body' style='padding: 10px 20px 0px 20px;'>
 			<input type="hidden" id='seq-active' name="seq-active" value='<?php echo $seq_active; ?>'>
@@ -13,181 +14,331 @@
 						</p>
 					</div>
 				</div>
-			</div>
-			<div class='row'>
-				<div class='col-md-12' id='chart-of-accounts-table-row'>
-					<div class='row'>
-						<div id='setup-tab-1' class='setup-tab btn-seq-wrapper <?php if($seq_active === '1') echo 'active'; ?>'>
-							<span class='coa-no'>1</span>
-							<button type='button' class='btn btn-default btn-sm btn-flat ripple-effect btn-seq seq-selected set-1'>
-								<span>Elements</span>
-							</button>
+			</div> -->
+<div id='m_c_d' class='appear'>
+    <div class='n_cp_n_cm' class='container' style="margin: 0;">
+    	<div class="box">
+            <div class="box-header with-border box-normal">
+                <h3 class="box-title"> </h3>
+                <div class="box-tools pull-right">
+                	<div class="btn-group">
+                  		<button type="button" class="btn btn-box-tool dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    		<i class="fa fa-wrench"></i> Settings
+                    	</button>
+                  		<ul class="dropdown-menu" role="menu">
+                    		<li><span id='show-filters' class='disable-setting' data-status='0'>Show Filters</span></li>
+                    		<li><span id='advance-search' data-status='0'>Advance Search</span></li>
+                    		<li class="divider"></li>
+                    		<li><span id='show-all-col' data-status='0'>Show All Columns</span></li>
+                  		</ul>
+                	</div>
+              	</div>
+            </div>
+    		<div class='box-body hide-table-setting'>
+				<div class='row'>
+					<div class='col-md-12' id='chart-of-accounts-table-row'>
+						<div class='row' style='margin: 0; margin-right: 13px;'>
+							<div id='setup-tab-1' class='setup-tab btn-seq-wrapper <?php if($seq_active === '1') echo 'active'; ?>'>
+								<!-- <span class='coa-no'>1</span> -->
+								<button type='button' class='btn btn-default btn-sm btn-flat ripple-effect btn-seq seq-selected set-1'>
+									<span>Elements</span>
+								</button>
+							</div>
+							<div id='setup-tab-2' class='setup-tab btn-seq-wrapper <?php if($seq_active === '2') echo 'active'; ?>'>
+								<!-- <span class='coa-no'>2</span> -->
+								<button type='button' class='btn btn-default btn-sm btn-flat ripple-effect btn-seq set-2'>
+									<span>Classification</span>
+								</button>
+							</div>
+							<div id='setup-tab-3' class='setup-tab btn-seq-wrapper <?php if($seq_active === '3') echo 'active'; ?>'>
+								<!-- <span class='coa-no'>3</span> -->
+								<button type='button' class='btn btn-default btn-sm btn-flat ripple-effect btn-seq set-3'>
+									<span>Line Items</span>
+								</button>
+							</div>
+							<div id='setup-tab-4' class='setup-tab btn-seq-wrapper <?php if($seq_active === '4') echo 'active'; ?>'>
+								<!-- <span class='coa-no'>4</span> -->
+								<button type='button' class='btn btn-default btn-sm btn-flat ripple-effect btn-seq set-4'>
+									<span>Subclassification</span>
+								</button>
+							</div>
+							<div id='setup-tab-5' class='setup-tab btn-seq-wrapper <?php if($seq_active === '5') echo 'active'; ?>' style='display: none;'>
+								<!-- <span class='coa-no'>5</span> -->
+								<button type='button' class='btn btn-default btn-sm btn-flat ripple-effect btn-seq set-5'>
+									<span>Level 5</span>
+								</button>
+							</div>
+							<div id='setup-tab-6' class='setup-tab btn-seq-wrapper <?php if($seq_active === '6') echo 'active'; ?>'>
+								<button type='button' class='btn btn-default btn-sm btn-flat ripple-effect btn-seq set-6' style="padding-top: 7px !important; padding-bottom: 7px !important; background-color: #e0e0e0;">
+									<span style="display: block;">Create</span>
+									<span>Chart of Accounts</span>
+								</button>
+							</div>
+							<div style="float: left; margin-bottom: 10px; border-left: 4px solid #000;">
+								<ol id='coa_breadcrumb' class="breadcrumb" style="margin-left: 0;"></ol>
+							</div>
 						</div>
-						<div id='setup-tab-2' class='setup-tab btn-seq-wrapper <?php if($seq_active === '2') echo 'active'; ?>'>
-							<span class='coa-no'>2</span>
-							<button type='button' class='btn btn-default btn-sm btn-flat ripple-effect btn-seq set-2'>
-								<span>Classification</span>
-							</button>
-						</div>
-						<div id='setup-tab-3' class='setup-tab btn-seq-wrapper <?php if($seq_active === '3') echo 'active'; ?>'>
-							<span class='coa-no'>3</span>
-							<button type='button' class='btn btn-default btn-sm btn-flat ripple-effect btn-seq set-3'>
-								<span>Line Items</span>
-							</button>
-						</div>
-						<div id='setup-tab-4' class='setup-tab btn-seq-wrapper <?php if($seq_active === '4') echo 'active'; ?>'>
-							<span class='coa-no'>4</span>
-							<button type='button' class='btn btn-default btn-sm btn-flat ripple-effect btn-seq set-4'>
-								<span>Subclassification</span>
-							</button>
-						</div>
-						<div id='setup-tab-5' class='setup-tab btn-seq-wrapper <?php if($seq_active === '5') echo 'active'; ?>' style='display: none;'>
-							<span class='coa-no'>5</span>
-							<button type='button' class='btn btn-default btn-sm btn-flat ripple-effect btn-seq set-5'>
-								<span>Level 5</span>
-							</button>
-						</div>
-						<div id='setup-tab-6' class='setup-tab btn-seq-wrapper <?php if($seq_active === '6') echo 'active'; ?>'>
-							<span class='coa-no'>5</span>
-							<button type='button' class='btn btn-default btn-sm btn-flat ripple-effect btn-seq set-6' style="padding-top: 11px !important; padding-bottom: 11px !important;">
-								<span style="display: block;">Create</span>
-								<span>Chart of Accounts</span>
-							</button>
-						</div>
-						<div style="float: left; margin-bottom: 10px; border-left: 4px solid #000;">
-							<ol id='coa_breadcrumb' class="breadcrumb" style="margin-left: 0;"></ol>
-						</div>
-					</div>
-					<div class='row'>
-						<input type="hidden" name="default_lvl_1_id" value="<?php echo isset($lvl_1_id) && strlen($lvl_1_id) > 0 ? $lvl_1_id : '0'; ?>">
-						<input type="hidden" name="default_lvl_2_id" value="<?php echo isset($lvl_2_id) && strlen($lvl_2_id) > 0 ? $lvl_2_id : '0'; ?>">
-						<input type="hidden" name="default_lvl_3_id" value="<?php echo isset($lvl_3_id) && strlen($lvl_3_id) > 0 ? $lvl_3_id : '0'; ?>">
-						<input type="hidden" name="default_lvl_4_id" value="<?php echo isset($lvl_4_id) && strlen($lvl_4_id) > 0 ? $lvl_4_id : '0'; ?>">
-						<input type="hidden" name="default_lvl_1_code" value="<?php echo isset($lvl_1_code) ? $lvl_1_code : '0'; ?>">
-						<input type="hidden" name="default_lvl_2_code" value="<?php echo isset($lvl_2_code) ? $lvl_2_code : '0'; ?>">
-						<input type="hidden" name="default_lvl_3_code" value="<?php echo isset($lvl_3_code) ? $lvl_3_code : '0'; ?>">
-						<input type="hidden" name="default_lvl_4_code" value="<?php echo isset($lvl_4_code) ? $lvl_4_code : '0'; ?>">
-						<input type="hidden" name="default_lvl_1_name" value="<?php echo isset($lvl_1_name) ? $lvl_1_name : ''; ?>">
-						<input type="hidden" name="default_lvl_2_name" value="<?php echo isset($lvl_2_name) ? $lvl_2_name : ''; ?>">
-						<input type="hidden" name="default_lvl_3_name" value="<?php echo isset($lvl_3_name) ? $lvl_3_name : ''; ?>">
-						<input type="hidden" name="default_lvl_4_name" value="<?php echo isset($lvl_4_name) ? $lvl_4_name : ''; ?>">
-						<div id='coa-seq'>
-							<ul class='seq-canvas'>
-								<li class="<?php if($seq_active === '1') echo $seq_active; ?>">
-									<button id='add-acc-elements' class='btn btn-info btn-sm btn-raised ripple-effect title' custom-title='Add' <?php if($user->main_company->cb_id !== $user->cb_id){ echo 'disabled'; } ?>><i class='fa fa-plus'></i></button>
-									<table id='account-elements' class='table table-bordered' width="100%">
-										<thead>
-											<th></th>
-											<th>Seq</th>
-											<th>Element Code</th>
-											<th>Name</th>
-										</thead>
-									</table>
-									<button type="button" class='btn btn-default ripple-effect set-2' style="float: right;">NEXT</button>
-								</li>
-								<li class="<?php if($seq_active === '2') echo $seq_active; ?>">
-									<div id='lvl-2-alert' class='col-md-12' style="padding: 0;">
-										<div class='alert alert-danger coa-alert'>Please select level 1</div>
-									</div>
-									<div id='lvl-2-plate' class='col-md-12' style="padding: 0; opacity: 0; padding-left: 3px;">
-										<button id='add-acc-classification' class='btn btn-info btn-sm btn-raised ripple-effect title' custom-title='Add' style="float: left;" disabled><i class='fa fa-plus'></i></button>
-										<table id='account-classification' class='table table-bordered'>
-											<thead>
-												<th></th>
-												<th>Seq</th>
-												<th>Element Code</th>
-												<th>Classification Code</th>
-												<th>Name</th>
-											</thead>
-										</table>
-										<button type="button" class='btn btn-default ripple-effect set-1' style="float: left;">PREV</button>
-										<button type="button" class='btn btn-default ripple-effect set-3' style="float: right;">NEXT</button>
-									</div>
-								</li>
-								<li class="<?php if($seq_active === '3') echo 'seq-in'; ?>">
-									<div id='lvl-3-alert' class='col-md-12' style="padding: 0;">
-										<div class='alert alert-danger coa-alert'>Please select level 2</div>
-									</div>
-									<div id='lvl-3-plate' class='col-md-12' style="padding: 0; opacity: 0; padding-left: 3px;">
-										<button id='add-line-items' class='btn btn-info btn-sm btn-raised ripple-effect title' custom-title='Add' style="float: left;" disabled><i class='fa fa-plus'></i></button>
-										<table id='line-items' class='table table-bordered'>
-											<thead>
-												<th></th>
-												<th>Seq</th>
-												<th>Element Code</th>
-												<th>Classification Code</th>
-												<th>Line Item Code</th>
-												<th>Name</th>
-											</thead>
-										</table>
-										<button type="button" class='btn btn-default ripple-effect set-2' style="float: left;">PREV</button>
-										<button type="button" class='btn btn-default ripple-effect set-4' style="float: right;">NEXT</button>
-									</div>
-								</li>
-								<li class="<?php if($seq_active === '4') echo 'seq-in'; ?>">
-									<div id='lvl-4-alert' class='col-md-12' style="padding: 0;">
-										<div class='alert alert-danger coa-alert'>Please select level 3</div>
-									</div>
-									<div id='lvl-4-plate' class='col-md-12' style="padding: 0; opacity: 0; padding-left: 3px;">
-										<button id='add-acc-sub' class='btn btn-info btn-sm btn-raised ripple-effect title' custom-title='Add' style="float: left;" disabled><i class='fa fa-plus'></i></button>
-										<table id='account-subclassification' class='table table-bordered'>
-											<thead>
-												<th></th>
-												<th>Seq</th>
-												<th>Element Code</th>
-												<th>Classification Code</th>
-												<th>Line Item Code</th>
-												<th>Subclassification Code</th>
-												<th>Name</th>
-												<th>BIR</th>
-											</thead>
-										</table>
-										<button type="button" class='btn btn-default ripple-effect set-3' style="float: left;">PREV</button>
-										<button type="button" class='btn btn-default ripple-effect set-5' style="float: right;">NEXT</button>
-									</div>
-								</li>
-								<li class="<?php if($seq_active === '5') echo 'seq-in'; ?>" style='display: none;'>
-									<div id='lvl-5-alert' class='col-md-12' style="padding: 0;">
-										<div class='alert alert-danger coa-alert'>Please select level 4</div>
-									</div>
-									<div id='lvl-5-plate' class='col-md-12' style="padding: 0; opacity: 0; padding-left: 3px;">
-										<button id='add-lvl-5' class='btn btn-info btn-sm btn-raised ripple-effect title' custom-title='Add' style="float: left;" disabled><i class='fa fa-plus'></i></button>
-										<table id='lvl5-table' class='table table-bordered'>
-											<thead>
-												<th></th>
-												<th>Seq</th>
-												<th>Element Code</th>
-												<th>Classification Code</th>
-												<th>Line Item Code</th>
-												<th>Subclassification Code</th>
-												<th>Level 5 Code</th>
-												<th>Name</th>
-											</thead>
-										</table>
-										<button type="button" class='btn btn-default ripple-effect set-4' style="float: left;">PREV</button>
-										<button type="button" class='btn btn-default ripple-effect set-6' style="float: right;">NEXT</button>
-									</div>
-								</li>
-								<li class="<?php if($seq_active === '6') echo 'seq-in'; ?>">
-									<div class='col-md-12' style="padding: 0; padding-left: 5px;">
-										<button id='add-coa' class='btn btn-info btn-sm btn-raised ripple-effect' style="float: left;" <?php if($user->main_company->cb_id !== $user->cb_id){ echo 'disabled'; } ?>><i class='fa fa-plus'></i></button>
-										<table id='coa-table' class='table table-bordered'>
-											<thead>
-												<th>Option</th>
-												<th>Element</th>
-												<th>Classification</th>
-												<th>Line Item</th>
-												<th>Subclassification</th>
-												<th>Subsidiary</th>
-												<th>Code</th>
-												<th>Name</th>
-												<th>BIR Classification</th>
-											</thead>
-										</table>
-										<button type="button" class='btn btn-default ripple-effect set-5' style="float: left;">PREV</button>
-									</div>
-								</li>
-							</ul>
+						<div class='row'>
+							<input type="hidden" name="default_lvl_1_id" value="<?php echo isset($lvl_1_id) && strlen($lvl_1_id) > 0 ? $lvl_1_id : '0'; ?>">
+							<input type="hidden" name="default_lvl_2_id" value="<?php echo isset($lvl_2_id) && strlen($lvl_2_id) > 0 ? $lvl_2_id : '0'; ?>">
+							<input type="hidden" name="default_lvl_3_id" value="<?php echo isset($lvl_3_id) && strlen($lvl_3_id) > 0 ? $lvl_3_id : '0'; ?>">
+							<input type="hidden" name="default_lvl_4_id" value="<?php echo isset($lvl_4_id) && strlen($lvl_4_id) > 0 ? $lvl_4_id : '0'; ?>">
+							<input type="hidden" name="default_lvl_1_code" value="<?php echo isset($lvl_1_code) ? $lvl_1_code : '0'; ?>">
+							<input type="hidden" name="default_lvl_2_code" value="<?php echo isset($lvl_2_code) ? $lvl_2_code : '0'; ?>">
+							<input type="hidden" name="default_lvl_3_code" value="<?php echo isset($lvl_3_code) ? $lvl_3_code : '0'; ?>">
+							<input type="hidden" name="default_lvl_4_code" value="<?php echo isset($lvl_4_code) ? $lvl_4_code : '0'; ?>">
+							<input type="hidden" name="default_lvl_1_name" value="<?php echo isset($lvl_1_name) ? $lvl_1_name : ''; ?>">
+							<input type="hidden" name="default_lvl_2_name" value="<?php echo isset($lvl_2_name) ? $lvl_2_name : ''; ?>">
+							<input type="hidden" name="default_lvl_3_name" value="<?php echo isset($lvl_3_name) ? $lvl_3_name : ''; ?>">
+							<input type="hidden" name="default_lvl_4_name" value="<?php echo isset($lvl_4_name) ? $lvl_4_name : ''; ?>">
+							<div id='coa-seq'>
+								<ul class='seq-canvas'>
+									<li class="<?php if($seq_active === '1') echo $seq_active; ?>">
+										<div class="col-md-12" style="padding: 0px 30px 0px 13px !important;">
+											<!-- <button id='add-acc-elements' class='btn btn-info btn-sm btn-raised ripple-effect title' custom-title='Add' <?php if($user->main_company->cb_id !== $user->cb_id){ echo 'disabled'; } ?>><i class='fa fa-plus'></i></button> -->
+											<div class='row'>
+					    						<div class='col-md-1' style="margin-bottom: 10px;">
+					    							<button id='add-acc-elements' type='button' class='btn btn-info btn-sm btn-raised ripple-effect title' custom-title='Add New' <?php if($user->main_company->cb_id !== $user->cb_id){ echo 'disabled'; } ?> style='height: 34px; margin: 0;'><i class='fa fa-plus'></i> Add New</button>
+					    						</div>
+					    						<div class='col-md-11' style="margin-bottom: 10px;">
+					    							<div class="input-group table-search">
+													  <span class="input-group-addon" id="basic-addon1"><i class='fa fa-search'></i></span>
+													  <input type="text" class="form-control general-search-lvl1" placeholder="General Search..." aria-describedby="basic-addon1">
+													</div>
+					    						</div>
+					    					</div>
+											<table id='account-elements' class='table table-bordered' style="width: 100%">
+												<thead>
+													<tr>
+														<th></th>
+														<th>Seq</th>
+														<th>Element Code</th>
+														<th>Name</th>
+													</tr>
+													<tr class='hide-searchfilter searchfilterrow'>
+														<th></th>
+														<th>Seq</th>
+														<th>Element Code</th>
+														<th>Name</th>
+													</tr>
+												</thead>
+											</table>
+										</div>
+									</li>
+									<li class="<?php if($seq_active === '2') echo $seq_active; ?>">
+										<div class="col-md-12" id="top-table-row" style="padding: 0px 30px 0px 13px !important;">
+											<div id='lvl-2-alert' class='col-md-12' style="padding: 0;">
+												<div class='alert alert-danger coa-alert'>Please select level 1</div>
+											</div>
+											<div id='lvl-2-plate' class='col-md-12' style="padding: 0; opacity: 0; padding-left: 3px;">
+												<!-- <button id='add-acc-classification' class='btn btn-info btn-sm btn-raised ripple-effect title' custom-title='Add' style="float: left;" disabled><i class='fa fa-plus'></i></button> -->
+												<div class='row'>
+						    						<div class='col-md-1' style="margin-bottom: 10px;">
+						    							<button id='add-acc-classification' type='button' class='btn btn-info btn-sm btn-raised ripple-effect title' custom-title='Add New' <?php if($user->main_company->cb_id !== $user->cb_id){ echo 'disabled'; } ?> style='height: 34px; margin: 0;'><i class='fa fa-plus'></i> Add New</button>
+						    						</div>
+						    						<div class='col-md-11' style="margin-bottom: 10px;">
+						    							<div class="input-group table-search">
+														  <span class="input-group-addon" id="basic-addon1"><i class='fa fa-search'></i></span>
+														  <input type="text" class="form-control general-search-lvl2" placeholder="General Search..." aria-describedby="basic-addon1">
+														</div>
+						    						</div>
+						    					</div>
+												<table id='account-classification' class='table table-bordered' style="width: 100%">
+													<thead>
+														<tr>
+															<th></th>
+															<th>Seq</th>
+															<th>Element Code</th>
+															<th>Classification Code</th>
+															<th>Name</th>
+														</tr>
+														<tr class='hide-searchfilter searchfilterrow'>
+															<th></th>
+															<th>Seq</th>
+															<th>Element Code</th>
+															<th>Classification Code</th>
+															<th>Name</th>
+														</tr>
+													</thead>
+												</table>
+											</div>
+										</div>
+									</li>
+									<li class="<?php if($seq_active === '3') echo 'seq-in'; ?>">
+										<div class="col-md-12" id="top-table-row" style="padding: 0px 30px 0px 13px !important;">
+											<div id='lvl-3-alert' class='col-md-12' style="padding: 0;">
+												<div class='alert alert-danger coa-alert'>Please select level 2</div>
+											</div>
+											<div id='lvl-3-plate' class='col-md-12' style="padding: 0; opacity: 0; padding-left: 3px;">
+												<!-- <button id='add-line-items' class='btn btn-info btn-sm btn-raised ripple-effect title' custom-title='Add' style="float: left;" disabled><i class='fa fa-plus'></i></button> -->
+												<div class='row'>
+						    						<div class='col-md-1' style="margin-bottom: 10px;">
+						    							<button id='add-line-items' type='button' class='btn btn-info btn-sm btn-raised ripple-effect title' custom-title='Add New' <?php if($user->main_company->cb_id !== $user->cb_id){ echo 'disabled'; } ?> style='height: 34px; margin: 0;'><i class='fa fa-plus'></i> Add New</button>
+						    						</div>
+						    						<div class='col-md-11' style="margin-bottom: 10px;">
+						    							<div class="input-group table-search">
+														  <span class="input-group-addon" id="basic-addon1"><i class='fa fa-search'></i></span>
+														  <input type="text" class="form-control general-search-lvl3" placeholder="General Search..." aria-describedby="basic-addon1">
+														</div>
+						    						</div>
+						    					</div>
+												<table id='line-items' class='table table-bordered' style="width: 100%">
+													<thead>
+														<tr>
+															<th></th>
+															<th>Seq</th>
+															<th>Element Code</th>
+															<th>Classification Code</th>
+															<th>Line Item Code</th>
+															<th>Name</th>
+														</tr>
+														<tr class='hide-searchfilter searchfilterrow'>
+															<th></th>
+															<th>Seq</th>
+															<th>Element Code</th>
+															<th>Classification Code</th>
+															<th>Line Item Code</th>
+															<th>Name</th>
+														</tr>
+													</thead>
+												</table>
+											</div>
+										</div>
+									</li>
+									<li class="<?php if($seq_active === '4') echo 'seq-in'; ?>">
+										<div class="col-md-12" id="top-table-row" style="padding: 0px 30px 0px 13px !important;">
+											<div id='lvl-4-alert' class='col-md-12' style="padding: 0;">
+												<div class='alert alert-danger coa-alert'>Please select level 3</div>
+											</div>
+											<div id='lvl-4-plate' class='col-md-12' style="padding: 0; opacity: 0; padding-left: 3px;">
+												<!-- <button id='add-acc-sub' class='btn btn-info btn-sm btn-raised ripple-effect title' custom-title='Add' style="float: left;" disabled><i class='fa fa-plus'></i></button> -->
+												<div class='row'>
+						    						<div class='col-md-1' style="margin-bottom: 10px;">
+						    							<button id='add-acc-sub' type='button' class='btn btn-info btn-sm btn-raised ripple-effect title' custom-title='Add New' <?php if($user->main_company->cb_id !== $user->cb_id){ echo 'disabled'; } ?> style='height: 34px; margin: 0;'><i class='fa fa-plus'></i> Add New</button>
+						    						</div>
+						    						<div class='col-md-11' style="margin-bottom: 10px;">
+						    							<div class="input-group table-search">
+														  <span class="input-group-addon" id="basic-addon1"><i class='fa fa-search'></i></span>
+														  <input type="text" class="form-control general-search-lvl4" placeholder="General Search..." aria-describedby="basic-addon1">
+														</div>
+						    						</div>
+						    					</div>
+												<table id='account-subclassification' class='table table-bordered' style="width: 100%">
+													<thead>
+														<tr>
+															<th></th>
+															<th>Seq</th>
+															<th>Element Code</th>
+															<th>Classification Code</th>
+															<th>Line Item Code</th>
+															<th>Subclassification Code</th>
+															<th>Name</th>
+															<th>BIR</th>
+														</tr>
+														<tr class='hide-searchfilter searchfilterrow'>
+															<th></th>
+															<th>Seq</th>
+															<th>Element Code</th>
+															<th>Classification Code</th>
+															<th>Line Item Code</th>
+															<th>Subclassification Code</th>
+															<th>Name</th>
+															<th>BIR</th>
+														</tr>
+													</thead>
+												</table>
+											</div>
+										</div>
+									</li>
+									<li class="<?php if($seq_active === '5') echo 'seq-in'; ?>" style='display: none;'>
+										<div class="col-md-12" id="top-table-row" style="padding: 0px 30px 0px 13px !important;">
+											<div id='lvl-5-alert' class='col-md-12' style="padding: 0;">
+												<div class='alert alert-danger coa-alert'>Please select level 4</div>
+											</div>
+											<div id='lvl-5-plate' class='col-md-12' style="padding: 0; opacity: 0; padding-left: 3px;">
+												<!-- <button id='add-lvl-5' class='btn btn-info btn-sm btn-raised ripple-effect title' custom-title='Add' style="float: left;" disabled><i class='fa fa-plus'></i></button> -->
+												<div class='row'>
+						    						<div class='col-md-1' style="margin-bottom: 10px;">
+						    							<button id='add-lvl-5' type='button' class='btn btn-info btn-sm btn-raised ripple-effect title' custom-title='Add New' <?php if($user->main_company->cb_id !== $user->cb_id){ echo 'disabled'; } ?> style='height: 34px; margin: 0;'><i class='fa fa-plus'></i> Add New</button>
+						    						</div>
+						    						<div class='col-md-11' style="margin-bottom: 10px;">
+						    							<div class="input-group table-search">
+														  <span class="input-group-addon" id="basic-addon1"><i class='fa fa-search'></i></span>
+														  <input type="text" class="form-control general-search-lvl5" placeholder="General Search..." aria-describedby="basic-addon1">
+														</div>
+						    						</div>
+						    					</div>
+												<table id='lvl5-table' class='table table-bordered' style="width: 100%">
+													<thead>
+														<tr>
+															<th></th>
+															<th>Seq</th>
+															<th>Element Code</th>
+															<th>Classification Code</th>
+															<th>Line Item Code</th>
+															<th>Subclassification Code</th>
+															<th>Level 5 Code</th>
+															<th>Name</th>
+														</tr>
+														<tr class='hide-searchfilter searchfilterrow'>
+															<th></th>
+															<th>Seq</th>
+															<th>Element Code</th>
+															<th>Classification Code</th>
+															<th>Line Item Code</th>
+															<th>Subclassification Code</th>
+															<th>Level 5 Code</th>
+															<th>Name</th>
+														</tr>
+													</thead>
+												</table>
+											</div>
+										</div>
+									</li>
+									<li class="<?php if($seq_active === '6') echo 'seq-in'; ?>">
+										<div class='col-md-12' style="padding: 0px 30px 0px 13px !important;">
+											<!-- <button id='add-coa' class='btn btn-info btn-sm btn-raised ripple-effect' style="float: left;" <?php if($user->main_company->cb_id !== $user->cb_id){ echo 'disabled'; } ?>><i class='fa fa-plus'></i></button> -->
+											<div class='row'>
+						    						<div class='col-md-1' style="margin-bottom: 10px;">
+						    							<button id='add-coa' type='button' class='btn btn-info btn-sm btn-raised ripple-effect title' custom-title='Add New' <?php if($user->main_company->cb_id !== $user->cb_id){ echo 'disabled'; } ?> style='height: 34px; margin: 0;'><i class='fa fa-plus'></i> Add New</button>
+						    						</div>
+						    						<div class='col-md-11' style="margin-bottom: 10px;">
+						    							<div class="input-group table-search">
+														  <span class="input-group-addon" id="basic-addon1"><i class='fa fa-search'></i></span>
+														  <input type="text" class="form-control general-search-lvl6" placeholder="General Search..." aria-describedby="basic-addon1">
+														</div>
+						    						</div>
+						    					</div>
+											<table id='coa-table' class='table table-bordered' style="width: 100%">
+												<thead>
+													<tr>
+														<th></th>
+														<th>Element</th>
+														<th>Classification</th>
+														<th>Line Item</th>
+														<th>Subclassification</th>
+														<th>Subsidiary</th>
+														<th>Code</th>
+														<th>Name</th>
+														<th>BIR Classification</th>
+													</tr>
+													<tr class='hide-searchfilter searchfilterrow'>
+														<th></th>
+														<th>Element</th>
+														<th>Classification</th>
+														<th>Line Item</th>
+														<th>Subclassification</th>
+														<th>Subsidiary</th>
+														<th>Code</th>
+														<th>Name</th>
+														<th>BIR Classification</th>
+													</tr>
+												</thead>
+											</table>
+										</div>
+									</li>
+								</ul>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -198,7 +349,7 @@
 
 <!-- ACCOUNT ELEMENTS -->
 <div id='add-acc-elements-popover' class='modal fade' role='dialog' tabindex='-1'>
-	<div style='border-bottom: 1px groove; height: 30px padding-bottom: 10px;'>
+	<div style='border-bottom: 1px groove; height: 30px; padding-bottom: 10px;'>
 		<button class='close close-popover' type='button' data-dismiss='modal' style='padding-right: 9px;'><span aria-hidden='true'>&times;</span></button>
 		<h4 class='modal-title' style="font-family: 'Roboto Condensed', sans-serif;">Add Account Element</h4>
 	</div>
@@ -222,12 +373,12 @@
 		<input type="hidden" name="lvl_2_name">
 		<input type="hidden" name="lvl_3_name">
 		<div class='modal-footer' style='border-top: 1px inset; padding-top: 5px; padding-bottom: 0px; width: 100%;'>
-			<button class='btn btn-info btn-sm btn-raised ripple-effect v-submit' type='button' style='float: right;'>Ok</button>
+			<button class='btn btn-info btn-sm btn-raised ripple-effect v-submit' type='button' style='float: right;'>Done</button>
 		</div>
 	</form>
 </div>
 <div id='view-acc-elements-popover' class='modal fade' role='dialog' tabindex='-1'>
-	<div style='border-bottom: 1px groove; height: 30px padding-bottom: 10px;'>
+	<div style='border-bottom: 1px groove; height: 30px; padding-bottom: 10px;'>
 		<button class='close close-popover' type='button' data-dismiss='modal' style='padding-right: 9px;'><span aria-hidden='true'>&times;</span></button>
 		<h4 class='modal-title' style="font-family: 'Roboto Condensed', sans-serif;">View Account Element</h4>
 	</div>
@@ -249,7 +400,7 @@
 	</div>
 </div>
 <div id='edit-acc-elements-popover' class='modal fade' role='dialog' tabindex='-1'>
-	<div style='border-bottom: 1px groove; height: 30px padding-bottom: 10px;'>
+	<div style='border-bottom: 1px groove; height: 30px; padding-bottom: 10px;'>
 		<button class='close close-popover' type='button' data-dismiss='modal' style='padding-right: 9px;'><span aria-hidden='true'>&times;</span></button>
 		<h4 class='modal-title' style="font-family: 'Roboto Condensed', sans-serif;">Edit Account Element</h4>
 	</div>
@@ -278,12 +429,12 @@
 		<input type="hidden" name="lvl_2_name">
 		<input type="hidden" name="lvl_3_name">
 		<div class='modal-footer' style='border-top: 1px inset; padding-top: 5px; padding-bottom: 0px; width: 100%;'>
-			<button class='btn btn-info btn-sm btn-raised ripple-effect v-submit' type='button' style='float: right;'>Ok</button>
+			<button class='btn btn-info btn-sm btn-raised ripple-effect v-submit' type='button' style='float: right;'>Save Changes</button>
 		</div>
 	</form>
 </div>
 <div id='delete-acc-elements-popover' class='modal fade' role='dialog' tabindex='-1'>
-	<div style='border-bottom: 1px groove; height: 30px padding-bottom: 10px;'>
+	<div style='border-bottom: 1px groove; height: 30px; padding-bottom: 10px;'>
 		<button class='close close-popover' type='button' data-dismiss='modal' style='padding-right: 9px;'><span aria-hidden='true'>&times;</span></button>
 		<h4 class='modal-title' style="font-family: 'Roboto Condensed', sans-serif;">Delete Account Element</h4>
 	</div>
@@ -313,14 +464,14 @@
 		<input type="hidden" name="lvl_2_name">
 		<input type="hidden" name="lvl_3_name">
 		<div class='modal-footer' style='border-top: 1px inset; padding-top: 5px; padding-bottom: 0px; width: 100%;'>
-			<button id='close-btn' class='btn btn-danger btn-sm close-popover btn-raised ripple-effect' type='submit' data-dismiss='modal' style='float: right;'>Ok</button>
+			<button id='close-btn' class='btn btn-info btn-sm close-popover btn-raised ripple-effect' type='submit' data-dismiss='modal' style='float: right;'>Ok</button>
 		</div>
 	</form>
 </div>
 
 <!-- ACCOUNT CLASSIFICATION -->
 <div id='add-acc-classification-popover' class='modal fade' role='dialog' tabindex='-1'>
-	<div style='border-bottom: 1px groove; height: 30px padding-bottom: 10px;'>
+	<div style='border-bottom: 1px groove; height: 30px; padding-bottom: 10px;'>
 		<button class='close close-popover' type='button' data-dismiss='modal' style='padding-right: 9px;'><span aria-hidden='true'>&times;</span></button>
 		<h4 class='modal-title' style="font-family: 'Roboto Condensed', sans-serif;">Add Account Classification</h4>
 	</div>
@@ -359,12 +510,12 @@
 		<input type="hidden" name="lvl_2_name">
 		<input type="hidden" name="lvl_3_name">
 		<div class='modal-footer' style='border-top: 1px inset; padding-top: 5px; padding-bottom: 0px; width: 100%;'>
-			<button class='btn btn-info btn-sm btn-raised ripple-effect v-submit' type='button' style='float: right;'>Ok</button>
+			<button class='btn btn-info btn-sm btn-raised ripple-effect v-submit' type='button' style='float: right;'>Done</button>
 		</div>
 	</form>
 </div>
 <div id='view-acc-classification-popover' class='modal fade' role='dialog' tabindex='-1'>
-	<div style='border-bottom: 1px groove; height: 30px padding-bottom: 10px;'>
+	<div style='border-bottom: 1px groove; height: 30px; padding-bottom: 10px;'>
 		<button class='close close-popover' type='button' data-dismiss='modal' style='padding-right: 9px;'><span aria-hidden='true'>&times;</span></button>
 		<h4 class='modal-title' style="font-family: 'Roboto Condensed', sans-serif;">View Account Classification</h4>
 	</div>
@@ -400,7 +551,7 @@
 	</div>
 </div>
 <div id='edit-acc-classification-popover' class='modal fade' role='dialog' tabindex='-1'>
-	<div style='border-bottom: 1px groove; height: 30px padding-bottom: 10px;'>
+	<div style='border-bottom: 1px groove; height: 30px; padding-bottom: 10px;'>
 		<button class='close close-popover' type='button' data-dismiss='modal' style='padding-right: 9px;'><span aria-hidden='true'>&times;</span></button>
 		<h4 class='modal-title' style="font-family: 'Roboto Condensed', sans-serif;">Edit Account Classification</h4>
 	</div>
@@ -445,12 +596,12 @@
 		<input type="hidden" name="lvl_2_name">
 		<input type="hidden" name="lvl_3_name">
 		<div class='modal-footer' style='border-top: 1px inset; padding-top: 5px; padding-bottom: 0px; width: 100%;'>
-			<button class='btn btn-info btn-sm btn-raised ripple-effect v-submit' type='button' style='float: right;'>Ok</button>
+			<button class='btn btn-info btn-sm btn-raised ripple-effect v-submit' type='button' style='float: right;'>Save Changes</button>
 		</div>
 	</form>
 </div>
 <div id='delete-acc-classification-popover' class='modal fade' role='dialog' tabindex='-1'>
-	<div style='border-bottom: 1px groove; height: 30px padding-bottom: 10px;'>
+	<div style='border-bottom: 1px groove; height: 30px; padding-bottom: 10px;'>
 		<button class='close close-popover' type='button' data-dismiss='modal' style='padding-right: 9px;'><span aria-hidden='true'>&times;</span></button>
 		<h4 class='modal-title' style="font-family: 'Roboto Condensed', sans-serif;">Delete Account Classification</h4>
 	</div>
@@ -494,14 +645,14 @@
 		<input type="hidden" name="lvl_2_name">
 		<input type="hidden" name="lvl_3_name">
 		<div class='modal-footer' style='border-top: 1px inset; padding-top: 5px; padding-bottom: 0px; width: 100%;'>
-			<button id='close-btn' class='btn btn-danger btn-sm close-popover btn-raised ripple-effect' type='submit' data-dismiss='modal' style='float: right;'>Ok</button>
+			<button id='close-btn' class='btn btn-info btn-sm close-popover btn-raised ripple-effect' type='submit' data-dismiss='modal' style='float: right;'>Ok</button>
 		</div>
 	</form>
 </div>
 
 <!-- LINE ITEMS -->
 <div id='add-line-items-popover' class='modal fade' role='dialog' tabindex='-1'>
-	<div style='border-bottom: 1px groove; height: 30px padding-bottom: 10px;'>
+	<div style='border-bottom: 1px groove; height: 30px; padding-bottom: 10px;'>
 		<button class='close close-popover' type='button' data-dismiss='modal' style='padding-right: 9px;'><span aria-hidden='true'>&times;</span></button>
 		<h4 class='modal-title' style="font-family: 'Roboto Condensed', sans-serif;">Add Line Item</h4>
 	</div>
@@ -540,12 +691,12 @@
 		<input type="hidden" name="lvl_2_name">
 		<input type="hidden" name="lvl_3_name">
 		<div class='modal-footer' style='border-top: 1px inset; padding-top: 5px; padding-bottom: 0px; width: 100%;'>
-			<button class='btn btn-info btn-sm btn-raised ripple-effect v-submit' type='button' style='float: right;'>Ok</button>
+			<button class='btn btn-info btn-sm btn-raised ripple-effect v-submit' type='button' style='float: right;'>Done</button>
 		</div>
 	</form>
 </div>
 <div id='view-line-items-popover' class='modal fade' role='dialog' tabindex='-1'>
-	<div style='border-bottom: 1px groove; height: 30px padding-bottom: 10px;'>
+	<div style='border-bottom: 1px groove; height: 30px; padding-bottom: 10px;'>
 		<button class='close close-popover' type='button' data-dismiss='modal' style='padding-right: 9px;'><span aria-hidden='true'>&times;</span></button>
 		<h4 class='modal-title' style="font-family: 'Roboto Condensed', sans-serif;">View Line Item</h4>
 	</div>
@@ -581,7 +732,7 @@
 	</div>
 </div>
 <div id='edit-line-items-popover' class='modal fade' role='dialog' tabindex='-1'>
-	<div style='border-bottom: 1px groove; height: 30px padding-bottom: 10px;'>
+	<div style='border-bottom: 1px groove; height: 30px; padding-bottom: 10px;'>
 		<button class='close close-popover' type='button' data-dismiss='modal' style='padding-right: 9px;'><span aria-hidden='true'>&times;</span></button>
 		<h4 class='modal-title' style="font-family: 'Roboto Condensed', sans-serif;">Edit Line Item</h4>
 	</div>
@@ -626,12 +777,12 @@
 		<input type="hidden" name="lvl_2_name">
 		<input type="hidden" name="lvl_3_name">
 		<div class='modal-footer' style='border-top: 1px inset; padding-top: 5px; padding-bottom: 0px; width: 100%;'>
-			<button class='btn btn-info btn-sm btn-raised ripple-effect v-submit' type='button' style='float: right;'>Ok</button>
+			<button class='btn btn-info btn-sm btn-raised ripple-effect v-submit' type='button' style='float: right;'>Save Changes</button>
 		</div>
 	</form>
 </div>
 <div id='delete-line-items-popover' class='modal fade' role='dialog' tabindex='-1'>
-	<div style='border-bottom: 1px groove; height: 30px padding-bottom: 10px;'>
+	<div style='border-bottom: 1px groove; height: 30px; padding-bottom: 10px;'>
 		<button class='close close-popover' type='button' data-dismiss='modal' style='padding-right: 9px;'><span aria-hidden='true'>&times;</span></button>
 		<h4 class='modal-title' style="font-family: 'Roboto Condensed', sans-serif;">Delete Line Item</h4>
 	</div>
@@ -649,7 +800,7 @@
 						</select>
 					</td>
 					<td style="padding-top: 5px; width: 80px;">
-						<input type="text" name="edit-lvl3-lvl2-code" class='form-control no-space' placeholder="code" readonly style="width: 80px; text-align: center; height: 34.5px;" required>
+						<input type="text" name="delete-lvl3-lvl2-code" class='form-control no-space' placeholder="code" readonly style="width: 80px; text-align: center; height: 34.5px;" required>
 					</td>
 				</tr>
 				<tr>
@@ -675,14 +826,14 @@
 		<input type="hidden" name="lvl_2_name">
 		<input type="hidden" name="lvl_3_name">
 		<div class='modal-footer' style='border-top: 1px inset; padding-top: 5px; padding-bottom: 0px; width: 100%;'>
-			<button id='close-btn' class='btn btn-danger btn-sm close-popover btn-raised ripple-effect' type='submit' data-dismiss='modal' style='float: right;'>Ok</button>
+			<button id='close-btn' class='btn btn-info btn-sm close-popover btn-raised ripple-effect' type='submit' data-dismiss='modal' style='float: right;'>Ok</button>
 		</div>
 	</form>
 </div>
 
 <!-- ACCOUNT SUBCLASSIFICATION -->
 <div id='add-acc-sub-popover' class='modal fade' role='dialog' tabindex='-1'>
-	<div style='border-bottom: 1px groove; height: 30px padding-bottom: 10px;'>
+	<div style='border-bottom: 1px groove; height: 30px; padding-bottom: 10px;'>
 		<button class='close close-popover' type='button' data-dismiss='modal' style='padding-right: 9px;'><span aria-hidden='true'>&times;</span></button>
 		<h4 class='modal-title' style="font-family: 'Roboto Condensed', sans-serif;">Add Account Subclassification</h4>
 	</div>
@@ -726,12 +877,12 @@
 		<input type="hidden" name="lvl_2_name">
 		<input type="hidden" name="lvl_3_name">
 		<div class='modal-footer' style='border-top: 1px inset; padding-top: 5px; padding-bottom: 0px; width: 100%;'>
-			<button class='btn btn-info btn-sm btn-raised ripple-effect v-submit' type='button' style='float: right;'>Ok</button>
+			<button class='btn btn-info btn-sm btn-raised ripple-effect v-submit' type='button' style='float: right;'>Done</button>
 		</div>
 	</form>
 </div>
 <div id='view-acc-sub-popover' class='modal fade' role='dialog' tabindex='-1'>
-	<div style='border-bottom: 1px groove; height: 30px padding-bottom: 10px;'>
+	<div style='border-bottom: 1px groove; height: 30px; padding-bottom: 10px;'>
 		<button class='close close-popover' type='button' data-dismiss='modal' style='padding-right: 9px;'><span aria-hidden='true'>&times;</span></button>
 		<h4 class='modal-title' style="font-family: 'Roboto Condensed', sans-serif;">View Account Subclassification</h4>
 	</div>
@@ -772,7 +923,7 @@
 	</div>
 </div>
 <div id='edit-acc-sub-popover' class='modal fade' role='dialog' tabindex='-1'>
-	<div style='border-bottom: 1px groove; height: 30px padding-bottom: 10px;'>
+	<div style='border-bottom: 1px groove; height: 30px; padding-bottom: 10px;'>
 		<button class='close close-popover' type='button' data-dismiss='modal' style='padding-right: 9px;'><span aria-hidden='true'>&times;</span></button>
 		<h4 class='modal-title' style="font-family: 'Roboto Condensed', sans-serif;">Edit Account Subclassification</h4>
 	</div>
@@ -822,12 +973,12 @@
 		<input type="hidden" name="lvl_2_name">
 		<input type="hidden" name="lvl_3_name">
 		<div class='modal-footer' style='border-top: 1px inset; padding-top: 5px; padding-bottom: 0px; width: 100%;'>
-			<button class='btn btn-info btn-sm btn-raised ripple-effect v-submit' type='button' data-dismiss='modal' style='float: right;'>Ok</button>
+			<button class='btn btn-info btn-sm btn-raised ripple-effect v-submit' type='button' data-dismiss='modal' style='float: right;'>Save Changes</button>
 		</div>
 	</form>
 </div>
 <div id='delete-acc-sub-popover' class='modal fade' role='dialog' tabindex='-1'>
-	<div style='border-bottom: 1px groove; height: 30px padding-bottom: 10px;'>
+	<div style='border-bottom: 1px groove; height: 30px; padding-bottom: 10px;'>
 		<button class='close close-popover' type='button' data-dismiss='modal' style='padding-right: 9px;'><span aria-hidden='true'>&times;</span></button>
 		<h4 class='modal-title' style="font-family: 'Roboto Condensed', sans-serif;">Delete Account Subclassification</h4>
 	</div>
@@ -876,14 +1027,14 @@
 		<input type="hidden" name="lvl_2_name">
 		<input type="hidden" name="lvl_3_name">
 		<div class='modal-footer' style='border-top: 1px inset; padding-top: 5px; padding-bottom: 0px; width: 100%;'>
-			<button id='close-btn' class='btn btn-danger btn-sm close-popover btn-raised ripple-effect' type='submit' data-dismiss='modal' style='float: right;'>Ok</button>
+			<button id='close-btn' class='btn btn-info btn-sm close-popover btn-raised ripple-effect' type='submit' data-dismiss='modal' style='float: right;'>Ok</button>
 		</div>
 	</form>
 </div>
 
 <!-- LEVEL 5 -->
 <div id='add-lvl-5-popover' class='modal fade' role='dialog' tabindex='-1'>
-	<div style='border-bottom: 1px groove; height: 30px padding-bottom: 10px;'>
+	<div style='border-bottom: 1px groove; height: 30px; padding-bottom: 10px;'>
 		<button class='close close-popover' type='button' data-dismiss='modal' style='padding-right: 9px;'><span aria-hidden='true'>&times;</span></button>
 		<h4 class='modal-title' style="font-family: 'Roboto Condensed', sans-serif;">Add Level 5</h4>
 	</div>
@@ -925,12 +1076,12 @@
 		<input type="hidden" name="lvl_3_name">
 		<input type="hidden" name="lvl_4_name">
 		<div class='modal-footer' style='border-top: 1px inset; padding-top: 5px; padding-bottom: 0px; width: 100%;'>
-			<button class='btn btn-info btn-sm btn-raised ripple-effect v-submit' type='button' style='float: right;'>Ok</button>
+			<button class='btn btn-info btn-sm btn-raised ripple-effect v-submit' type='button' style='float: right;'>Done</button>
 		</div>
 	</form>
 </div>
 <div id='view-lvl-5-popover' class='modal fade' role='dialog' tabindex='-1'>
-	<div style='border-bottom: 1px groove; height: 30px padding-bottom: 10px;'>
+	<div style='border-bottom: 1px groove; height: 30px; padding-bottom: 10px;'>
 		<button class='close close-popover' type='button' data-dismiss='modal' style='padding-right: 9px;'><span aria-hidden='true'>&times;</span></button>
 		<h4 class='modal-title' style="font-family: 'Roboto Condensed', sans-serif;">View Level 5</h4>
 	</div>
@@ -966,7 +1117,7 @@
 	</div>
 </div>
 <div id='edit-lvl-5-popover' class='modal fade' role='dialog' tabindex='-1'>
-	<div style='border-bottom: 1px groove; height: 30px padding-bottom: 10px;'>
+	<div style='border-bottom: 1px groove; height: 30px; padding-bottom: 10px;'>
 		<button class='close close-popover' type='button' data-dismiss='modal' style='padding-right: 9px;'><span aria-hidden='true'>&times;</span></button>
 		<h4 class='modal-title' style="font-family: 'Roboto Condensed', sans-serif;">Edit Level 5</h4>
 	</div>
@@ -1014,12 +1165,12 @@
 		<input type="hidden" name="lvl_3_name">
 		<input type="hidden" name="lvl_4_name">
 		<div class='modal-footer' style='border-top: 1px inset; padding-top: 5px; padding-bottom: 0px; width: 100%;'>
-			<button class='btn btn-info btn-sm btn-raised ripple-effect v-submit' type='button' data-dismiss='modal' style='float: right;'>Ok</button>
+			<button class='btn btn-info btn-sm btn-raised ripple-effect v-submit' type='button' data-dismiss='modal' style='float: right;'>Save Changes</button>
 		</div>
 	</form>
 </div>
 <div id='delete-lvl-5-popover' class='modal fade' role='dialog' tabindex='-1'>
-	<div style='border-bottom: 1px groove; height: 30px padding-bottom: 10px;'>
+	<div style='border-bottom: 1px groove; height: 30px; padding-bottom: 10px;'>
 		<button class='close close-popover' type='button' data-dismiss='modal' style='padding-right: 9px;'><span aria-hidden='true'>&times;</span></button>
 		<h4 class='modal-title' style="font-family: 'Roboto Condensed', sans-serif;">Delete Level 5</h4>
 	</div>
@@ -1066,14 +1217,14 @@
 		<input type="hidden" name="lvl_3_name">
 		<input type="hidden" name="lvl_4_name">
 		<div class='modal-footer' style='border-top: 1px inset; padding-top: 5px; padding-bottom: 0px; width: 100%;'>
-			<button id='close-btn' class='btn btn-danger btn-sm close-popover btn-raised ripple-effect' type='submit' data-dismiss='modal' style='float: right;'>Ok</button>
+			<button id='close-btn' class='btn btn-info btn-sm close-popover btn-raised ripple-effect' type='submit' data-dismiss='modal' style='float: right;'>Ok</button>
 		</div>
 	</form>
 </div>
 
 <!-- COA -->
 <div id='add-coa-popover' class='modal fade' role='dialog' tabindex='-1'>
-	<div style='border-bottom: 1px groove; height: 30px padding-bottom: 10px;'>
+	<div style='border-bottom: 1px groove; height: 30px; padding-bottom: 10px;'>
 		<button class='close close-popover' type='button' data-dismiss='modal' style='padding-right: 9px;'><span aria-hidden='true'>&times;</span></button>
 		<h4 class='modal-title' style="font-family: 'Roboto Condensed', sans-serif;">Add COA</h4>
 	</div>
@@ -1161,12 +1312,12 @@
 			</div>
 		</div>
 		<div class='modal-footer' style='border-top: 1px inset; padding-top: 5px; padding-bottom: 0px; width: 100%;'>
-			<button class='btn btn-info btn-sm btn-raised ripple-effect v-submit' type='button' style='float: right;'>Ok</button>
+			<button class='btn btn-info btn-sm btn-raised ripple-effect v-submit' type='button' style='float: right;'>Done</button>
 		</div>
 	</form>
 </div>
 <div id='view-coa-popover' class='modal fade' role='dialog' tabindex='-1'>
-	<div style='border-bottom: 1px groove; height: 30px padding-bottom: 10px;'>
+	<div style='border-bottom: 1px groove; height: 30px; padding-bottom: 10px;'>
 		<button class='close close-popover' type='button' data-dismiss='modal' style='padding-right: 9px;'><span aria-hidden='true'>&times;</span></button>
 		<h4 class='modal-title' style="font-family: 'Roboto Condensed', sans-serif;">View COA</h4>
 	</div>
@@ -1249,11 +1400,11 @@
 		</div>
 	</div>
 	<div class='modal-footer' style='border-top: 1px inset; padding-top: 5px; padding-bottom: 0px; width: 100%;'>
-		<button class='btn btn-info btn-sm btn-raised ripple-effect close-popover' type='button' style='float: right;'>Ok</button>
+		<button class='btn btn-info btn-sm btn-raised ripple-effect close-popover' type='button' style='float: right;'>Close</button>
 	</div>
 </div>
 <div id='edit-coa-popover' class='modal fade' role='dialog' tabindex='-1'>
-	<div style='border-bottom: 1px groove; height: 30px padding-bottom: 10px;'>
+	<div style='border-bottom: 1px groove; height: 30px; padding-bottom: 10px;'>
 		<button class='close close-popover' type='button' data-dismiss='modal' style='padding-right: 9px;'><span aria-hidden='true'>&times;</span></button>
 		<h4 class='modal-title' style="font-family: 'Roboto Condensed', sans-serif;">Edit COA</h4>
 	</div>
@@ -1346,12 +1497,12 @@
 		<input type="hidden" name="o_coa_name">
 		<input type="hidden" name="edit-id">
 		<div class='modal-footer' style='border-top: 1px inset; padding-top: 5px; padding-bottom: 0px; width: 100%;'>
-			<button class='btn btn-info btn-sm btn-raised ripple-effect v-submit' type='button' style='float: right;'>Ok</button>
+			<button class='btn btn-info btn-sm btn-raised ripple-effect v-submit' type='button' style='float: right;'>Save Changes</button>
 		</div>
 	</form>
 </div>
 <div id='delete-coa-popover' class='modal fade' role='dialog' tabindex='-1'>
-	<div style='border-bottom: 1px groove; height: 30px padding-bottom: 10px;'>
+	<div style='border-bottom: 1px groove; height: 30px; padding-bottom: 10px;'>
 		<button class='close close-popover' type='button' data-dismiss='modal' style='padding-right: 9px;'><span aria-hidden='true'>&times;</span></button>
 		<h4 class='modal-title' style="font-family: 'Roboto Condensed', sans-serif;">Delete COA</h4>
 	</div>
@@ -1437,7 +1588,7 @@
 		<input type="hidden" name="o_lvl6_id">
 		<input type="hidden" name="delete-id">
 		<div class='modal-footer' style='border-top: 1px inset; padding-top: 5px; padding-bottom: 0px; width: 100%;'>
-			<button class='btn btn-danger btn-sm btn-raised ripple-effect close-popover' type='submit' style='float: right;'>Ok</button>
+			<button class='btn btn-info btn-sm btn-raised ripple-effect close-popover' type='submit' style='float: right;'>Ok</button>
 		</div>
 	</form>
 </div>

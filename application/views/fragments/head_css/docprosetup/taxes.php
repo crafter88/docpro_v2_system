@@ -256,9 +256,6 @@
 	}
 </style>
 <style>
-	.dataTables_wrapper .row:first-child{
-		display: block !important;
-	}
 	.dataTables_wrapper .row:first-child .col-sm-6:last-child{
 		float: right;
 	}
@@ -276,9 +273,6 @@
 		cursor: hand;
 		cursor: pointer;
 	}
-	.selectize-input{
-		text-align: center;
-	}
 	.tax-alert{
 		background-color: #f9e0e0 !important;
 	    border-left: 3px solid red !important;
@@ -289,7 +283,7 @@
 <style>
 	.tax-no{
 	    position: absolute;
-	    z-index: 999;
+	    z-index: 9;
 	    text-align: center;
 	    margin-top: 13px;
 	    margin-left: 10px;

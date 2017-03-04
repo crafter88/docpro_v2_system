@@ -78,4 +78,8 @@ class Branches extends CI_Controller{
         CB_Br_Model::update($data, $id, $ch_cb_id, $cbbr_id, $this->session->userdata('user'));
         redirect('company_settings/branches', 'refresh');
     }
+    public function filter_table(){
+        $filter1 = $this->input->get('filter1');
+        echo json_encode(['data' => CB_Br_Model::filter_table($this->session->userdata('user'), $filter1)]);
+    }
 }

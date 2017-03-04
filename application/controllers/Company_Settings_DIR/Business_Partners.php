@@ -82,4 +82,15 @@ class Business_Partners extends CI_Controller{
     public function get_tax_3(){
       echo json_encode(Co_Business_Partners_Model::get_tax_3($this->session->userdata('user')));
     }
+    public function get_filter1(){
+        echo json_encode(Co_Business_Partners_Model::get_filter1($this->session->userdata('user')));
+    }
+    public function get_filter2(){
+        echo json_encode(Co_Business_Partners_Model::get_filter2($this->session->userdata('user')));
+    }
+    public function filter_table(){
+        $filter1 = $this->input->get('filter1');
+        $filter2 = $this->input->get('filter2');
+        echo json_encode(['data'=> Co_Business_Partners_Model::filter_table($this->session->userdata('user'), $filter1, $filter2)]);
+    }
 }

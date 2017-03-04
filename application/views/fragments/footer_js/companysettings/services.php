@@ -1,5 +1,27 @@
+<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/company_settings/table/services.js"></script>
 <script>
+    var stopPropagation = function(evt) {
+        if (evt.stopPropagation !== undefined) {
+            evt.stopPropagation();
+        } else {
+            evt.cancelBubble = true;
+        }
+    }
     $(document).ready(function(){
+        (function(){
+            $('#services-table thead tr#searchfilterrow th').each( function () {
+                if($(this).index() !== 0){
+                    var title = $('#services-table thead th').eq( $(this).index() ).text();
+                    $(this).html( '<input type="text" onclick="stopPropagation(event);" placeholder="Search '+title+'" />' );
+                }
+            });
+            $("#services-table thead input").on( 'keyup change', function () {
+                table.column($(this).parent().index()+':visible')
+                     .search(this.value)
+                     .draw();
+            } );
+        })();
+
         var table = $('#services-table').DataTable({
             ajax: window_location+'/company_settings/services/get',
             columns:[
@@ -7,32 +29,40 @@
                             mData: null, bSortable: false,
                             mRender: function(data, type, full){
                                 if($('input#mc_id').val() === $('input#bc_id').val()){
-                                    return "<button type='button' class='btn btn-primary btn-xs btn-raised view title' custom-title='View'><i class='fa fa-eye'></i></button>\n\
-                                        <button type='button' class='btn btn-success btn-xs btn-raised edit title' custom-title='Edit'><i class='fa fa-pencil'></i></button>\n\
-                                        <button type='button' class='btn btn-warning btn-xs btn-raised update title' custom-title='Update'><i class='fa fa-refresh'></i></button>";
+                                    return "<button type='button' class='btn btn-primary btn-xs btn-raised view title' title='View'><i class='fa fa-eye'></i></button>\n\
+                                        <button type='button' class='btn btn-success btn-xs btn-raised edit title' title='Edit'><i class='fa fa-pencil'></i></button>\n\
+                                        <button type='button' class='btn btn-warning btn-xs btn-raised update title' title='Update'><i class='fa fa-refresh'></i></button>";
                                 }
-                                return "<button type='button' class='btn btn-primary btn-xs btn-raised view title' custom-title='View' disabled><i class='fa fa-eye'></i></button>\n\
-                                        <button type='button' class='btn btn-success btn-xs btn-raised edit title' custom-title='Edit' disabled><i class='fa fa-pencil'></i></button>\n\
-                                        <button type='button' class='btn btn-warning btn-xs btn-raised update title' custom-title='Update' disabled><i class='fa fa-refresh'></i></button>";
+                                return "<button type='button' class='btn btn-primary btn-xs btn-raised view title' title='View' disabled><i class='fa fa-eye'></i></button>\n\
+                                        <button type='button' class='btn btn-success btn-xs btn-raised edit title' title='Edit' disabled><i class='fa fa-pencil'></i></button>\n\
+                                        <button type='button' class='btn btn-warning btn-xs btn-raised update title' title='Update' disabled><i class='fa fa-refresh'></i></button>";
                             }
                         }, 
                         {'data': 'co_s_seq'}, {'data': 'co_s_code'}, {'data': 'co_s_name'}, {'data': 'co_s_shortname'}, {'data': 'co_s_description'}, {'data': 'co_pcc_name'}, {'data': 'co_de_name'}
                     ],
-            columnDefs: [{targets: 0, width: '100px'}, {targets: [1,2], width: '40px'}],
+            columnDefs: [{targets: 0, width: '100px'}, {targets: [1,2], width: '100px'}],
             order: [['1', 'asc']],
             scrollX: true,
-            initComplete: function(json, src){
-                initRipple();
-                init_tooltip();
+            order: [['2', 'asc']],
+            orderCellsTop: true,
+            bPaginate: false,
+            language: {
+                info: 'Total number of records: <b> _MAX_ </b>',
+                infoEmpty: 'Total number of records: <b> 0 </b>'
             }
         });
+
+        init_table_settings(table);
+        init_filter(table);
+        init_general_search(table);
+        hide_columns(table);
         
         var tmp = $.fn.popover.Constructor.prototype.show;
-            $.fn.popover.Constructor.prototype.show = function () {
-              tmp.call(this);
-              if (this.options.callback) {
-                this.options.callback();
-              }
+        $.fn.popover.Constructor.prototype.show = function () {
+          tmp.call(this);
+          if (this.options.callback) {
+            this.options.callback();
+          }
         }
         
         $('#add').click(function(){
@@ -127,10 +157,10 @@
                         }
                     });
                 },
-                container: '.navbar-body'
+                container: 'body'
             }).on('show.bs.popover', function(){
                 $('.popover').not(this).popover('hide');
-                $('.card-body button').attr('disabled', true);
+                $('.box-body button').attr('disabled', true);
             });
             $(this).popover('toggle');
             initRipple();
@@ -161,10 +191,10 @@
                     popover.find('input[name=view-shortname]').val(data.co_s_shortname);
                     popover.find('input[name=view-description]').val(data.co_s_description);
                 },
-                container:'.navbar-body'
+                container:'body'
             }).on('show.bs.popover', function(){
                 $('.popover').not(this).popover('hide');
-                $('.card-body button').attr('disabled', true);
+                $('.box-body button').attr('disabled', true);
             });
             $(this).popover('toggle');
             initRipple();
@@ -270,10 +300,10 @@
                         }
                     });
                 },
-                container: '.navbar-body'
+                container: 'body'
             }).on('show.bs.popover', function(){
                 $('.popover').not(this).popover('hide');
-                $('.card-body button').attr('disabled', true);
+                $('.box-body button').attr('disabled', true);
             });
             $(this).popover('toggle');
             initRipple();
@@ -380,88 +410,19 @@
                         }
                     });
                 },
-                container: '.navbar-body'
+                container: 'body'
             }).on('show.bs.popover', function(){
                 $('.popover').not(this).popover('hide');
-                $('.card-body button').attr('disabled', true);
+                $('.box-body button').attr('disabled', true);
             });
             $(this).popover('toggle');
             initRipple();
             initSingleSubmit();
         });
-        $('div').on('click', '.close-popover', function(){
+        $('body').on('click', '.close-popover', function(){
             $('.popover').popover('hide');
-            $('.card-body button').removeAttr('disabled');
+            $('.box-body button').removeAttr('disabled');
         });
-        $('div').on('click', '#close-btn', function(){
-            $('.popover').popover('hide');
-            $('.card-body button').removeAttr('disabled');
-        });
-        $('div').on('click', '.select-option-profit-cost-center', function(){
-            $("input[name='add-profit-cost-center']").val($(this)[0].textContent);
-            $("input[name='add-profit-cost-center-id']").val($(this).attr('profit-cost-center-id'));
-            $("input[name='add-profit-cost-center-code']").val($(this).attr('profit-cost-center-code'));
-        });
-        $('div').on('click', '.select-option-department', function(){
-            $("input[name='add-department']").val($(this)[0].textContent);
-            $("input[name='add-department-id']").val($(this).attr('department-id'));
-            $("input[name='add-department-code']").val($(this).attr('department-code'));
-        });
-        $('div').on('click', '.select-option-profit-cost-center', function(){
-            $("input[name='edit-profit-cost-center']").val($(this)[0].textContent);
-            $("input[name='edit-profit-cost-center-id']").val($(this).attr('profit-cost-center-id'));
-            $("input[name='edit-profit-cost-center-code']").val($(this).attr('profit-cost-center-code'));
-        });
-        $('div').on('click', '.select-option-department', function(){
-            $("input[name='edit-department']").val($(this)[0].textContent);
-            $("input[name='edit-department-id']").val($(this).attr('department-id'));
-            $("input[name='edit-department-code']").val($(this).attr('department-code'));
-        });
-        $('div').on('click', '.select-option-profit-cost-center', function(){
-            $("input[name='update-profit-cost-center']").val($(this)[0].textContent);
-            $("input[name='update-profit-cost-center-id']").val($(this).attr('profit-cost-center-id'));
-            $("input[name='update-profit-cost-center-code']").val($(this).attr('profit-cost-center-code'));
-        });
-        $('div').on('click', '.select-option-department', function(){
-            $("input[name='update-department']").val($(this)[0].textContent);
-            $("input[name='update-department-id']").val($(this).attr('department-id'));
-            $("input[name='update-department-code']").val($(this).attr('department-code'));
-        });
-        $('.navbar-body').on('click', '.add-profit-cost-center-btn', function(){
-            $('#add-options').html($('#s-profit-cost-center-select').html());
-            initRipple();
-        });
-        $('.navbar-body').on('click', '.add-department-btn', function(){
-            $('#add-options').html($('#s-department-select').html());
-            initRipple();
-        });
-        $('.navbar-body').on('click', '.edit-profit-cost-center-btn', function(){
-            $('#edit-options').html($('#s-profit-cost-center-select').html());
-            initRipple();
-        });
-        $('.navbar-body').on('click', '.edit-department-btn', function(){
-            $('#edit-options').html($('#s-department-select').html());
-            initRipple();
-        });
-        $('.navbar-body').on('click', '.update-profit-cost-center-btn', function(){
-            $('#update-options').html($('#s-profit-cost-center-select').html());
-            initRipple();
-        });
-        $('.navbar-body').on('click', '.update-department-btn', function(){
-            $('#update-options').html($('#s-department-select').html());
-            initRipple();
-        });
-        $('.navbar-body').on('click', '.form-control', function(){
-            $('#add-options').empty();
-        });
-        $('.navbar-body').on('click', '.form-control', function(){
-            $('#edit-options').empty();
-        });
-        $('.navbar-body').on('click', '.form-control', function(){
-            $('#update-options').empty();
-        });
-        $('#switch-state').bootstrapSwitch();
-        init_table_option(table, $(this).closest('side-body'));
 
         $('body').on('click', 'tr.add-department .no-results-found', function(){
             $('#add-department-modal').modal({

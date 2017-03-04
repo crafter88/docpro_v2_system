@@ -43,4 +43,11 @@ class Modes_Of_Payment extends CI_Controller{
     public function get_types_of_payment(){
         echo json_encode(Co_Modes_Of_Payment_Model::get_types_of_payment());
     }
+    public function get_filter1(){
+        echo json_encode(Co_Modes_Of_Payment_Model::get_filter1());
+    }
+    public function filter_table(){
+        $filter1 = $this->input->get('filter1');
+        echo json_encode(['data' => Co_Modes_Of_Payment_Model::filter_table($this->session->userdata('user'), $filter1)]);
+    }
 }

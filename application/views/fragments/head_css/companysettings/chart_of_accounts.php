@@ -287,7 +287,7 @@
 	}
 	.btn-seq{
 		width: 100%;
-		padding: 20px !important;
+		padding: 16px !important;
 		text-transform: none !important;
 	}
 	.btn-seq-wrapper + .btn-seq-wrapper button{
@@ -329,11 +329,11 @@
 <style>
 	.coa-no{
 	    position: absolute;
-	    z-index: 999;
+	    z-index: 9;
 	    text-align: center;
 	    margin-top: 18px;
 	    margin-left: 10px;
-	    padding: 8px 14px;
+	    padding: 8px 16px;
 	    background-color: #FFF;
 	    color: #000;
 	    border-radius: 50%;
@@ -343,7 +343,15 @@
 		background-color: #FFF;
 		color: #000;
 		border-radius: 50%;
-		padding: 8px 14px;
+		padding: 8px 16px;
 		box-shadow: inset 0 2px 2px 0 rgba(0,0,0,0.14), inset 0 1px 5px 0 rgba(0,0,0,0.12), inset 0 3px 1px -2px rgba(0,0,0,0.2);
+	}
+	#account-elements.dataTable tbody tr td:nth-child(4),
+	#account-classification.dataTable tbody tr td:nth-child(5),
+	#line-items.dataTable tbody tr td:nth-child(6),
+	#account-subclassification.dataTable tbody tr td:nth-child(7),
+	#coa-table.dataTable tbody tr td:nth-child(8)
+	{
+		text-align: center;
 	}
 </style>

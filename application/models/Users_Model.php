@@ -29,15 +29,6 @@ class Users_Model extends CI_Model {
         return self::$db->from('users u')->join('profiles p', 'u.p_id=p.p_id')->get()->result();
     }
     public static function Login($username, $password){
-        // $user = self::$db->select('u.*, p.*, cbbr.*, branch.*, bpt.*, cor.*, company.cb_id AS company_id, company.name AS company_name')->from('users u')->where('u.u_name =', $username)->join('profiles p', 'p.p_id = u.p_id')->join('cb_br cbbr', 'cbbr.br_id = p.cb_id')->join('company_branches branch', 'branch.cb_id = cbbr.br_id')->join('business_partners_type bpt', 'bpt.bpt_id = branch.bpt_id')->join('company_branches company', 'company.cb_id = cbbr.cb_id')->join('co_registrant cor', 'cor.cb_id = company.cb_id')->get();
-
-       
-        // if($user->num_rows() === 0){
-        //     $user = self::$db->from('users')->where('users.u_name =', $username)->join('profiles', 'profiles.p_id = users.p_id')->join('company_branches', 'company_branches.cb_id = profiles.cb_id')->join('business_partners_type', 'business_partners_type.bpt_id = company_branches.bpt_id')->join('co_registrant', 'co_registrant.cb_id = company_branches.cb_id')->get();
-        // }
-
-        // $user = self::$db->from('users u')->where('u.u_name =', $username)->join('profiles p', 'p.p_id = u.p_id')->join('cb_br cbbr', 'cbbr.cbbr_id=u.cbbr_id')->join('company_branches cb', 'cb.cb_id = cbbr.br_id')->join('company_history ch', 'ch.ch_cb_id=cb.cb_id')->join('co_registrant coreg', 'coreg.cb_id = cb.cb_id')->where(['ch.flag' => '1', 'cb.flag' => '1'])->get();
-
         $user = self::$db->from('users u')->where('u.u_name =', $username)->join('profiles p', 'p.p_id = u.p_id')->join('cb_br cbbr', 'cbbr.cbbr_id=u.cbbr_id')->join('company_branches cb', 'cb.cb_id = cbbr.br_id')->join('company_history ch', 'ch.ch_cb_id=cb.cb_id')->where(['ch.flag' => '1', 'cb.flag' => '1'])->get();
 
         if($user->num_rows() > 0){

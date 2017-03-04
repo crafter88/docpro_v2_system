@@ -40,4 +40,28 @@ class Co_Banks_Model extends CI_Model{
         $co_bank['b_id'] = $b_id;
         self::$db->insert('co_banks', $co_bank);
     }
+    public static function get_filter1($user, $filter2){
+        if($filter2){
+            return self::$db->from('banks b')->join('co_banks cb', 'cb.b_id=b.b_id')->where(['cb.cb_id' => $user->main_company->cb_id, 'b.flag' => '1', 'cb.co_b_class' => $filter2])->get()->result();
+        }
+        return self::$db->from('banks b')->join('co_banks cb', 'cb.b_id=b.b_id')->where(['cb.cb_id' => $user->main_company->cb_id, 'b.flag' => '1'])->get()->result();
+    }
+    public static function get_filter2($user, $filter1){
+        if($filter1){
+            return self::$db->from('banks b')->join('co_banks cb', 'cb.b_id=b.b_id')->where(['cb.cb_id' => $user->main_company->cb_id, 'b.flag' => '1', 'b.b_name' => $filter1])->get()->result();
+        }
+        return self::$db->from('banks b')->join('co_banks cb', 'cb.b_id=b.b_id')->where(['cb.cb_id' => $user->main_company->cb_id, 'b.flag' => '1'])->get()->result();
+    }
+    public static function filter_table($user, $filter1, $filter2){
+        if($filter1 && $filter2){
+            return self::$db->from('banks b')->join('co_banks cb', 'cb.b_id=b.b_id')->where(['cb.cb_id' => $user->main_company->cb_id, 'b.flag' => '1', 'b.b_name' => $filter1, 'cb.co_b_class' => $filter2])->get()->result();
+        }elseif($filter1){
+            return self::$db->from('banks b')->join('co_banks cb', 'cb.b_id=b.b_id')->where(['cb.cb_id' => $user->main_company->cb_id, 'b.flag' => '1', 'b.b_name' => $filter1])->get()->result();
+        }elseif($filter2){
+            return self::$db->from('banks b')->join('co_banks cb', 'cb.b_id=b.b_id')->where(['cb.cb_id' => $user->main_company->cb_id, 'b.flag' => '1', 'cb.co_b_class' => $filter2])->get()->result();
+        }else{
+            return self::$db->from('banks b')->join('co_banks cb', 'cb.b_id=b.b_id')->where(['cb.cb_id' => $user->main_company->cb_id, 'b.flag' => '1'])->get()->result();
+        }
+        
+    }
 }

@@ -53,4 +53,12 @@ class CB_Br_Model extends CI_Model{
         self::$db->where('ch_id', $ch_id)->update('company_history', ['flag' => '0']);
         self::$db->insert('company_history', $data);
     }
+    public static function filter_table($user, $filter1){
+        $mcb_id = $user->main_company->cb_id;
+        if($filter1){
+            return self::$db->from('cb_br cbbr')->join('company_history ch', 'cbbr.br_id = ch.ch_cb_id')->where('cbbr.cb_id', $mcb_id)->where('cbbr.br_id !=', $mcb_id)->where(['ch.flag' => '1', 'cbbr.cbbr_flag' => '1', 'ch.ch_cb_tax_type' => $filter1])->get()->result();
+        }else{
+            return self::$db->from('cb_br cbbr')->join('company_history ch', 'cbbr.br_id = ch.ch_cb_id')->where('cbbr.cb_id', $mcb_id)->where('cbbr.br_id !=', $mcb_id)->where(['ch.flag' => '1', 'cbbr.cbbr_flag' => '1'])->get()->result();
+        }
+    }
 }

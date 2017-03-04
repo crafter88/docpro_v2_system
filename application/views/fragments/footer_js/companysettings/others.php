@@ -7,13 +7,13 @@
                             mData: null, bSortable: false,
                             mRender: function(data, type, full){
                                 if($('input#mc_id').val() === $('input#bc_id').val()){
-                                    return "<button type='button' class='btn btn-primary btn-xs btn-raised view title' custom-title='View'><i class='fa fa-eye'></i></button>\n\
-                                        <button type='button' class='btn btn-success btn-xs btn-raised edit title' custom-title='Edit'><i class='fa fa-pencil'></i></button>\n\
-                                        <button type='button' class='btn btn-warning btn-xs btn-raised update title' custom-title='Update'><i class='fa fa-refresh'></i></button>";
+                                    return "<button type='button' class='btn btn-primary btn-xs btn-raised view title' title='View'><i class='fa fa-eye'></i></button>\n\
+                                        <button type='button' class='btn btn-success btn-xs btn-raised edit title' title='Edit'><i class='fa fa-pencil'></i></button>\n\
+                                        <button type='button' class='btn btn-warning btn-xs btn-raised update title' title='Update'><i class='fa fa-refresh'></i></button>";
                                 }
-                                return "<button type='button' class='btn btn-primary btn-xs btn-raised view title' custom-title='View' disabled><i class='fa fa-eye'></i></button>\n\
+                                return "<button type='button' class='btn btn-primary btn-xs btn-raised view title' title='View' disabled><i class='fa fa-eye'></i></button>\n\
                                         <button type='button' class='btn btn-success btn-xs btn-raised edit title' custom-title='Edit' disabled><i class='fa fa-pencil'></i></button>\n\
-                                        <button type='button' class='btn btn-warning btn-xs btn-raised update title' custom-title='Update' disabled><i class='fa fa-refresh'></i></button>";
+                                        <button type='button' class='btn btn-warning btn-xs btn-raised update title' title='Update' disabled><i class='fa fa-refresh'></i></button>";
                             }
                         },
                         {'data': 'co_o_name'}
@@ -21,9 +21,11 @@
             columnDefs: [{targets: 0, width: '100px'}],
             scrollX: true,
             order: [['1', 'asc']],
-            initComplete: function(json, src){
-                initRipple();
-                init_tooltip();
+            orderCellsTop: true,
+            bPaginate: false,
+            language: {
+                info: 'Total number of records: <b> _MAX_ </b>',
+                infoEmpty: 'Total number of records: <b> 0 </b>'
             }
         });	
         
@@ -66,10 +68,10 @@
                         }
                     });
                 },
-                container: '.navbar-body'
+                container: 'body'
             }).on('show.bs.popover', function(){
                 $('.popover').not(this).popover('hide');
-                $('.card-body button').attr('disabled', true);
+                $('.box-body button').attr('disabled', true);
             });
             $(this).popover('toggle');
             initRipple();
@@ -94,10 +96,10 @@
                     var popover = $('.popover.view-modal-body');
                     popover.find('input[name=view-name]').val(data.co_o_name);
                 },
-                container: '.navbar-body'
+                container: 'body'
             }).on('show.bs.popover', function(){
                 $('.popover').not(this).popover('hide');
-                $('.card-body button').attr('disabled', true);
+                $('.box-body button').attr('disabled', true);
             });
             $(this).popover('toggle');
             initRipple();
@@ -136,10 +138,10 @@
                         }
                     });
                 },
-                container: '.navbar-body'
+                container: 'body'
             }).on('show.bs.popover', function(){
                 $('.popover').not(this).popover('hide');
-                $('.card-body button').attr('disabled', true);
+                $('.box-body button').attr('disabled', true);
             });
             $(this).popover('toggle');
             initRipple();
@@ -179,24 +181,18 @@
                         }
                     });
                 },
-                container: '.navbar-body'
+                container: 'body'
             }).on('show.bs.popover', function(){
                 $('.popover').not(this).popover('hide');
-                $('.card-body button').attr('disabled', true);
+                $('.box-body button').attr('disabled', true);
             });
             $(this).popover('toggle');
             initRipple();
             initSingleSubmit();
         });
-        $('div').on('click', '.close-popover', function(){
+        $('body').on('click', '.close-popover', function(){
             $('.popover').popover('hide');
-            $('.card-body button').removeAttr('disabled');
+            $('.box-body button').removeAttr('disabled');
         });
-         $('div').on('click', '#close-btn', function(){
-            $('.popover').popover('hide');
-            $('.card-body button').removeAttr('disabled');
-        });
-        $('#switch-state').bootstrapSwitch();
-        init_table_option(table, $(this).closest('side-body'));
     });
 </script>

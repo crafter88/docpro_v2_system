@@ -27,11 +27,21 @@
     background: transparent !important;
     color: #97a0b3 !important;
 }
-.box-header>.box-tools .dropdown-menu>li>a
+.box-header>.box-tools .dropdown-menu>li>a,
+.box-header>.box-tools .dropdown-menu>li>span
 {
 	color: #444!important;
 	line-height: 20px;
 	font-size: 12px;
+	padding: 3px 20px;
+	width: 100%;
+	display: block;
+}
+.box-header>.box-tools .dropdown-menu>li>span:hover
+{
+	cursor: hand;
+	cursor: pointer;
+	background-color: #e1e3e9;
 }
 .dropdown-menu>li>a:hover
 {
@@ -45,4 +55,12 @@
 {
 	-webkit-box-shadow: inset 0 3px 5px rgba(0,0,0,.125) !important;
 	box-shadow: inset 0 3px 5px rgba(0,0,0,.125) !important;
+}
+.input-group .form-control
+{
+	border: 1px solid #d2d6de !important;
+}
+.input-group .input-group-addon
+{
+	background-color: #EEE;
 }

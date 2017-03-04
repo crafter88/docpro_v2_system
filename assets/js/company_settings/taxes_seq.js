@@ -12,6 +12,7 @@ $('#setup-tab-1 button').click(function(){
 	$('.popover').popover('hide');
 	$('.btn-seq').removeClass('seq-selected');
  	$(this).addClass('seq-selected');
+ 	$('input#selected_seq').val('1');
     tax_seq.goTo(1);
 });
 
@@ -19,6 +20,7 @@ $('#setup-tab-2 button').click(function(){
 	$('.popover').popover('hide');
 	$('.btn-seq').removeClass('seq-selected');
  	$(this).addClass('seq-selected');
+ 	$('input#selected_seq').val('2');
     tax_seq.goTo(2);
 });
 

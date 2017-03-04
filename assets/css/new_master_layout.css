@@ -1,3 +1,44 @@
+table.dataTable tr.selected
+{
+	background-color: #000 !important;
+	color: #FFF !important;
+}
+table.dataTable tr.selected .fa-eye
+{
+	color: #FFF !important;
+}
+.flat-blue table.dataTable tr span.text-center
+{
+	text-align: center;
+}
+.flat-blue #account-elements td,
+.flat-blue #account-classification td,
+.flat-blue #line-items td,
+.flat-blue #account-subclassification td,
+.flat-blue #lvl5-table td,
+.flat-blue #coa-table td
+{
+	text-align: center;
+}
+.flat-blue table.dataTable tr button.seq-btn-next
+{
+	float: right;
+}
+.flat-blue table.dataTable tr button.seq-btn-prev
+{
+	float: left;
+}
+.flat-blue table.dataTable tr button.seq-btn-next,
+.flat-blue table.dataTable tr button.seq-btn-prev
+{
+	background-color: #808080 !important;
+    color: #FFF !important;
+    padding: 0px 5px !important;
+}
+.flat-blue table.dataTable .btn.btn-danger
+{
+	color: red;
+}
 .container-fluid
 {
 	padding-left: 0 !important;
@@ -72,6 +113,20 @@ ul.navbar-nav li
 	padding: 0;
 	background-color: #191919 !important;
 	border-bottom: 0 !important;
+}
+#tax_breadcrumb li a,
+#coa_breadcrumb li a
+{
+	color: #000;
+}
+.breadcrumb
+{
+	padding: 3px 15px !important;
+	font-size: 11px !important;
+}
+#sequence-selector
+{
+	padding-right: 18px !important;
 }
 .flat-blue a:not(.fc-event)
 {
@@ -312,6 +367,20 @@ body.sidebar-collapse #main-nav li:hover .treeview-menu
 .r1 div[class*=col-]
 {
 	margin: 0 !important;
+}
+.selectize-input.disabled.locked
+{
+	background: #EEE !important;
+	opacity: 1 !important;
+	color: #989898 !important;
+}
+.popover .selectize-input
+{
+	border-radius: 0 !important;
+}
+.flat-blue .alert
+{
+	padding: 2px 13px;
 }
 @media (min-width: 767px)
 {

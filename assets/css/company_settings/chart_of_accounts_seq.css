@@ -37,7 +37,7 @@
 	cursor: hand;
 }
 .dataTables_wrapper .row:first-child{
-	display: block !important;
+	display: block;
 }
 .dataTables_wrapper .row:first-child .col-sm-6:last-child{
 	float: right;

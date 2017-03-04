@@ -1,32 +1,75 @@
 <input id='mc_id' type="hidden" name="mc_id" value="<?php echo $user->main_company->cb_id; ?>">
 <input id='bc_id' type="hidden" name="bc_id" value="<?php echo $user->cb_id; ?>">
-<div class='side-body padding-top hide-table-setting'>
-	<div class='card custom-card col-md-9 main-table-panel'>
-		<div class='card-body hide-table-setting' style='padding: 0;'>
-			<div id='custom-card-title' class='row' style="margin: 30px 0 0 0; text-align: center;">
-				<div class='panel panel-default' style="border: none; border-bottom: 2px solid #000">
-					<div class='panel-body'>
-						<p style="font-size: 24px; margin: 0;">Users</p>
-					</div>
-				</div>
-			</div>
-			<div class='row'>
-				<div class='col-md-12'>
-					<div class='col-md-12' id='users-table-row' style="padding: 0;">
-						<button id='add' type='button' class='btn btn-info btn-sm btn-raised ripple-effect' <?php if($user->main_company->cb_id !== $user->cb_id){ echo 'disabled'; } ?>><i class='fa fa-plus'></i></button>
+<div id='m_c_d' class='appear'>
+    <div class='n_cp_n_cm' class='container' style="margin: 0;">
+    	<div class="box">
+            <div class="box-header with-border box-normal">
+                <h3 class="box-title"> </h3>
+                <div class="box-tools pull-right">
+                	<div class="btn-group">
+                  		<button type="button" class="btn btn-box-tool dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    		<i class="fa fa-wrench"></i> Settings
+                    	</button>
+                  		<ul class="dropdown-menu" role="menu">
+                    		<li><span id='show-filters' data-status='0'>Show Filters</span></li>
+                    		<li><span id='advance-search' data-status='0'>Advance Search</span></li>
+                    		<li class="divider"></li>
+                    		<li><span id='show-all-col' data-status='0'>Show All Columns</span></li>
+                  		</ul>
+                	</div>
+              	</div>
+            </div>
+    		<div class='box-body hide-table-setting'>
+    			<div class='row'>
+    				<div class='col-md-12' id='company-table-row' style="padding-right: 20px;">
+    					<div class='row hide-filter'>
+    						<div class='col-md-12' style="margin: 0;">
+    							<h3 class='filter-title'>FILTERS</h3>
+    						</div>
+    					</div>
+    					<div class='row hide-filter'>
+							<div class='col-md-6'>
+								<div class="input-group">
+								  <span class="input-group-addon filter-subtitle">Access Level</span>
+								  <select id='filter1' class='form-control' placeholder='--- SELECT ---'></select>
+								</div>
+							</div>
+    					</div>
+    					<div class='row'>
+    						<div class='col-md-1' style="margin-bottom: 10px;">
+    							<button id='add' type='button' class='btn btn-info btn-sm btn-raised ripple-effect title' custom-title='Add New' <?php if($user->main_company->cb_id !== $user->cb_id){ echo 'disabled'; } ?> style='height: 34px; margin: 0;'><i class='fa fa-plus'></i> Add New</button>
+    						</div>
+    						<div class='col-md-11' style="margin-bottom: 10px;">
+    							<div class="input-group table-search">
+								  <span class="input-group-addon" id="basic-addon1"><i class='fa fa-search'></i></span>
+								  <input type="text" class="form-control general-search" placeholder="General Search..." aria-describedby="basic-addon1">
+								</div>
+    						</div>
+    					</div>
 						<table id='users-table' class='table table-hovered table-bordered' style='min-width: 100%;'>
 							<thead>
-								<th>Options</th>
-								<th>Seq</th>
-								<th>First Name</th>
-								<th>Middle Name</th>
-								<th>Last Name</th>
-								<th>Address</th>
-								<th>Contact Number</th>
-								<th>Email</th>
-								<th>Branch</th>
-								<th>Access Level</th>
-								<th>Username</th>
+								<tr>
+									<th></th>
+									<th>Seq</th>
+									<th>Name</th>
+									<th>Address</th>
+									<th>Contact Number</th>
+									<th>Email</th>
+									<th>Branch</th>
+									<th>Access Level</th>
+									<th>Username</th>
+								</tr>
+								<tr id="searchfilterrow" class='hide-searchfilter searchfilterrow'>
+									<th></th>
+									<th>Seq</th>
+									<th>Name</th>
+									<th>Address</th>
+									<th>Contact Number</th>
+									<th>Email</th>
+									<th>Branch</th>
+									<th>Access Level</th>
+									<th>Username</th>
+								</tr>
 							</thead>
 						</table>
 					</div>
@@ -34,52 +77,6 @@
 			</div>
 		</div>
 	</div>
-	<div class='col-md-1' style="width: 1px; padding: 0;">
-		<button type='button' class='btn btn-dark btn-sm ripple-effect table-setting-toggle'>Table Setting</button>
-	</div>
-	<div class='col-md-2 table-setting-panel'>
-		<div class='col-md-12' style="padding: 0;">
-			<div class='col-md-12' style="padding: 0; height: 60px;">
-				<button type='button' class='btn btn-default btn-sm ripple-effect close-table-option' style="float: left; margin: 0; height: 100%;">X</button>
-				<h3 class='option-title' style="margin-left: 65px;">Table Setting</h3>
-			</div>
-			<div class='col-md-12'>
-				<table class='table option-table'>
-					<tr>
-						<td><p>Search</p></td>
-						<td><input type="text" class='form-control search'></td>
-					</tr>
-					<tr>
-						<td><p>Entries</p></td>
-						<td>
-							<select type="text" class='form-control entry'>
-								<option value='10'>10</option>
-								<option value='25'>25</option>
-								<option value='50'>50</option>
-								<option value='100'>100</option>
-							</select>
-						</td>
-					</tr>
-					<tr>
-						<td colspan='2' style="padding-bottom: 0;"><p>Show Action Buttons</p></td>
-					</tr>
-					<tr>
-						<td colspan='2' style="padding-top: 0;"><input id="switch-state" class='bootstrap-switch' type="checkbox" checked data-on-text="Yes" data-off-text="No"></td>
-					</tr>
-				</table>
-			</div>
-		</div>
-	</div>
-</div>
-<div id='u-company-select' style='display: none;'>
-	<?php foreach($company_branches as $cb){ ?>
-	<button class='btn btn-default select-option-company ripple-effect' cb-id='<?php echo $cb->cb_id; ?>' type='button' style='width: 100%'><h6><?php echo $cb->cb_name;?></h6></button>
-	<?php }?>
-</div>
-<div id='u-user-type-select' style='display: none;'>
-	<button class='btn btn-default select-option-user-type' type='button' style='width: 100%'>Super Admin</button>
-	<button class='btn btn-default select-option-user-type' type='button' style='width: 100%'>Admin</button>
-	<button class='btn btn-default select-option-user-type' type='button' style='width: 100%'>User</button>
 </div>
 <div id='add-popover' class='modal fade' role='dialog' tabindex='-1'>
 	<div style='border-bottom: 1px groove; height: 30px; padding-bottom: 10px;'>
@@ -142,7 +139,7 @@
 			</table>
 		</div>
 		<div class='modal-footer' style='border-top: 1px inset; padding-top: 5px; padding-bottom: 0px;'>
-			<button class='btn btn-info btn-sm btn-raised ripple-effect v-submit' type='button' style='float: right;'>Ok</button>
+			<button class='btn btn-info btn-sm btn-raised ripple-effect v-submit' type='button' style='float: right;'>Done</button>
 		</div>
 	</form>
 </div>
@@ -270,7 +267,7 @@
 		<input type='hidden' name='u-id'>
 		<input type='hidden' name='p-id'>
 		<div class='modal-footer' style='border-top: 1px inset; padding-top: 5px; padding-bottom: 0px;'>
-			<button class='btn btn-info btn-sm btn-raised ripple-effect v-submit' type='button' style='float: right;'>OK</button>
+			<button class='btn btn-info btn-sm btn-raised ripple-effect v-submit' type='button' style='float: right;'>Save Changes</button>
 		</div>
 	</form>
 </div>

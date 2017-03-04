@@ -51,4 +51,11 @@ class Profit_Cost_Centers extends CI_Controller{
         $id = Co_Departments_Model::add($data, $this->session->userdata('user'));
         echo json_encode(['id' => $id]);
     }
+    public function get_filter1(){
+        echo json_encode(Co_Profit_Cost_Centers_Model::get_filter1($this->session->userdata('user')));
+    }
+    public function filter_table(){
+        $filter1 = $this->input->get('filter1');
+        echo json_encode(['data'=> Co_Profit_Cost_Centers_Model::filter_table($this->session->userdata('user'), $filter1)]);
+    }
 }

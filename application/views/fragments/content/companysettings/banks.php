@@ -11,10 +11,10 @@
                     		<i class="fa fa-wrench"></i> Settings
                     	</button>
                   		<ul class="dropdown-menu" role="menu">
-                    		<li><a href="#">Show Filters</a></li>
-                    		<li><a href="#">Advance Search</a></li>
+                    		<li><span id='show-filters' data-status='0'>Show Filters</span></li>
+                    		<li><span id='advance-search' data-status='0'>Advance Search</span></li>
                     		<li class="divider"></li>
-                    		<li><a href="#">Show All Columns</a></li>
+                    		<li><span id='show-all-col' data-status='0'>Show All Columns</span></li>
                   		</ul>
                 	</div>
               	</div>
@@ -22,10 +22,24 @@
     		<div class='box-body hide-table-setting'>
     			<div class='row'>
     				<div class='col-md-12' id='company-table-row' style="padding-right: 20px;">
-    					<div class='row'>
-    						<div class='col-md-12'>
-    							
+    					<div class='row hide-filter'>
+    						<div class='col-md-12' style="margin: 0;">
+    							<h3 class='filter-title'>FILTERS</h3>
     						</div>
+    					</div>
+    					<div class='row hide-filter'>
+							<div class='col-md-6'>
+								<div class="input-group">
+								  <span class="input-group-addon filter-subtitle">Name</span>
+								  <select id='filter1' class='form-control' placeholder='--- SELECT ---'></select>
+								</div>
+							</div>
+							<div class='col-md-6'>
+								<div class="input-group">
+								  <span class="input-group-addon filter-subtitle">Classification</span>
+								  <select id='filter2' class='form-control' placeholder='--- SELECT ---'></select>
+								</div>
+							</div>
     					</div>
     					<div class='row'>
     						<div class='col-md-1' style="margin-bottom: 10px;">
@@ -41,7 +55,7 @@
     					<table id='banks-table' class='table table-hovered table-bordered table-condensed' style='width: 100%;'>
     						<thead>
     							<tr>
-    								<th>Options</th>
+    								<th></th>
 	    							<th>Sequence</th>
 	    							<th>Code</th>
 	    							<th>Name</th>
@@ -49,7 +63,7 @@
 	    							<th>Number</th>
 	    							<th>Classification</th>
     							</tr>
-    							<tr id="filterrow">
+    							<tr id="searchfilterrow" class='hide-searchfilter searchfilterrow'>
 	    							<th></th>
 	    							<th>Sequence</th>
 	    							<th>Code</th>
@@ -66,42 +80,6 @@
     		</div>
     	</div>
 	</div>
-	<!-- <div class='col-md-1' style="width: 1px; padding: 0;">
-		<button type='button' class='btn btn-dark btn-sm ripple-effect table-setting-toggle'>Table Setting</button>
-	</div>
-	<div class='col-md-2 table-setting-panel'>
-		<div class='col-md-12' style="padding: 0;">
-			<div class='col-md-12' style="padding: 0; height: 60px;">
-				<button type='button' class='btn btn-default btn-sm ripple-effect close-table-option' style="float: left; margin: 0; height: 100%;">X</button>
-				<h3 class='option-title' style="margin-left: 65px;">Table Setting</h3>
-			</div>
-			<div class='col-md-12'>
-				<table class='table option-table'>
-					<tr>
-						<td><p>Search</p></td>
-						<td><input type="text" class='form-control search'></td>
-					</tr>
-					<tr>
-						<td><p>Entries</p></td>
-						<td>
-							<select type="text" class='form-control entry'>
-								<option value='10'>10</option>
-								<option value='25'>25</option>
-								<option value='50'>50</option>
-								<option value='100'>100</option>
-							</select>
-						</td>
-					</tr>
-					<tr>
-						<td colspan='2' style="padding-bottom: 0;"><p>Show Action Buttons</p></td>
-					</tr>
-					<tr>
-						<td colspan='2' style="padding-top: 0;"><input id="switch-state" class='bootstrap-switch' type="checkbox" checked data-on-text="Yes" data-off-text="No"></td>
-					</tr>
-				</table>
-			</div>
-		</div>
-	</div> -->
 </div>
 
 <div id='add-popover' class='modal fade' role='dialog' tabindex='-1'>
@@ -131,12 +109,12 @@
 			</table>
 		</div>
 		<div class='modal-footer' style='border-top: 1px inset; padding-top: 5px; padding-bottom: 0px;'>
-			<button class='btn btn-info btn-sm btn-raised ripple-effect v-submit' type='button' style='float: right;'>OK</button>
+			<button class='btn btn-info btn-sm btn-raised ripple-effect v-submit' type='button' style='float: right;'>Done</button>
 		</div>
 	</form>
 </div>
 <div id='view-popover' class='modal fade' role='dialog' tabindex='-1'>
-	<div style='border-bottom: 1px groove; height: 30px padding-bottom: 10px;'>
+	<div style='border-bottom: 1px groove; height: 30px; padding-bottom: 10px;'>
 		<button class='close close-popover' type='button' data-dismiss='modal' style='padding-right: 9px;'><span aria-hidden='true'>&times;</span></button>
 		<h4 class='modal-title' style="font-family: 'Roboto Condensed', sans-serif;">View Bank</h4>
 	</div>
@@ -209,7 +187,7 @@
 		<input type='hidden' name='edit-bank-id'>
 		<input type='hidden' name='edit-cobank-id'>
 		<div class='modal-footer' style='border-top: 1px inset; padding-top: 5px; padding-bottom: 0px;'>
-			<button class='btn btn-info btn-sm btn-raised ripple-effect v-submit' type='button' style='float: right;'>OK</button>
+			<button class='btn btn-info btn-sm btn-raised ripple-effect v-submit' type='button' style='float: right;'>Save Changes</button>
 		</div>
 	</form>
 </div>
@@ -250,7 +228,7 @@
 		<input type='hidden' name='update-bank-id'>
 		<input type='hidden' name='update-cobank-id'>
 		<div class='modal-footer' style='border-top: 1px inset; padding-top: 5px; padding-bottom: 0px;'>
-			<button class='btn btn-info btn-sm btn-raised ripple-effect v-submit' type='button' style='float: right;'>OK</button>
+			<button class='btn btn-info btn-sm btn-raised ripple-effect v-submit' type='button' style='float: right;'>Save Changes</button>
 		</div>
 	</form>
 </div>

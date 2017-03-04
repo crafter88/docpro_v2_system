@@ -1,111 +1,129 @@
-<div class='side-body padding-top hide-table-setting'>
-	<div class='card custom-card col-md-9 main-table-panel'>
-		<div class='card-body' style='padding: 10px 0 0 0;'>
-			<input type="hidden" name="default_tt_id" value="<?php echo isset($tt_id) && strlen($tt_id) > 0 ? $tt_id : '0'; ?>">
-			<input type="hidden" name="default_tt_name" value="<?php echo isset($tt_name) && strlen($tt_name) > 0 ? $tt_name : ''; ?>">
-			<div id='custom-card-title' class='row' style="margin: 30px 0 0 0; text-align: center;">
-				<div class='panel panel-default' style="border: none; border-bottom: 2px solid #000">
-					<div class='panel-body'>
-						<p style="font-size: 24px; margin: 0;">Taxes</p>
+<input type="hidden" name="default_tt_id" value="<?php echo isset($tt_id) && strlen($tt_id) > 0 ? $tt_id : '0'; ?>">
+<input type="hidden" name="default_tt_name" value="<?php echo isset($tt_name) && strlen($tt_name) > 0 ? $tt_name : ''; ?>">
+<input id='mc_id' type="hidden" name="mc_id" value="<?php echo $user->main_company->cb_id; ?>">
+<input id='bc_id' type="hidden" name="bc_id" value="<?php echo $user->cb_id; ?>">
+<input id='selected_seq' type="hidden" name="selected_seq" value="1">
+<div id='m_c_d' class='appear'>
+    <div class='n_cp_n_cm' class='container' style="margin: 0;">
+    	<div class="box">
+            <div class="box-header with-border box-normal">
+                <h3 class="box-title"> </h3>
+                <div class="box-tools pull-right">
+                	<div class="btn-group">
+                  		<button type="button" class="btn btn-box-tool dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    		<i class="fa fa-wrench"></i> Settings
+                    	</button>
+                  		<ul class="dropdown-menu" role="menu">
+                    		<li><span id='show-filters' class='disable-setting' data-status='0'>Show Filters</span></li>
+                    		<li><span id='advance-search' data-status='0'>Advance Search</span></li>
+                    		<li class="divider"></li>
+                    		<li><span id='show-all-col' data-status='0'>Show All Columns</span></li>
+                  		</ul>
+                	</div>
+              	</div>
+            </div>
+    		<div class='box-body hide-table-setting'>
+				<div class='row'>
+					<div id='sequence-selector' class='col-md-12' style="margin-bottom: 12px;">
+						<div id='setup-tab-1' class='setup-tab active col-md-6'>
+							<button type='button' class='btn btn-default btn-sm btn-flat ripple-effect btn-seq <?php if($seq_active === '1'){ echo 'seq-selected'; } ?>' style='margin: 0; font-size: 14px;'>
+								<span>Tax Types</span>
+							</button>
+						</div>
+						<div id='setup-tab-2' class='setup-tab col-md-6'>
+							<button type='button' class='btn btn-default btn-sm btn-flat ripple-effect btn-seq <?php if($seq_active === '2'){ echo 'seq-selected'; } ?>' style='margin: 0; font-size: 14px;'>
+								<span>Taxes</span>
+							</button>
+						</div>
 					</div>
-				</div>
-			</div>
-			<div class='row'>
-				<div class='col-md-12'>
-					<div id='setup-tab-1' class='setup-tab active col-md-6'>
-						<span class='tax-no'>1</span>
-						<button type='button' class='btn btn-default btn-sm btn-flat ripple-effect btn-seq <?php if($seq_active === '1'){ echo 'seq-selected'; } ?>' style='margin: 0;'>
-							<span>Tax Types</span>
-						</button>
+					<div style="float: left; margin-bottom: 10px; border-left: 4px solid #000; margin-left: 16px;">
+						<ol id='tax_breadcrumb' class="breadcrumb" style="margin-left: 0;"></ol>
 					</div>
-					<div id='setup-tab-2' class='setup-tab col-md-6'>
-						<span class='tax-no'>2</span>
-						<button type='button' class='btn btn-default btn-sm btn-flat ripple-effect btn-seq <?php if($seq_active === '2'){ echo 'seq-selected'; } ?>' style='margin: 0;'>
-							<span>Taxes</span>
-						</button>
-					</div>
+					<input type="hidden" id='seq-active' name="seq-active" value="<?php echo $seq_active; ?>">
 				</div>
-				<div style="float: left; margin-bottom: 10px; border-left: 4px solid #000; margin-left: 16px;">
-					<ol id='tax_breadcrumb' class="breadcrumb" style="margin-left: 0;"></ol>
-				</div>
-				<input type="hidden" id='seq-active' name="seq-active" value="<?php echo $seq_active; ?>">
-			</div>
-			<div class='row' style="margin-right: 0; margin-left: 0;">
-				<div id='tax-seq'>
-					<ul class='seq-canvas'>
-						<li>
-							<div class='col-md-12' id='top-table-row' style="padding: 0;">
-								<button type='button' id='add-tt' class='btn btn-info btn-sm btn-raised ripple-effect title' custom-title='Add' <?php if($user->main_company->cb_id !== $user->cb_id){ echo 'disabled'; } ?>><i class='fa fa-plus'></i></button>
-								<table id='tax-types-table' class='table table-hovered table-bordered' style="min-width: 100%;">
-									<thead>
-										<th></th>
-										<th>Seq</th>
-										<th>Code</th>
-										<th>Name</th>
-										<th>Short Name</th>
-									</thead>
-								</table>
-							</div>
-						</li>
-						<li>
-							<div class='col-md-12' id='taxes-table-row' style="padding: 0;">
-								<div id='tax-alert' class='col-md-12' style="padding: 0;">
+				<div class='row' style="margin-right: 0; margin-left: 0;">
+					<div id='tax-seq'>
+						<ul class='seq-canvas'>
+							<li>
+								<div class='col-md-12' id='top-table-row' style="padding: 0 15px 0 0 !important;">
+									<div class='row'>
+			    						<div class='col-md-1' style="margin-bottom: 10px;">
+			    							<button id='add-tt' type='button' class='btn btn-info btn-sm btn-raised ripple-effect title' custom-title='Add New' <?php if($user->main_company->cb_id !== $user->cb_id){ echo 'disabled'; } ?> style='height: 34px; margin: 0;'><i class='fa fa-plus'></i> Add New</button>
+			    						</div>
+			    						<div class='col-md-11' style="margin-bottom: 10px;">
+			    							<div class="input-group table-search">
+											  <span class="input-group-addon" id="basic-addon1"><i class='fa fa-search'></i></span>
+											  <input type="text" class="form-control general-search-tax-type" placeholder="General Search..." aria-describedby="basic-addon1">
+											</div>
+			    						</div>
+			    					</div>
+									<table id='tax-types-table' class='table table-hovered table-condensed table-bordered' style="width: 100%;">
+										<thead>
+											<tr>
+												<th></th>
+												<th>Seq</th>
+												<th>Code</th>
+												<th>Name</th>
+												<th>Short Name</th>
+											</tr>
+											<tr class='hide-searchfilter searchfilterrow'>
+												<th></th>
+												<th>Seq</th>
+												<th>Code</th>
+												<th>Name</th>
+												<th>Short Name</th>
+											</tr>
+										</thead>
+									</table>
+								</div>
+							</li>
+							<li>
+								<div class='col-md-12' id='taxes-table-row' style="padding: 0 15px 0 0 !important;">
+									<div id='tax-alert' class='col-md-12' style="padding: 0;">
 										<div class='alert alert-danger tax-alert'>Please select tax type</div>
 									</div>
-								<button id='add' type='button' class='btn btn-info btn-sm btn-raised ripple-effect title' custom-title='Add' disabled><i class='fa fa-plus'></i></button>
-								<table id='taxes-table' class='table table-hovered table-bordered' style="min-width: 99.9%;">
-									<thead>
-										<th></th>
-										<th>Sequence</th>
-										<th>Code</th>
-										<th>ATC</th>
-										<th>Type</th>
-										<th>Name</th>
-										<th>Shortname</th>
-										<th>Rate</th>
-										<th>Base</th>
-									</thead>
-								</table>
-							</div>
-						</li>
-					</ul>
+									<div class='row'>
+			    						<div class='col-md-1' style="margin-bottom: 10px;">
+			    							<button id='add' type='button' class='btn btn-info btn-sm btn-raised ripple-effect title' custom-title='Add New' <?php if($user->main_company->cb_id !== $user->cb_id){ echo 'disabled'; } ?> style='height: 34px; margin: 0;'><i class='fa fa-plus'></i> Add New</button>
+			    						</div>
+			    						<div class='col-md-11' style="margin-bottom: 10px;">
+			    							<div class="input-group table-search">
+											  <span class="input-group-addon" id="basic-addon1"><i class='fa fa-search'></i></span>
+											  <input type="text" class="form-control general-search-tax" placeholder="General Search..." aria-describedby="basic-addon1">
+											</div>
+			    						</div>
+			    					</div>
+									<table id='taxes-table' class='table table-hovered table-bordered' style="width: 100%;">
+										<thead>
+											<tr>
+												<th></th>
+												<th>Sequence</th>
+												<th>Code</th>
+												<th>ATC</th>
+												<th>Type</th>
+												<th>Name</th>
+												<th>Shortname</th>
+												<th>Rate</th>
+												<th>Base</th>
+											</tr>
+											<tr class='hide-searchfilter searchfilterrow'>
+												<th></th>
+												<th>Sequence</th>
+												<th>Code</th>
+												<th>ATC</th>
+												<th>Type</th>
+												<th>Name</th>
+												<th>Shortname</th>
+												<th>Rate</th>
+												<th>Base</th>
+											</tr>
+										</thead>
+									</table>
+								</div>
+							</li>
+						</ul>
+					</div>
 				</div>
-			</div>
-		</div>
-	</div>
-	<div class='col-md-1' style="width: 1px; padding: 0; display: none;">
-		<button type='button' class='btn btn-dark btn-sm ripple-effect table-setting-toggle'>Table Setting</button>
-	</div>
-	<div class='col-md-2 table-setting-panel'>
-		<div class='col-md-12' style="padding: 0;">
-			<div class='col-md-12' style="padding: 0; height: 60px;">
-				<button type='button' class='btn btn-default btn-sm ripple-effect close-table-option' style="float: left; margin: 0; height: 100%;">X</button>
-				<h3 class='option-title' style="margin-left: 65px;">Table Setting</h3>
-			</div>
-			<div class='col-md-12'>
-				<table class='table option-table'>
-					<tr>
-						<td><p>Search</p></td>
-						<td><input type="text" class='form-control search'></td>
-					</tr>
-					<tr>
-						<td><p>Entries</p></td>
-						<td>
-							<select type="text" class='form-control entry'>
-								<option value='10'>10</option>
-								<option value='25'>25</option>
-								<option value='50'>50</option>
-								<option value='100'>100</option>
-							</select>
-						</td>
-					</tr>
-					<tr>
-						<td colspan='2' style="padding-bottom: 0;"><p>Show Action Buttons</p></td>
-					</tr>
-					<tr>
-						<td colspan='2' style="padding-top: 0;"><input id="switch-state" class='bootstrap-switch' type="checkbox" checked data-on-text="Yes" data-off-text="No"></td>
-					</tr>
-				</table>
 			</div>
 		</div>
 	</div>
@@ -133,7 +151,7 @@
 		</table>
 	</div>
 	<div class='tt-modal-footer' style='border-top: 1px solid #C1C1C1; padding-top: 5px; padding-bottom: 0px;'>
-		<button id='close-btn' class='btn btn-info btn-sm btn-raised ripple-effect' type='button' style='float: right;'>Close</button>
+		<button class='btn btn-info btn-sm btn-raised ripple-effect close-popover' type='button' style='float: right;'>Close</button>
 	</div>
 </div>
 <div id='tt-add-popover' class='modal fade' role='dialog' tabindex='-1'>
@@ -155,7 +173,7 @@
 			</table>
 		</div>
 		<div class='tt-modal-footer' style='border-top: 1px solid #C1C1C1; padding-top: 5px; padding-bottom: 0px;'>
-			<button class='btn btn-info btn-sm btn-raised ripple-effect v-submit' type='button' style='float: right;'>Ok</button>
+			<button class='btn btn-info btn-sm btn-raised ripple-effect v-submit' type='button' style='float: right;'>Done</button>
 		</div>
 	</form>
 </div>
@@ -183,7 +201,7 @@
 		</div>
 		<input type="hidden" name="tt-edit-id">
 		<div class='tt-modal-footer' style='border-top: 1px solid #C1C1C1; padding-top: 5px; padding-bottom: 0px; padding-right: 18px;'>
-			<button class='btn btn-info btn-sm btn-raised ripple-effect v-submit' type='button' style='float: right;'>Ok</button>
+			<button class='btn btn-info btn-sm btn-raised ripple-effect v-submit' type='button' style='float: right;'>Save Changes</button>
 		</div>
 	</form>
 </div>
@@ -211,7 +229,7 @@
 		</div>
 		<input type="hidden" name="tt-update-id">
 		<div class='tt-modal-footer' style='border-top: 1px solid #C1C1C1; padding-top: 5px; padding-bottom: 0px; padding-right: 18px;'>
-			<button class='btn btn-info btn-sm btn-raised ripple-effect v-submit' type='button' style='float: right;'>Ok</button>
+			<button class='btn btn-info btn-sm btn-raised ripple-effect v-submit' type='button' style='float: right;'>Save Changes</button>
 		</div>
 	</form>
 </div>
@@ -241,7 +259,7 @@
 				</div>
 				<input type="hidden" id='tt-delete-id' name="tt-delete-id">
 				<div class='tt-modal-footer' style='border-top: 1px solid #C1C1C1; padding-top: 5px; padding-bottom: 0px; padding-right: 18px;'>
-					<button class='btn btn-danger btn-sm btn-raised ripple-effect' type='submit' style='float: right;'>Ok</button>
+					<button class='btn btn-danger btn-sm btn-raised ripple-effect' type='submit' style='float: right;'>Confirm</button>
 				</div>
 			</div>
 		</form>
@@ -290,12 +308,12 @@
 			</table>
 		</div>
 		<div class='modal-footer' style='border-top: 1px inset; padding-top: 5px; padding-bottom: 0px;'>
-			<button class='btn btn-info btn-sm btn-raised ripple-effect v-submit' type='button' style='float: right;'>Ok</button>
+			<button class='btn btn-info btn-sm btn-raised ripple-effect v-submit' type='button' style='float: right;'>Done</button>
 		</div>
 	</form>
 </div>
 <div id='view-popover' class='modal fade' role='dialog' tabindex='-1'>
-	<div style='border-bottom: 1px groove; height: 30px padding-bottom: 10px;'>
+	<div style='border-bottom: 1px groove; height: 30px; padding-bottom: 10px;'>
 		<button class='close close-popover' type='button' data-dismiss='modal' style='padding-right: 9px;'><span aria-hidden='true'>&times;</span></button>
 		<h4 class='modal-title' style="font-family: 'Roboto Condensed', sans-serif;">View Tax</h4>
 	</div>
@@ -391,7 +409,7 @@
 		</div>
 		<input type='hidden' name='edit-id'>
 		<div class='modal-footer' style='border-top: 1px inset; padding-top: 5px; padding-bottom: 0px;'>
-			<button class='btn btn-info btn-sm btn-raised ripple-effect v-submit' type='button' style='float: right;'>OK</button>
+			<button class='btn btn-info btn-sm btn-raised ripple-effect v-submit' type='button' style='float: right;'>Save Changes</button>
 		</div>
 	</form>
 </div>
@@ -445,7 +463,7 @@
 		</div>
 		<input name='update-id' type='hidden'>
 		<div class='modal-footer' style='border-top: 1px inset; padding-top: 5px; padding-bottom: 0px;'>
-			<button class='btn btn-info btn-sm btn-raised ripple-effect v-submit' type='button' style='float: right;'>OK</button>
+			<button class='btn btn-info btn-sm btn-raised ripple-effect v-submit' type='button' style='float: right;'>Save Changes</button>
 		</div>
 	</form>
 </div>
@@ -492,7 +510,7 @@
 			</div>
 			<input id='delete-id' name='delete-id' type='hidden'>
 			<div class='modal-footer' style='border-top: 1px inset; padding-top: 5px; padding-bottom: 0px;'>
-				<button class='btn btn-danger btn-sm btn-raised ripple-effect' type='submit' style='float: right;'>OK</button>
+				<button class='btn btn-danger btn-sm btn-raised ripple-effect' type='submit' style='float: right;'>Confirm</button>
 			</div>
 		</form>
 	</div>

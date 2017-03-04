@@ -222,6 +222,7 @@ $route['company_settings/branches/get']									= 'Company_Settings_DIR/Branches
 $route['company_settings/branches/add']									= 'Company_Settings_DIR/Branches/add';
 $route['company_settings/branches/edit']								= 'Company_Settings_DIR/Branches/edit';
 $route['company_settings/branches/update']								= 'Company_Settings_DIR/Branches/update';
+$route['company_settings/branches/filter_table']						= 'Company_Settings_DIR/Branches/filter_table';
 
 $route['company_settings/users']										= 'Company_Settings/get_users';
 $route['company_settings/users/get']									= 'Company_Settings_DIR/Users/get';
@@ -229,6 +230,7 @@ $route['company_settings/users/add']									= 'Company_Settings_DIR/Users/add';
 $route['company_settings/users/edit']									= 'Company_Settings_DIR/Users/edit';
 $route['company_settings/users/get_branches']							= 'Company_Settings_DIR/Users/get_branches';
 $route['company_settings/users/add_branch']								= 'Company_Settings_DIR/Users/add_branch';
+$route['company_settings/users/filter_table']							= 'Company_Settings_DIR/Users/filter_table';
 
 $route['company_settings/journals']										= 'Company_Settings/get_journals';
 $route['company_settings/journals/get']									= 'Company_Settings_DIR/Journals/get';
@@ -244,6 +246,9 @@ $route['company_settings/documents/add']								= 'Company_Settings_DIR/Document
 $route['company_settings/documents/edit']								= 'Company_Settings_DIR/Documents/edit';
 $route['company_settings/documents/update']								= 'Company_Settings_DIR/Documents/update';
 $route['company_settings/documents/get_journals']						= 'Company_Settings_DIR/Documents/get_journals';
+$route['company_settings/documents/get_filter1']						= 'Company_Settings_DIR/Documents/get_filter1';
+$route['company_settings/documents/get_filter2']						= 'Company_Settings_DIR/Documents/get_filter2';
+$route['company_settings/documents/filter_table']						= 'Company_Settings_DIR/Documents/filter_table';
 
 $route['company_settings/modes_of_payment']								= 'Company_Settings/get_modes_of_payment';
 $route['company_settings/modes_of_payment/get']							= 'Company_Settings_DIR/Modes_Of_Payment/get';
@@ -251,6 +256,8 @@ $route['company_settings/modes_of_payment/add']							= 'Company_Settings_DIR/Mo
 $route['company_settings/modes_of_payment/edit']						= 'Company_Settings_DIR/Modes_Of_Payment/edit';
 $route['company_settings/modes_of_payment/update']						= 'Company_Settings_DIR/Modes_Of_Payment/update';
 $route['company_settings/modes_of_payment/get_types_of_payment']		= 'Company_Settings_DIR/Modes_Of_Payment/get_types_of_payment';
+$route['company_settings/modes_of_payment/get_filter1']					= 'Company_Settings_DIR/Modes_Of_Payment/get_filter1';
+$route['company_settings/modes_of_payment/filter_table']				= 'Company_Settings_DIR/Modes_Of_Payment/filter_table';
 
 $route['company_settings/taxes']										= 'Company_Settings/get_taxes';
 $route['company_settings/taxes/get/(:any)']								= 'Company_Settings_DIR/Taxes/get_list/$1';
@@ -284,6 +291,9 @@ $route['company_settings/business_partners/get_bp_type']				= 'Company_Settings_
 $route['company_settings/business_partners/get_tax_1']					= 'Company_Settings_DIR/Business_Partners/get_tax_1';
 $route['company_settings/business_partners/get_tax_2']					= 'Company_Settings_DIR/Business_Partners/get_tax_2';
 $route['company_settings/business_partners/get_tax_3']					= 'Company_Settings_DIR/Business_Partners/get_tax_3';
+$route['company_settings/business_partners/get_filter1']				= 'Company_Settings_DIR/Business_Partners/get_filter1';
+$route['company_settings/business_partners/get_filter2']				= 'Company_Settings_DIR/Business_Partners/get_filter2';
+$route['company_settings/business_partners/filter_table']				= 'Company_Settings_DIR/Business_Partners/filter_table';
 
 $route['company_settings/departments']									= 'Company_Settings/get_departments';
 $route['company_settings/departments/get']								= 'Company_Settings_DIR/Departments/get';
@@ -298,6 +308,8 @@ $route['company_settings/profit_cost_centers/edit']						= 'Company_Settings_DIR
 $route['company_settings/profit_cost_centers/update']					= 'Company_Settings_DIR/Profit_Cost_Centers/update';
 $route['company_settings/profit_cost_centers/get_departments']			= 'Company_Settings_DIR/Profit_Cost_Centers/get_departments';
 $route['company_settings/profit_cost_centers/add_department']			= 'Company_Settings_DIR/Profit_Cost_Centers/add_department';
+$route['company_settings/profit_cost_centers/get_filter1']				= 'Company_Settings_DIR/Profit_Cost_Centers/get_filter1';
+$route['company_settings/profit_cost_centers/filter_table']				= 'Company_Settings_DIR/Profit_Cost_Centers/filter_table';
 
 $route['company_settings/products']										= 'Company_Settings/get_products';
 $route['company_settings/products/get']									= 'Company_Settings_DIR/Products/get';
@@ -308,6 +320,9 @@ $route['company_settings/products/get_departments']						= 'Company_Settings_DIR
 $route['company_settings/products/get_profit_cost_center']				= 'Company_Settings_DIR/Products/get_profit_cost_center';
 $route['company_settings/products/add_department']						= 'Company_Settings_DIR/Products/add_department';
 $route['company_settings/products/add_pcc']								= 'Company_Settings_DIR/Products/add_pcc';
+$route['company_settings/products/get_filter1']							= 'Company_Settings_DIR/Products/get_filter1';
+$route['company_settings/products/get_filter2']							= 'Company_Settings_DIR/Products/get_filter2';
+$route['company_settings/products/filter_table']						= 'Company_Settings_DIR/Products/filter_table';
 
 $route['company_settings/services']										= 'Company_Settings/get_services';
 $route['company_settings/services/get']									= 'Company_Settings_DIR/Services/get';
@@ -318,6 +333,9 @@ $route['company_settings/services/get_departments']						= 'Company_Settings_DIR
 $route['company_settings/services/get_profit_cost_center']				= 'Company_Settings_DIR/Services/get_profit_cost_center';
 $route['company_settings/services/add_department']						= 'Company_Settings_DIR/Services/add_department';
 $route['company_settings/services/add_pcc']								= 'Company_Settings_DIR/Services/add_pcc';
+$route['company_settings/services/get_filter1']							= 'Company_Settings_DIR/Services/get_filter1';
+$route['company_settings/services/get_filter2']							= 'Company_Settings_DIR/Services/get_filter2';
+$route['company_settings/services/filter_table']						= 'Company_Settings_DIR/Services/filter_table';
 
 $route['company_settings/discounts']									= 'Company_Settings/get_discounts';
 $route['company_settings/discounts/get']								= 'Company_Settings_DIR/Discounts/get';
@@ -326,29 +344,6 @@ $route['company_settings/discounts/edit']								= 'Company_Settings_DIR/Discoun
 $route['company_settings/discounts/update']								= 'Company_Settings_DIR/Discounts/update';
 
 $route['company_settings/chart_of_accounts']							= 'Company_Settings/get_chart_of_accounts';
-// $route['company_settings/chart_of_accounts/setup']						= 'Company_Settings_DIR/Chart_of_Accounts/setup';
-// $route['company_settings/chart_of_accounts/coa_lvl_1']					= 'Company_Settings_DIR/Chart_of_Accounts/get_lvl_1'; 
-// $route['company_settings/chart_of_accounts/coa_lvl_2/get/(:any)']			= 'Company_Settings_DIR/Chart_of_Accounts/get_lvl_2/$1'; 
-// $route['company_settings/chart_of_accounts/coa_lvl_3/get/(:any)']			= 'Company_Settings_DIR/Chart_of_Accounts/get_lvl_3/$1'; 
-// $route['company_settings/chart_of_accounts/coa_lvl_4/get/(:any)']			= 'Company_Settings_DIR/Chart_of_Accounts/get_lvl_4/$1'; 
-
-// $route['company_settings/chart_of_accounts/coa_lvl_1/add']				= 'Company_Settings_DIR/Chart_of_Accounts/add_lvl_1';
-// $route['company_settings/chart_of_accounts/coa_lvl_1/edit']				= 'Company_Settings_DIR/Chart_of_Accounts/edit_lvl_1';
-// $route['company_settings/chart_of_accounts/coa_lvl_1/delete']			= 'Company_Settings_DIR/Chart_of_Accounts/delete_lvl_1';
-
-// $route['company_settings/chart_of_accounts/coa_lvl_2/add']				= 'Company_Settings_DIR/Chart_of_Accounts/add_lvl_2';
-// $route['company_settings/chart_of_accounts/coa_lvl_2/edit']				= 'Company_Settings_DIR/Chart_of_Accounts/edit_lvl_2';
-// $route['company_settings/chart_of_accounts/coa_lvl_2/delete']			= 'Company_Settings_DIR/Chart_of_Accounts/delete_lvl_2';
-
-// $route['company_settings/chart_of_accounts/coa_lvl_3/add']				= 'Company_Settings_DIR/Chart_of_Accounts/add_lvl_3';
-// $route['company_settings/chart_of_accounts/coa_lvl_3/edit']				= 'Company_Settings_DIR/Chart_of_Accounts/edit_lvl_3';
-// $route['company_settings/chart_of_accounts/coa_lvl_3/delete']			= 'Company_Settings_DIR/Chart_of_Accounts/delete_lvl_3';
-
-// $route['company_settings/chart_of_accounts/coa_lvl_4/add']				= 'Company_Settings_DIR/Chart_of_Accounts/add_lvl_4';
-// $route['company_settings/chart_of_accounts/coa_lvl_4/edit']				= 'Company_Settings_DIR/Chart_of_Accounts/edit_lvl_4';
-// $route['company_settings/chart_of_accounts/coa_lvl_4/delete']			= 'Company_Settings_DIR/Chart_of_Accounts/delete_lvl_4';
-
-// $route['company_settings/chart_of_accounts/co_coa']						= 'Company_Settings_DIR/Chart_of_Accounts/co_coa';
 $route['company_settings/chart_of_accounts/acc_elements_get']				= 'Company_Settings_DIR/Chart_of_Accounts/acc_elements_get';
 $route['company_settings/chart_of_accounts/acc_elements_add']				= 'Company_Settings_DIR/Chart_of_Accounts/acc_elements_add';
 $route['company_settings/chart_of_accounts/acc_elements_edit']				= 'Company_Settings_DIR/Chart_of_Accounts/acc_elements_edit';
@@ -396,16 +391,6 @@ $route['company_settings/chart_of_accounts/enable_lvl_4']					= 'Company_Setting
 $route['company_settings/chart_of_accounts/disable_lvl_4']					= 'Company_Settings_DIR/Chart_of_Accounts/disable_lvl_4';
 $route['company_settings/chart_of_accounts/enable_lvl_5']					= 'Company_Settings_DIR/Chart_of_Accounts/enable_lvl_5';
 $route['company_settings/chart_of_accounts/disable_lvl_5']					= 'Company_Settings_DIR/Chart_of_Accounts/disable_lvl_5';
-// $route['company_settings/chart_of_accounts/bir_get']						= 'Company_Settings_DIR/Chart_of_Accounts/bir_get';
-// $route['company_settings/chart_of_accounts/bir_add']						= 'Company_Settings_DIR/Chart_of_Accounts/bir_add';
-// $route['company_settings/chart_of_accounts/bir_edit']						= 'Company_Settings_DIR/Chart_of_Accounts/bir_edit';
-// $route['company_settings/chart_of_accounts/bir_update']						= 'Company_Settings_DIR/Chart_of_Accounts/bir_update';
-// $route['company_settings/chart_of_accounts/bir_delete']						= 'Company_Settings_DIR/Chart_of_Accounts/bir_delete';
-// $route['company_settings/chart_of_accounts/coa_get']						= 'Company_Settings_DIR/Chart_of_Accounts/coa_get';
-// $route['company_settings/chart_of_accounts/coa_add']						= 'Company_Settings_DIR/Chart_of_Accounts/coa_add';
-// $route['company_settings/chart_of_accounts/coa_edit']						= 'Company_Settings_DIR/Chart_of_Accounts/coa_edit';
-// $route['company_settings/chart_of_accounts/coa_update']						= 'Company_Settings_DIR/Chart_of_Accounts/coa_update';
-// $route['company_settings/chart_of_accounts/coa_delete']						= 'Company_Settings_DIR/Chart_of_Accounts/coa_delete';
 $route['company_settings/chart_of_accounts/reload_lvl_2/(:any)']			= 'Company_Settings_DIR/Chart_of_Accounts/reload_lvl_2/$1';
 $route['company_settings/chart_of_accounts/reload_lvl_3/(:any)']			= 'Company_Settings_DIR/Chart_of_Accounts/reload_lvl_3/$1';
 $route['company_settings/chart_of_accounts/reload_lvl_4/(:any)']			= 'Company_Settings_DIR/Chart_of_Accounts/reload_lvl_4/$1';
@@ -419,6 +404,9 @@ $route['company_settings/banks/get']									= 'Company_Settings_DIR/Banks/get';
 $route['company_settings/banks/add']									= 'Company_Settings_DIR/Banks/add';
 $route['company_settings/banks/edit']									= 'Company_Settings_DIR/Banks/edit';
 $route['company_settings/banks/update']									= 'Company_Settings_DIR/Banks/update';
+$route['company_settings/banks/get_filter1']							= 'Company_Settings_DIR/Banks/get_filter1';
+$route['company_settings/banks/get_filter2']							= 'Company_Settings_DIR/Banks/get_filter2';
+$route['company_settings/banks/filter_table']							= 'Company_Settings_DIR/Banks/filter_table';
 
 $route['company_settings/others']										= 'Company_Settings/get_others';
 $route['company_settings/others/get']									= 'Company_Settings_DIR/Others/get';

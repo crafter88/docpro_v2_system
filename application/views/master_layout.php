@@ -112,141 +112,301 @@
                 </header>
                 <aside class="main-sidebar">
                     <section class="sidebar">
-                        <ul class="sidebar-menu" id='main-nav'>
-                            <li class="treeview" id='menu-icon'>
-                                <a href='#' class="sidebar-toggle" data-toggle="offcanvas" role="button">
-                                    <i class="fa fa-bars"></i>
-                                </a>
-                            </li>
-                            <!-- <li class="header">MAIN NAVIGATION</li> -->
-                            <li class="treeview <?php echo $active_nav === '1' ? 'active' : ''; ?>">
-                                <a href="#" url="<?php echo base_url(); ?>home">
-                                    <i class="fa fa-dashboard"></i> <span>Dashboard</span>
-                                </a>
-                            </li>
-                            <li class="<?php echo $active_nav === '2' ? 'active' : ''; ?>">
-                                <a href="#" url="<?php echo base_url(); ?>transactions">
-                                    <i class="icon fa fa-money"></i> <span>Transaction</span>
-                                </a>
-                            </li>
-                            <li class="<?php echo $active_nav === '3' ? 'active' : ''; ?>">
-                                <a href="#">
-                                    <i class="icon fa fa-file-text-o"></i> <span>Journals</span>
-                                    <span class="pull-right-container">
-                                        <i class="fa fa-angle-left pull-right"></i>
-                                    </span>
-                                </a>
-                                <ul class="treeview-menu">
-                                    <li class="active"><a href="#"><i class="fa fa-file"></i> Sales</a></li>
-                                    <li><a href="#"><i class="fa fa-file"></i> Receipts</a></li>
-                                    <li><a href="#"><i class="fa fa-file"></i> Collections</a></li>
-                                    <li><a href="#"><i class="fa fa-file"></i> Purchases</a></li>
-                                    <li><a href="#"><i class="fa fa-file"></i> Disbursements</a></li>
-                                    <li><a href="#"><i class="fa fa-file"></i> General</a></li>
-                                    <li><a href="#"><i class="fa fa-file"></i> Specials</a></li>
-                                </ul>
-                            </li>
-                            <li class="<?php echo $active_nav === '4' ? 'active' : ''; ?>">
-                                <a href="#" url="<?php echo base_url(); ?>financial_reports">
-                                    <i class="icon fa fa-folder-open"></i>
-                                    <span>Financial Reports</span>
-                                    <span class="pull-right-container">
-                                        <i class="fa fa-angle-left pull-right"></i>
-                                    </span>
-                                </a>
-                                <ul class="treeview-menu">
-                                    <li class="active"><a href="#"><i class="fa fa-file"></i> Trial Balance</a></li>
-                                    <li><a href="#"><i class="fa fa-file"></i> Balance Sheet</a></li>
-                                    <li><a href="#"><i class="fa fa-file"></i> Income Statement</a></li>
-                                    <li><a href="#"><i class="fa fa-file"></i> Equity Statement</a></li>
-                                    <li><a href="#"><i class="fa fa-file"></i> Cashflow Statement</a></li>
-                                </ul>
-                            </li>
-                            <li class="<?php echo $active_nav === '5' ? 'active' : ''; ?>">
-                                <a href="#" url="<?php echo base_url(); ?>company_reports">
-                                    <i class="icon fa fa-building"></i>
-                                    <span>Company Reports</span>
-                                    <span class="pull-right-container">
-                                        <i class="fa fa-angle-left pull-right"></i>
-                                    </span>
-                                </a>
-                                <ul class="treeview-menu">
-                                    <li class="active"><a href="#"><i class="fa fa-file"></i> Statement of Accounts</a></li>
-                                    <li><a href="#"><i class="fa fa-file"></i> Company Documents</a></li>
-                                    <li><a href="#"><i class="fa fa-file"></i> Bank Statements</a></li>
-                                    <li><a href="#"><i class="fa fa-file"></i> Fixed Assets</a></li>
-                                </ul>
-                            </li>
-                            <li class="<?php echo $active_nav === '6' ? 'active' : ''; ?>">
-                                <a href="#" url="<?php echo base_url(); ?>book_of_accounts">
-                                    <i class="icon fa fa-book"></i>
-                                    <span>Book of Accounts</span>
-                                    <span class="pull-right-container">
-                                        <i class="fa fa-angle-left pull-right"></i>
-                                    </span>
-                                </a>
-                                <ul class="treeview-menu">
-                                    <li class="active"><a href="#"><i class="fa fa-file"></i> General Ledger</a></li>
-                                    <li><a href="#"><i class="fa fa-file"></i> Subsidiary Ledger</a></li>
-                                    <li><a href="#"><i class="fa fa-file"></i> Sales</a></li>
-                                    <li><a href="#"><i class="fa fa-file"></i> Receipts</a></li>
-                                    <li><a href="#"><i class="fa fa-file"></i> Collections</a></li>
-                                    <li><a href="#"><i class="fa fa-file"></i> Purchases</a></li>
-                                    <li><a href="#"><i class="fa fa-file"></i> Disbursements</a></li>
-                                    <li><a href="#"><i class="fa fa-file"></i> Adjustments</a></li>
-                                    <li><a href="#"><i class="fa fa-file"></i> Others</a></li>
-                                </ul>
-                            </li>
-                            <li class="<?php echo $active_nav === '7' ? 'active' : ''; ?>">
-                                <a href="#" url="<?php echo base_url(); ?>company_settings">
-                                    <i class="icon fa fa-gear"></i>
-                                    <span>Company Settings</span>
-                                    <span class="pull-right-container">
-                                        <i class="fa fa-angle-left pull-right"></i>
-                                    </span>
-                                </a>
-                                <ul class="treeview-menu" style="overflow: auto; max-height: 270px;">
-                                    <li class="active"><a href="#"><i class="fa fa-file"></i> Branches</a></li>
-                                    <li><a href="#"><i class="fa fa-file"></i> Users</a></li>
-                                    <li><a href="#"><i class="fa fa-file"></i> Journals</a></li>
-                                    <li><a href="#"><i class="fa fa-file"></i> Transactions</a></li>
-                                    <li><a href="#"><i class="fa fa-file"></i> Documents</a></li>
-                                    <li><a href="#"><i class="fa fa-file"></i> Modes of Payment</a></li>
-                                    <li><a href="#"><i class="fa fa-file"></i> Taxes</a></li>
-                                    <li><a href="#"><i class="fa fa-file"></i> Business Partners</a></li>
-                                    <li><a href="#"><i class="fa fa-file"></i> Departments</a></li>
-                                    <li><a href="#"><i class="fa fa-file"></i> Profit Cost Centers</a></li>
-                                    <li><a href="#"><i class="fa fa-file"></i> Products</a></li>
-                                    <li><a href="#"><i class="fa fa-file"></i> Services</a></li>
-                                    <li><a href="#"><i class="fa fa-file"></i> Discounts</a></li>
-                                    <li><a href="#"><i class="fa fa-file"></i> Chart of Accounts</a></li>
-                                    <li><a href="#"><i class="fa fa-file"></i> Banks</a></li>
-                                    <li><a href="#"><i class="fa fa-file"></i> Journal Entries</a></li>
-                                    <li><a href="#"><i class="fa fa-file"></i> Others</a></li>
-                                </ul>
-                            </li>
-                            <li class="<?php echo $active_nav === '8' ? 'active' : ''; ?>">
-                                <a href="#" url="<?php echo base_url(); ?>tables">
-                                    <i class="icon fa fa-table"></i>
-                                    <span>Tables</span>
-                                    <span class="pull-right-container">
-                                        <i class="fa fa-angle-left pull-right"></i>
-                                    </span>
-                                </a>
-                                <ul class="treeview-menu" style="overflow: auto; max-height: 320px;">
-                                    <li class="active"><a href="#"><i class="fa fa-file"></i> Value Added Tax</a></li>
-                                    <li><a href="#"><i class="fa fa-file"></i> Withholding Tax</a></li>
-                                    <li><a href="#"><i class="fa fa-file"></i> Accumulator</a></li>
-                                    <li><a href="#"><i class="fa fa-file"></i> Financial Statements</a></li>
-                                    <li><a href="#"><i class="fa fa-file"></i> Trial Balance</a></li>
-                                    <li><a href="#"><i class="fa fa-file"></i> General Ledger</a></li>
-                                    <li><a href="#"><i class="fa fa-file"></i> Subsidiary Ledger</a></li>
-                                </ul>
-                            </li>
-                        </ul>
+                        <?php 
+                            if($this->session->userdata('user')->u_company === 'company' && $this->session->userdata('user')->setup === '0')
+                            {
+                        ?>
+                            <ul class="sidebar-menu" id='main-nav'>
+                                <li class="treeview" id='menu-icon'>
+                                    <a href='#' class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                                        <i class="fa fa-bars"></i>
+                                    </a>
+                                </li>
+                                <!-- <li class="header">MAIN NAVIGATION</li> -->
+                                <li class="treeview <?php echo $active_nav === '1' ? 'active' : ''; ?>">
+                                    <a href="#" url="<?php echo base_url(); ?>home">
+                                        <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+                                    </a>
+                                </li>
+                                <li class="<?php echo $active_nav === '2' ? 'active' : ''; ?>">
+                                    <a href="#" url="<?php echo base_url(); ?>transactions">
+                                        <i class="icon fa fa-money"></i> <span>Transaction</span>
+                                    </a>
+                                </li>
+                                <li class="<?php echo $active_nav === '3' ? 'active' : ''; ?>">
+                                    <a href="#">
+                                        <i class="icon fa fa-file-text-o"></i> <span>Journals</span>
+                                        <span class="pull-right-container">
+                                            <i class="fa fa-angle-left pull-right"></i>
+                                        </span>
+                                    </a>
+                                    <ul class="treeview-menu">
+                                        <li class="active"><a href="#"><i class="fa fa-file"></i> Sales</a></li>
+                                        <li><a href="#"><i class="fa fa-file"></i> Receipts</a></li>
+                                        <li><a href="#"><i class="fa fa-file"></i> Collections</a></li>
+                                        <li><a href="#"><i class="fa fa-file"></i> Purchases</a></li>
+                                        <li><a href="#"><i class="fa fa-file"></i> Disbursements</a></li>
+                                        <li><a href="#"><i class="fa fa-file"></i> General</a></li>
+                                        <li><a href="#"><i class="fa fa-file"></i> Specials</a></li>
+                                    </ul>
+                                </li>
+                                <li class="<?php echo $active_nav === '4' ? 'active' : ''; ?>">
+                                    <a href="#" url="<?php echo base_url(); ?>financial_reports">
+                                        <i class="icon fa fa-folder-open"></i>
+                                        <span>Financial Reports</span>
+                                        <span class="pull-right-container">
+                                            <i class="fa fa-angle-left pull-right"></i>
+                                        </span>
+                                    </a>
+                                    <ul class="treeview-menu">
+                                        <li class="active"><a href="#"><i class="fa fa-file"></i> Trial Balance</a></li>
+                                        <li><a href="#"><i class="fa fa-file"></i> Balance Sheet</a></li>
+                                        <li><a href="#"><i class="fa fa-file"></i> Income Statement</a></li>
+                                        <li><a href="#"><i class="fa fa-file"></i> Equity Statement</a></li>
+                                        <li><a href="#"><i class="fa fa-file"></i> Cashflow Statement</a></li>
+                                    </ul>
+                                </li>
+                                <li class="<?php echo $active_nav === '5' ? 'active' : ''; ?>">
+                                    <a href="#" url="<?php echo base_url(); ?>company_reports">
+                                        <i class="icon fa fa-building"></i>
+                                        <span>Company Reports</span>
+                                        <span class="pull-right-container">
+                                            <i class="fa fa-angle-left pull-right"></i>
+                                        </span>
+                                    </a>
+                                    <ul class="treeview-menu">
+                                        <li class="active"><a href="#"><i class="fa fa-file"></i> Statement of Accounts</a></li>
+                                        <li><a href="#"><i class="fa fa-file"></i> Company Documents</a></li>
+                                        <li><a href="#"><i class="fa fa-file"></i> Bank Statements</a></li>
+                                        <li><a href="#"><i class="fa fa-file"></i> Fixed Assets</a></li>
+                                    </ul>
+                                </li>
+                                <li class="<?php echo $active_nav === '6' ? 'active' : ''; ?>">
+                                    <a href="#" url="<?php echo base_url(); ?>book_of_accounts">
+                                        <i class="icon fa fa-book"></i>
+                                        <span>Book of Accounts</span>
+                                        <span class="pull-right-container">
+                                            <i class="fa fa-angle-left pull-right"></i>
+                                        </span>
+                                    </a>
+                                    <ul class="treeview-menu">
+                                        <li class="active"><a href="#"><i class="fa fa-file"></i> General Ledger</a></li>
+                                        <li><a href="#"><i class="fa fa-file"></i> Subsidiary Ledger</a></li>
+                                        <li><a href="#"><i class="fa fa-file"></i> Sales</a></li>
+                                        <li><a href="#"><i class="fa fa-file"></i> Receipts</a></li>
+                                        <li><a href="#"><i class="fa fa-file"></i> Collections</a></li>
+                                        <li><a href="#"><i class="fa fa-file"></i> Purchases</a></li>
+                                        <li><a href="#"><i class="fa fa-file"></i> Disbursements</a></li>
+                                        <li><a href="#"><i class="fa fa-file"></i> Adjustments</a></li>
+                                        <li><a href="#"><i class="fa fa-file"></i> Others</a></li>
+                                    </ul>
+                                </li>
+                                <li class="<?php echo $active_nav === '7' ? 'active' : ''; ?>">
+                                    <a href="#" url="<?php echo base_url(); ?>company_settings">
+                                        <i class="icon fa fa-gear"></i>
+                                        <span>Company Settings</span>
+                                        <span class="pull-right-container">
+                                            <i class="fa fa-angle-left pull-right"></i>
+                                        </span>
+                                    </a>
+                                    <ul class="treeview-menu" style="overflow: auto; max-height: 270px;">
+                                        <li class="active"><a href="#"><i class="fa fa-file"></i> Branches</a></li>
+                                        <li><a href="#"><i class="fa fa-file"></i> Users</a></li>
+                                        <li><a href="#"><i class="fa fa-file"></i> Journals</a></li>
+                                        <li><a href="#"><i class="fa fa-file"></i> Transactions</a></li>
+                                        <li><a href="#"><i class="fa fa-file"></i> Documents</a></li>
+                                        <li><a href="#"><i class="fa fa-file"></i> Modes of Payment</a></li>
+                                        <li><a href="#"><i class="fa fa-file"></i> Taxes</a></li>
+                                        <li><a href="#"><i class="fa fa-file"></i> Business Partners</a></li>
+                                        <li><a href="#"><i class="fa fa-file"></i> Departments</a></li>
+                                        <li><a href="#"><i class="fa fa-file"></i> Profit Cost Centers</a></li>
+                                        <li><a href="#"><i class="fa fa-file"></i> Products</a></li>
+                                        <li><a href="#"><i class="fa fa-file"></i> Services</a></li>
+                                        <li><a href="#"><i class="fa fa-file"></i> Discounts</a></li>
+                                        <li><a href="#"><i class="fa fa-file"></i> Chart of Accounts</a></li>
+                                        <li><a href="#"><i class="fa fa-file"></i> Banks</a></li>
+                                        <li><a href="#"><i class="fa fa-file"></i> Journal Entries</a></li>
+                                        <li><a href="#"><i class="fa fa-file"></i> Others</a></li>
+                                    </ul>
+                                </li>
+                                <li class="<?php echo $active_nav === '8' ? 'active' : ''; ?>">
+                                    <a href="#" url="<?php echo base_url(); ?>tables">
+                                        <i class="icon fa fa-table"></i>
+                                        <span>Tables</span>
+                                        <span class="pull-right-container">
+                                            <i class="fa fa-angle-left pull-right"></i>
+                                        </span>
+                                    </a>
+                                    <ul class="treeview-menu" style="overflow: auto; max-height: 320px;">
+                                        <li class="active"><a href="#"><i class="fa fa-file"></i> Value Added Tax</a></li>
+                                        <li><a href="#"><i class="fa fa-file"></i> Withholding Tax</a></li>
+                                        <li><a href="#"><i class="fa fa-file"></i> Accumulator</a></li>
+                                        <li><a href="#"><i class="fa fa-file"></i> Financial Statements</a></li>
+                                        <li><a href="#"><i class="fa fa-file"></i> Trial Balance</a></li>
+                                        <li><a href="#"><i class="fa fa-file"></i> General Ledger</a></li>
+                                        <li><a href="#"><i class="fa fa-file"></i> Subsidiary Ledger</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        <?php
+
+                            }
+                            if($this->session->userdata('user')->u_type === 'Super Admin' && $this->session->userdata('user')->u_company === 'docpro')
+                            {
+                        ?>
+                            <ul class="sidebar-menu" id='main-nav'>
+                                <li class="treeview" id='menu-icon'>
+                                    <a href='#' class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                                        <i class="fa fa-bars"></i>
+                                    </a>
+                                </li>
+                                <!-- <li class="header">MAIN NAVIGATION</li> -->
+                                <li class="treeview <?php echo $active_nav === '1' ? 'active' : ''; ?>">
+                                    <a href="#" url="<?php echo base_url(); ?>home">
+                                        <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+                                    </a>
+                                </li>
+                                <li class="<?php echo $active_nav === '2' ? 'active' : ''; ?>">
+                                    <a href="#" url="<?php echo base_url(); ?>transactions">
+                                        <i class="icon fa fa-money"></i> <span>Transaction</span>
+                                    </a>
+                                </li>
+                                <li class="<?php echo $active_nav === '3' ? 'active' : ''; ?>">
+                                    <a href="#">
+                                        <i class="icon fa fa-file-text-o"></i> <span>Journals</span>
+                                        <span class="pull-right-container">
+                                            <i class="fa fa-angle-left pull-right"></i>
+                                        </span>
+                                    </a>
+                                    <ul class="treeview-menu">
+                                        <li class="active"><a href="#"><i class="fa fa-file"></i> Sales</a></li>
+                                        <li><a href="#"><i class="fa fa-file"></i> Receipts</a></li>
+                                        <li><a href="#"><i class="fa fa-file"></i> Collections</a></li>
+                                        <li><a href="#"><i class="fa fa-file"></i> Purchases</a></li>
+                                        <li><a href="#"><i class="fa fa-file"></i> Disbursements</a></li>
+                                        <li><a href="#"><i class="fa fa-file"></i> General</a></li>
+                                        <li><a href="#"><i class="fa fa-file"></i> Specials</a></li>
+                                    </ul>
+                                </li>
+                                <li class="<?php echo $active_nav === '4' ? 'active' : ''; ?>">
+                                    <a href="#" url="<?php echo base_url(); ?>financial_reports">
+                                        <i class="icon fa fa-folder-open"></i>
+                                        <span>Financial Reports</span>
+                                        <span class="pull-right-container">
+                                            <i class="fa fa-angle-left pull-right"></i>
+                                        </span>
+                                    </a>
+                                    <ul class="treeview-menu">
+                                        <li class="active"><a href="#"><i class="fa fa-file"></i> Trial Balance</a></li>
+                                        <li><a href="#"><i class="fa fa-file"></i> Balance Sheet</a></li>
+                                        <li><a href="#"><i class="fa fa-file"></i> Income Statement</a></li>
+                                        <li><a href="#"><i class="fa fa-file"></i> Equity Statement</a></li>
+                                        <li><a href="#"><i class="fa fa-file"></i> Cashflow Statement</a></li>
+                                    </ul>
+                                </li>
+                                <li class="<?php echo $active_nav === '5' ? 'active' : ''; ?>">
+                                    <a href="#" url="<?php echo base_url(); ?>company_reports">
+                                        <i class="icon fa fa-building"></i>
+                                        <span>Company Reports</span>
+                                        <span class="pull-right-container">
+                                            <i class="fa fa-angle-left pull-right"></i>
+                                        </span>
+                                    </a>
+                                    <ul class="treeview-menu">
+                                        <li class="active"><a href="#"><i class="fa fa-file"></i> Statement of Accounts</a></li>
+                                        <li><a href="#"><i class="fa fa-file"></i> Company Documents</a></li>
+                                        <li><a href="#"><i class="fa fa-file"></i> Bank Statements</a></li>
+                                        <li><a href="#"><i class="fa fa-file"></i> Fixed Assets</a></li>
+                                    </ul>
+                                </li>
+                                <li class="<?php echo $active_nav === '6' ? 'active' : ''; ?>">
+                                    <a href="#" url="<?php echo base_url(); ?>book_of_accounts">
+                                        <i class="icon fa fa-book"></i>
+                                        <span>Book of Accounts</span>
+                                        <span class="pull-right-container">
+                                            <i class="fa fa-angle-left pull-right"></i>
+                                        </span>
+                                    </a>
+                                    <ul class="treeview-menu">
+                                        <li class="active"><a href="#"><i class="fa fa-file"></i> General Ledger</a></li>
+                                        <li><a href="#"><i class="fa fa-file"></i> Subsidiary Ledger</a></li>
+                                        <li><a href="#"><i class="fa fa-file"></i> Sales</a></li>
+                                        <li><a href="#"><i class="fa fa-file"></i> Receipts</a></li>
+                                        <li><a href="#"><i class="fa fa-file"></i> Collections</a></li>
+                                        <li><a href="#"><i class="fa fa-file"></i> Purchases</a></li>
+                                        <li><a href="#"><i class="fa fa-file"></i> Disbursements</a></li>
+                                        <li><a href="#"><i class="fa fa-file"></i> Adjustments</a></li>
+                                        <li><a href="#"><i class="fa fa-file"></i> Others</a></li>
+                                    </ul>
+                                </li>
+                                <li class="<?php echo $active_nav === '8' ? 'active' : ''; ?>">
+                                    <a href="#" url="#">
+                                        <i class="icon fa fa-table"></i>
+                                        <span>Tables</span>
+                                        <span class="pull-right-container">
+                                            <i class="fa fa-angle-left pull-right"></i>
+                                        </span>
+                                    </a>
+                                    <ul class="treeview-menu" style="overflow: auto; max-height: 320px;">
+                                        <li class="active"><a href="#"><i class="fa fa-file"></i> Value Added Tax</a></li>
+                                        <li><a href="#"><i class="fa fa-file"></i> Withholding Tax</a></li>
+                                        <li><a href="#"><i class="fa fa-file"></i> Accumulator</a></li>
+                                        <li><a href="#"><i class="fa fa-file"></i> Financial Statements</a></li>
+                                        <li><a href="#"><i class="fa fa-file"></i> Trial Balance</a></li>
+                                        <li><a href="#"><i class="fa fa-file"></i> General Ledger</a></li>
+                                        <li><a href="#"><i class="fa fa-file"></i> Subsidiary Ledger</a></li>
+                                    </ul>
+                                </li>
+                                <li class="<?php echo $active_nav === '7' ? 'active' : ''; ?>">
+                                    <a href="#" url="<?php echo base_url(); ?>docpro_settings">
+                                        <i class="icon fa fa-gear"></i>
+                                        <span>DocPro Settings</span>
+                                        <span class="pull-right-container">
+                                            <i class="fa fa-angle-left pull-right"></i>
+                                        </span>
+                                    </a>
+                                    <ul class="treeview-menu" style="overflow: auto; max-height: 270px;">
+                                        <li class="active"><a href="#"><i class="fa fa-file"></i> Branches</a></li>
+                                        <li><a href="#"><i class="fa fa-file"></i> Users</a></li>
+                                        <li><a href="#"><i class="fa fa-file"></i> Journals</a></li>
+                                        <li><a href="#"><i class="fa fa-file"></i> Transactions</a></li>
+                                        <li><a href="#"><i class="fa fa-file"></i> Documents</a></li>
+                                        <li><a href="#"><i class="fa fa-file"></i> Modes of Payment</a></li>
+                                        <li><a href="#"><i class="fa fa-file"></i> Taxes</a></li>
+                                        <li><a href="#"><i class="fa fa-file"></i> Business Partners</a></li>
+                                        <li><a href="#"><i class="fa fa-file"></i> Departments</a></li>
+                                        <li><a href="#"><i class="fa fa-file"></i> Profit Cost Centers</a></li>
+                                        <li><a href="#"><i class="fa fa-file"></i> Products</a></li>
+                                        <li><a href="#"><i class="fa fa-file"></i> Services</a></li>
+                                        <li><a href="#"><i class="fa fa-file"></i> Discounts</a></li>
+                                        <li><a href="#"><i class="fa fa-file"></i> Chart of Accounts</a></li>
+                                        <li><a href="#"><i class="fa fa-file"></i> Banks</a></li>
+                                        <li><a href="#"><i class="fa fa-file"></i> Journal Entries</a></li>
+                                        <li><a href="#"><i class="fa fa-file"></i> Others</a></li>
+                                    </ul>
+                                </li>
+                                <li class="<?php echo $active_nav === '8' ? 'active' : ''; ?>">
+                                    <a href="#" url="<?php echo base_url(); ?>docpro_setup">
+                                        <i class="icon fa fa-wrench"></i>
+                                        <span>DocPro Setup</span>
+                                        <span class="pull-right-container">
+                                            <i class="fa fa-angle-left pull-right"></i>
+                                        </span>
+                                    </a>
+                                    <ul class="treeview-menu" style="overflow: auto; max-height: 270px;">
+                                        <li class="active"><a href="#"><i class="fa fa-file"></i> Chart of Accounts</a></li>
+                                        <li><a href="#"><i class="fa fa-file"></i> Taxes</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        <?php
+                            }
+                        ?>
+                        
+
                     </section>
                 </aside>
-                <div id='t_2_s_1' style="position: fixed; z-index: 9;">
+                <div id='t_2_s_1' style="position: fixed; z-index: 1001;">
                     <nav id="company-plate" class='big' role="banner">
                         <div id='t_2_c' class="container">
                             <div id='company-collapse-title'>
@@ -303,10 +463,10 @@
         
         <!-- METRO Libs -->
         <script src='<?php echo base_url(); ?>libs/js/jquery.min.js'></script>
-        <script src="<?php echo base_url(); ?>libs/metro/js/metro.js"></script>
-        <script src="<?php echo base_url(); ?>libs/metro/js/docs.js"></script>
+        <!-- <script src="<?php echo base_url(); ?>libs/metro/js/metro.js"></script> -->
+        <!-- <script src="<?php echo base_url(); ?>libs/metro/js/docs.js"></script> -->
         <!--<script src="<?php echo base_url(); ?>docpro/libs/metro/js/prettify/run_prettify.js"></script>-->
-        <script src="<?php echo base_url(); ?>libs/metro/js/ga.js"></script>
+        <!-- <script src="<?php echo base_url(); ?>libs/metro/js/ga.js"></script> -->
         
         <!-- Javascript Libs -->
         <!-- <script type="text/javascript" src="<?php echo base_url(); ?>libs/flat/bower_components/jquery/dist/jquery.min.js"></script> -->
@@ -340,7 +500,7 @@
         <!--- PIVOT TABLE -->
         <!-- <script src='<?php echo base_url(); ?>libs/pivotTable/jquery-ui.min.js'></script> -->
         <!-- <script src='<?php echo base_url(); ?>libs/pivotTable/jquery.ui.touch-punch.min.js'></script> -->
-        <script src='<?php echo base_url(); ?>libs/pivotTable/pivot.js'></script>
+        <!-- <script src='<?php echo base_url(); ?>libs/pivotTable/pivot.js'></script> -->
         
         <!-- SELECTIZE -->
         <script type='text/javascript' src='<?php echo base_url(); ?>libs/selectize/js/standalone/selectize.min.js'></script>
@@ -358,12 +518,12 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>libs/material-button/index.js"></script>
 
         <!-- UPLOAD FORM -->
-        <script src="<?php echo base_url(); ?>libs/mini-upload-form/assets/js/jquery.knob.js"></script>
+        <!-- <script src="<?php echo base_url(); ?>libs/mini-upload-form/assets/js/jquery.knob.js"></script>
         <script src="<?php echo base_url(); ?>libs/mini-upload-form/assets/js/jquery.ui.widget.js"></script>
         <script src="<?php echo base_url(); ?>libs/mini-upload-form/assets/js/jquery.iframe-transport.js"></script>
         <script src="<?php echo base_url(); ?>libs/mini-upload-form/assets/js/jquery.fileupload.js"></script>
         <script src="<?php echo base_url(); ?>libs/mini-upload-form/assets/js/script.js"></script>
-        <script src="<?php echo base_url(); ?>libs/docpro_validation.js" type="text/javascript"></script>
+        <script src="<?php echo base_url(); ?>libs/docpro_validation.js" type="text/javascript"></script> -->
 
         <!-- SEQUENCE JS -->
         <script src="<?php echo base_url(); ?>/libs/wizard-master/js/jquery.bootstrap.wizard.js"></script>
@@ -375,19 +535,19 @@
         <script src="<?php echo base_url(); ?>/libs/sequence/scripts/sequence.min.js"></script>
 
         <!-- Bootsrap Switch -->
-        <script src="<?php echo base_url(); ?>libs/bootstrap-switch/js/bootstrap-switch.min.js"></script>
+        <!-- <script src="<?php echo base_url(); ?>libs/bootstrap-switch/js/bootstrap-switch.min.js"></script> -->
 
         <!-- Jquery Match -->
-        <script src="<?php echo base_url(); ?>libs/jquery-match/jquery.matchHeight-min.js"></script>
+        <!-- <script src="<?php echo base_url(); ?>libs/jquery-match/jquery.matchHeight-min.js"></script> -->
 
         <!-- CORLATE -->
         <!-- <script src="<?php echo base_url(); ?>/libs/corlate/js/main.js"></script> -->
 
         <!-- CUSTOM -->
-        <script src="<?php echo base_url(); ?>/assets/js/table_option.js"></script>
+        <!-- <script src="<?php echo base_url(); ?>/assets/js/table_option.js"></script> -->
         <script src="<?php echo base_url(); ?>/assets/js/v_validation.js"></script>
 
-        <script type="text/javascript">
+        <!-- <script type="text/javascript">
             var init_tooltip = function(){
                 $('.side-menu a').mouseover(function(){
                     var _this = $(this);
@@ -447,117 +607,101 @@
                     $(this).find('div').removeClass('v-invalid');
                 });
             });
-        </script>
+        </script> -->
         <script>
-            $('.content-wrapper').click(function(){
-                $('body').addClass('sidebar-collapse');
-            });
             $(document).ready(function(){
+                $('.content-wrapper').click(function(){
+                    $('body').addClass('sidebar-collapse');
+                });
+
                 var height = $(window).scrollTop();
                 setTimeout(function(){
                     var m_t = $('#title-bar').offset().top + $('#title-bar').outerHeight(true);
                     $('#m_c_d').css('margin-top', m_t);
                 }, 300);
-            });
-            $(window).scroll(function() {
-                var height = $(window).scrollTop();
-                if(height  > 1) {
-                	$('#company-details').css('display', 'none');
-                    $('#company-collapse-title').addClass('show');
-                    $('#title-bar').removeClass('big');
-                    $('#title-bar').addClass('small');
-                    $('#company-plate').addClass('small');
-                    $('#company-plate').removeClass('big');
 
-                }else{
-                	$('#company-details').css('display', 'block');
-                    $('#company-collapse-title').removeClass('show');
-                    $('#title-bar').removeClass('small');
-                    $('#title-bar').addClass('big');
-                    $('#company-plate').removeClass('small');
-                    $('#company-plate').addClass('big');
-                }
-                
-                if($('#title-bar').hasClass('big') && height > 1){
-                    $('#m_c_d').removeClass('appear');
-                    $('#m_c_d').addClass('disappear');
-                    var m_t = $('#title-bar').offset().top + $('#title-bar').outerHeight(true);
-                    $('#m_c_d').css('margin-top', m_t);
-                    $('#m_c_d').removeClass('disappear');
-                    $('#m_c_d').addClass('appear');
-                }
-                if($('#title-bar').hasClass('small') && height === 1){
-                    setTimeout(function(){
+                $(window).unload(function(){
+                    $(window).scrollTop(0, 0);
+                    height = $(window).scrollTop();
+                });
+
+                $(window).scroll(function() {
+                    var height = $(window).scrollTop();
+                    if(height  > 1) {
+                        $('#company-details').css('display', 'none');
+                        $('#company-collapse-title').addClass('show');
+                        $('#title-bar').removeClass('big');
+                        $('#title-bar').addClass('small');
+                        $('#company-plate').addClass('small');
+                        $('#company-plate').removeClass('big');
+
+                    }else{
+                        $('#company-details').css('display', 'block');
+                        $('#company-collapse-title').removeClass('show');
+                        $('#title-bar').removeClass('small');
+                        $('#title-bar').addClass('big');
+                        $('#company-plate').removeClass('small');
+                        $('#company-plate').addClass('big');
+                    }
+                    
+                    if($('#title-bar').hasClass('big') && height > 1){
+                        $('#m_c_d').removeClass('appear');
+                        $('#m_c_d').addClass('disappear');
                         var m_t = $('#title-bar').offset().top + $('#title-bar').outerHeight(true);
                         $('#m_c_d').css('margin-top', m_t);
-                    }, 200);
-                }
-                
-            });
-        </script>
-        <script>
-            (function(){
-                $('body #main-nav > li:not(:first-child) > a').click(function(){
-                    var url = $(this).attr('url');
-                    if(url){
-                        window.location = url;
+                        $('#m_c_d').removeClass('disappear');
+                        $('#m_c_d').addClass('appear');
+                    }
+                    if($('#title-bar').hasClass('small') && height === 1){
+                        setTimeout(function(){
+                            var m_t = $('#title-bar').offset().top + $('#title-bar').outerHeight(true);
+                            $('#m_c_d').css('margin-top', m_t);
+                        }, 200);
+                    }
+                    
+                });
+
+                (function(){
+                    if(($('body').hasClass('sidebar-collapse'))){
+                        $('body #main-nav > li:not(:first-child) > a').click(function(){
+                            var url = $(this).attr('url');
+                            if(url){
+                                window.location = url;
+                            }
+                        });
+                    }else{
+                        $('body #main-nav > li:not(:first-child) > a').unbind('click');
+                    }
+                })();
+                $('.sidebar-toggle').click(function(){
+                    if($('body').hasClass('sidebar-mini')){
+                        if($('body').hasClass('sidebar-collapse') && !$('body').hasClass('sidebar-open')){
+                            $('body #main-nav > li:not(:first-child) > a').click(function(){
+                                var url = $(this).attr('url');
+                                if(url){
+                                    window.location = url;
+                                }
+                            });
+                        }else{
+                            $('body #main-nav > li:not(:first-child) > a').unbind('click');
+                        }
+                    }else{
+                        if(($('body').hasClass('sidebar-collapse'))){
+                            $('body #main-nav > li:not(:first-child) > a').click(function(){
+                                var url = $(this).attr('url');
+                                if(url){
+                                    window.location = url;
+                                }
+                            });
+                        }else{
+                            $('body #main-nav > li:not(:first-child) > a').unbind('click');
+                        }
                     }
                 });
-            })();
-            $('#menu-icon a').click(function(){
-                if(!($('body').hasClass('sidebar-collapse'))){
-                    $('body #main-nav > li:not(:first-child) > a').click(function(){
-                        var url = $(this).attr('url');
-                        if(url){
-                            window.location = url;
-                        }
-                    });
-                }else{
-                    $('body #main-nav > li:not(:first-child) > a').unbind('click');
-                }
             });
-        	
-        </script>
-
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTdn0y9CUgqyKR2uFRtLobMubUg3boyCU"></script>
-        <script>
-        	var mapCanvas = document.getElementById('map');
-       		if(mapCanvas){
-       			function initialize() {
-		            var myLatLng = {lat: 16.413684, lng: 120.596125};
-		            var myLatLng1 = {lat: 16.413826, lng: 120.596645};
-		            var myLatLng2 = {lat: 16.413910, lng: 120.594317};
-
-		            var mapOptions = {
-		                center: myLatLng,
-		                zoom: 18,
-		                mapTypeId: google.maps.MapTypeId.ROADMAP,
-		            }
-		            var map = new google.maps.Map(mapCanvas, mapOptions);
-		            var marker = new google.maps.Marker({
-		                position: myLatLng,
-		                map: map,
-		                title: 'La Brea In'
-		            });             
-		            var marker1 = new google.maps.Marker({
-		                position: myLatLng1,
-		                map: map,
-		                title: 'Hodori'
-		            });
-		                
-		            var marker2 = new google.maps.Marker({
-		                position: myLatLng2,
-		                map: map,
-		                title: 'Chowking'
-		            });     
-		        }             
-		        google.maps.event.addDomListener(window, 'load', initialize);
-       		}
         </script>
         <?php if(isset($footer_js)){ $this->load->view($footer_js); } ?>
 
-        <!-- ZOOM -->
-        <!-- <script src="<?php echo base_url(); ?>/assets/js/zoom.js"></script> -->
     </body>
 
 </html>

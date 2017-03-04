@@ -39,4 +39,14 @@ class Co_Modes_Of_Payment_Model extends CI_Model{
     public static function get_types_of_payment(){
         return self::$db->get('types_of_payment')->result();
     }
+    public static function get_filter1(){
+        return self::$db->get_where('types_of_payment', ['flag' => '1'])->result();
+    }
+    public static function filter_table($user, $filter1){
+        if($filter1){
+            return self::$db->from('modes_of_payment mop')->join('types_of_payment top', 'mop.top_id=top.top_id')->join('co_modes_of_payment comop', 'comop.mop_id=mop.mop_id')->where(['comop.cb_id' => $user->main_company->cb_id, 'mop.flag' => '1', 'top.top_id' => $filter1])->get()->result();
+        }
+        return self::$db->from('modes_of_payment mop')->join('types_of_payment top', 'mop.top_id=top.top_id')->join('co_modes_of_payment comop', 'comop.mop_id=mop.mop_id')->where(['comop.cb_id' => $user->main_company->cb_id, 'mop.flag' => '1'])->get()->result();
+        
+    }
 }

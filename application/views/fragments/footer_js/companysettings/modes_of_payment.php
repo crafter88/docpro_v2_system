@@ -1,5 +1,28 @@
+<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/company_settings/table/modes_of_payment.js"></script>
 <script>
+    var stopPropagation = function(evt) {
+        if (evt.stopPropagation !== undefined) {
+            evt.stopPropagation();
+        } else {
+            evt.cancelBubble = true;
+        }
+    }
+
     $(document).ready(function(){
+        (function(){
+            $('#modes-of-payment-table thead tr#searchfilterrow th').each( function () {
+                if($(this).index() !== 0){
+                    var title = $('#modes-of-payment-table thead th').eq( $(this).index() ).text();
+                    $(this).html( '<input type="text" onclick="stopPropagation(event);" placeholder="Search '+title+'" />' );
+                }
+            });
+            $("#modes-of-payment-table thead input").on( 'keyup change', function () {
+                table.column($(this).parent().index()+':visible')
+                     .search(this.value)
+                     .draw();
+            } );
+        })();
+
         var table = $('#modes-of-payment-table').DataTable({
             ajax: window_location+'/company_settings/modes_of_payment/get',
             columns:[
@@ -7,26 +30,34 @@
                             mData: null, bSortable: false,
                             mRender: function(data, type, full){
                                 if($('input#mc_id').val() === $('input#bc_id').val()){
-                                    return "<button type='button' class='btn btn-primary btn-xs btn-raised view title' custom-title='View'><i class='fa fa-eye'></i></button>\n\
-                                        <button type='button' class='btn btn-success btn-xs btn-raised edit title' custom-title='Edit'><i class='fa fa-pencil'></i></button>\n\
-                                        <button type='button' class='btn btn-warning btn-xs btn-raised update title' custom-title='Update'><i class='fa fa-refresh'></i></button>";
+                                    return "<button type='button' class='btn btn-primary btn-xs btn-raised view title' title='View'><i class='fa fa-eye'></i></button>\n\
+                                        <button type='button' class='btn btn-success btn-xs btn-raised edit title' title='Edit'><i class='fa fa-pencil'></i></button>\n\
+                                        <button type='button' class='btn btn-warning btn-xs btn-raised update title' title='Update'><i class='fa fa-refresh'></i></button>";
                                 }
-                                return "<button type='button' class='btn btn-primary btn-xs btn-raised view title' custom-title='View' disabled><i class='fa fa-eye'></i></button>\n\
-                                        <button type='button' class='btn btn-success btn-xs btn-raised edit title' custom-title='Edit' disabled><i class='fa fa-pencil'></i></button>\n\
-                                        <button type='button' class='btn btn-warning btn-xs btn-raised update title' custom-title='Update' disabled><i class='fa fa-refresh'></i></button>";
+                                return "<button type='button' class='btn btn-primary btn-xs btn-raised view title' title='View' disabled><i class='fa fa-eye'></i></button>\n\
+                                        <button type='button' class='btn btn-success btn-xs btn-raised edit title' title='Edit' disabled><i class='fa fa-pencil'></i></button>\n\
+                                        <button type='button' class='btn btn-warning btn-xs btn-raised update title' title='Update' disabled><i class='fa fa-refresh'></i></button>";
                                 
                             }
                         },
                         {'data': 'mop_seq'},{'data': 'mop_code'}, {'data': 'mop_name'}, {'data': 'mop_shortname'}, {'data': 'top_type'}
                     ],
-            columnDefs: [{targets: 0, width: '100px'}, {targets: 1, width: '80px'}],
-            order: [['2', 'asc']],
+            columnDefs: [{targets: 0, width: '100px'}, {targets: [1,2], width: '100px'}],
+            order: [['1', 'asc']],
             scrollX: true,
-            initComplete: function(json, src){
-                initRipple();
-                init_tooltip();
+            order: [['2', 'asc']],
+            orderCellsTop: true,
+            bPaginate: false,
+            language: {
+                info: 'Total number of records: <b> _MAX_ </b>',
+                infoEmpty: 'Total number of records: <b> 0 </b>'
             }
         });
+
+        init_table_settings(table);
+        init_filter(table);
+        init_general_search(table);
+        hide_columns(table);
         
         var tmp = $.fn.popover.Constructor.prototype.show;
             $.fn.popover.Constructor.prototype.show = function () {
@@ -98,10 +129,10 @@
                         }
                     });
                 },
-                container: '.navbar-body'
+                container: 'body'
             }).on('show.bs.popover', function(){
                 $('.popover').not(this).popover('hide');
-                $('.card-body button').attr('disabled', true);
+                $('.box-body button').attr('disabled', true);
             });
             $(this).popover('toggle');
             initRipple();
@@ -130,10 +161,10 @@
                     popover.find('input[name=view-shortname]').val(data.mop_shortname);
                     popover.find('input[name=view-type]').val(data.top_type);
                 },
-                container:'.navbar-body'
+                container:'body'
             }).on('show.bs.popover', function(){
                 $('.popover').not(this).popover('hide');
-                $('.card-body button').attr('disabled', true);
+                $('.box-body button').attr('disabled', true);
             });
             $(this).popover('toggle');
             initRipple();
@@ -207,10 +238,10 @@
                         }
                     });
                 },
-                container: '.navbar-body'
+                container: 'body'
             }).on('show.bs.popover', function(){
                 $('.popover').not(this).popover('hide');
-                $('.card-body button').attr('disabled', true);
+                $('.box-body button').attr('disabled', true);
             });
             $(this).popover('toggle');
             initRipple();
@@ -285,48 +316,18 @@
                         }
                     });
                 },
-                container: '.navbar-body'
+                container: 'body'
             }).on('show.bs.popover', function(){
                 $('.popover').not(this).popover('hide');
-                $('.card-body button').attr('disabled', true);
+                $('.box-body button').attr('disabled', true);
             });
             $(this).popover('toggle');
             initRipple();
             initSingleSubmit();
         });
-        $('div').on('click', '.close-popover', function(){
+        $('body').on('click', '.close-popover', function(){
             $('.popover').popover('hide');
-            $('.card-body button').removeAttr('disabled');
+            $('.box-body button').removeAttr('disabled');
         });
-        $('div').on('click', '.select-option', function(){
-            $("input[name='add-type']").val($(this)[0].textContent);
-            $("input[name='add-type-id']").val($(this).attr('type-id'));
-            $("input[name='add-type-code']").val($(this).attr('type-code'));
-        });
-        $('div').on('click', '.select-option', function(){
-            $("input[name='edit-type']").val($(this)[0].textContent);
-            $("input[name='edit-type-id']").val($(this).attr('type-id'));
-            $("input[name='edit-type-code']").val($(this).attr('type-code'));
-        });
-        $('div').on('click', '.select-option', function(){
-            $("input[name='update-type']").val($(this)[0].textContent);
-            $("input[name='update-type-id']").val($(this).attr('type-id'));
-            $("input[name='update-type-code']").val($(this).attr('type-code'));
-        });
-        $('.navbar-body').on('click', '.add-type-btn', function(){
-            $('#add-options').html($('#mop-type-select').html());
-            initRipple();
-        });
-        $('.navbar-body').on('click', '.edit-type-btn', function(){
-            $('#edit-options').html($('#mop-type-select').html());
-            initRipple();
-        });
-        $('.navbar-body').on('click', '.update-type-btn', function(){
-            $('#update-options').html($('#mop-type-select').html());
-            initRipple();
-        });
-
-        $('#switch-state').bootstrapSwitch();
-        init_table_option(table, $(this).closest('side-body'));
     });
 </script>

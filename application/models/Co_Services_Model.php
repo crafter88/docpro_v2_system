@@ -42,4 +42,21 @@ class Co_Services_Model extends CI_Model{
     public static function get_profit_cost_center($user){
         return self::$db->from('co_profit_cost_centers cpcc')->join('co_departments cd', 'cd.co_de_id=cpcc.co_de_id')->where(['cd.cb_id' => $user->main_company->cb_id, 'cpcc.flag' => '1'])->get()->result();
     }
+    public static function get_filter1($user){
+        return self::$db->get_where('co_departments', ['cb_id' => $user->main_company->cb_id, 'flag' => '1'])->result();
+    }
+    public static function get_filter2($user){
+        return self::$db->from('co_profit_cost_centers cpcc')->join('co_departments cd', 'cd.co_de_id=cpcc.co_de_id')->where(['cd.cb_id' => $user->main_company->cb_id, 'cpcc.flag' => '1'])->get()->result();
+    }
+    public static function filter_table($user, $filter1, $filter2){
+        if($filter1 && $filter2){
+            return self::$db->from('co_services cos')->join('co_profit_cost_centers copcc', 'cos.co_pcc_id=copcc.co_pcc_id')->join('co_departments cod', 'cos.co_de_id=cod.co_de_id')->where(['cod.cb_id' => $user->main_company->cb_id, 'cos.flag' => '1', 'cod.co_de_id' => $filter1, 'copcc.co_pcc_id' => $filter2])->get()->result();
+        }elseif($filter1){
+            return self::$db->from('co_services cos')->join('co_profit_cost_centers copcc', 'cos.co_pcc_id=copcc.co_pcc_id')->join('co_departments cod', 'cos.co_de_id=cod.co_de_id')->where(['cod.cb_id' => $user->main_company->cb_id, 'cos.flag' => '1', 'cod.co_de_id' => $filter1])->get()->result();
+        }elseif($filter2){
+            return self::$db->from('co_services cos')->join('co_profit_cost_centers copcc', 'cos.co_pcc_id=copcc.co_pcc_id')->join('co_departments cod', 'cos.co_de_id=cod.co_de_id')->where(['cod.cb_id' => $user->main_company->cb_id, 'cos.flag' => '1','copcc.co_pcc_id' => $filter2])->get()->result();
+        }else{
+            return self::$db->from('co_services cos')->join('co_profit_cost_centers copcc', 'cos.co_pcc_id=copcc.co_pcc_id')->join('co_departments cod', 'cos.co_de_id=cod.co_de_id')->where(['cod.cb_id' => $user->main_company->cb_id, 'cos.flag' => '1'])->get()->result();
+        }
+    }
 }

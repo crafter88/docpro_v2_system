@@ -1,14 +1,37 @@
+<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/company_settings/table/branches.js"></script>
 <script>
+    var stopPropagation = function(evt) {
+        if (evt.stopPropagation !== undefined) {
+            evt.stopPropagation();
+        } else {
+            evt.cancelBubble = true;
+        }
+    }
+
     $(document).ready(function(){
+        (function(){
+            $('#branches-table thead tr#searchfilterrow th').each( function () {
+                if($(this).index() !== 0){
+                    var title = $('#documents-table thead th').eq( $(this).index() ).text();
+                    $(this).html( '<input type="text" onclick="stopPropagation(event);" placeholder="Search '+title+'" />' );
+                }
+            });
+            $("#branches-table thead input").on( 'keyup change', function () {
+                table.column($(this).parent().index()+':visible')
+                     .search(this.value)
+                     .draw();
+            } );
+        })();
+
         var table = $('#branches-table').DataTable({
             ajax: window_location+'/company_settings/branches/get',
             columns:[
                 {
                     mData: null, bSortable: false,
                     mRender: function(data, type, full){
-                        return "<button type='button' class='btn btn-primary btn-xs btn-raised view title' custom-title='View'><i class='fa fa-eye'></i></button>\n\
-                                <button type='button' class='btn btn-success btn-xs btn-raised edit title' custom-title='Edit'><i class='fa fa-pencil'></i></button>\n\
-                                <button type='button' class='btn btn-warning btn-xs btn-raised update title' custom-title='Update'><i class='fa fa-refresh'></i></button>";
+                        return "<button type='button' class='btn btn-primary btn-xs btn-raised view title' title='View'><i class='fa fa-eye'></i></button>\n\
+                                <button type='button' class='btn btn-success btn-xs btn-raised edit title' title='Edit'><i class='fa fa-pencil'></i></button>\n\
+                                <button type='button' class='btn btn-warning btn-xs btn-raised update title' title='Update'><i class='fa fa-refresh'></i></button>";
                     }
                 },   
                 {'data': 'br_seq'}, 
@@ -26,12 +49,19 @@
             ],
             columnDefs: [{targets: 0, width: '100px'}],
             scrollX: true,
-            order: [['1', 'asc']],
-            initComplete: function(settings, json){
-                initRipple();
-                init_tooltip();
+            order: [['2', 'asc']],
+            orderCellsTop: true,
+            bPaginate: false,
+            language: {
+                info: 'Total number of records: <b> _MAX_ </b>',
+                infoEmpty: 'Total number of records: <b> 0 </b>'
             }
         });
+
+        init_table_settings(table);
+        init_filter(table);
+        init_general_search(table);
+        hide_columns(table);
         
         var tmp = $.fn.popover.Constructor.prototype.show;
         $.fn.popover.Constructor.prototype.show = function () {
@@ -57,7 +87,7 @@
                 },
                 callback: function(){
                     var popover = $('.popover.add-modal-body');
-                    $('#add-tax-type').selectize({});
+                    popover.find('#add-tax-type').selectize({});
                     var restriction = Object.create(v_restriction);
                     restriction.number();
                     restriction.required();
@@ -77,10 +107,10 @@
                         }
                     });
                 },
-                container: '.navbar-body'
+                container: 'body'
             }).on('show.bs.popover', function(){
                 $('.popover').not(this).popover('hide');
-                $('.card-body button').attr('disabled', true);
+                $('.box-body button').attr('disabled', true);
             });
             $(this).popover('toggle');
             initRipple();
@@ -124,10 +154,10 @@
                     popover.find('input[name=view-cno]').val(data.ch_cb_cno);
                     popover.find('input[name=view-email]').val(data.ch_cb_email);
                 },
-                container: '.navbar-body'
+                container: 'body'
             }).on('show.bs.popover', function(){
                 $('.popover').not(this).popover('hide');
-                $('.card-body button').attr('disabled', true);
+                $('.box-body button').attr('disabled', true);
             });
             $(this).popover('toggle');
             initRipple();
@@ -170,7 +200,7 @@
                     popover.find('input[name=edit-email]').val(data.ch_cb_email);
                     popover.find('input[name=ch-cb-id]').val(data.br_id);
                     popover.find('input[name=edit-id]').val(data.ch_id);
-                    $('#edit-tax-type').selectize({});
+                    popover.find('#edit-tax-type').selectize({});
                     var restriction = Object.create(v_restriction);
                     restriction.number();
                     restriction.required();
@@ -190,10 +220,10 @@
                         }
                     });
                 },
-                container: '.navbar-body'
+                container: 'body'
             }).on('show.bs.popover', function(){
                 $('.popover').not(this).popover('hide');
-                $('.card-body button').attr('disabled', true);
+                $('.box-body button').attr('disabled', true);
             });
             $(this).popover('toggle');
             initRipple();
@@ -239,7 +269,7 @@
                     popover.find('input[name=ch-cb-id]').val(data.br_id);
                     popover.find('input[name=update-id]').val(data.ch_id);
                     popover.find('input[name=cbbr-id]').val(data.cbbr_id);
-                    $('#update-tax-type').selectize({});
+                    popover.find('#update-tax-type').selectize({});
                     var restriction = Object.create(v_restriction);
                     restriction.number();
                     restriction.required();
@@ -259,25 +289,18 @@
                         }
                     });
                 },
-                container: '.navbar-body'
+                container: 'body'
             }).on('show.bs.popover', function(){
                 $('.popover').not(this).popover('hide');
-                $('.card-body button').attr('disabled', true);
+                $('.box-body button').attr('disabled', true);
             });
             $(this).popover('toggle');
             initRipple();
             initSingleSubmit();
         });
-        $('div').on('click', '.close-popover', function(){
+        $('body').on('click', '.close-popover', function(){
             $('.popover').popover('hide');
-            $('.card-body button').removeAttr('disabled');
+            $('.box-body button').removeAttr('disabled');
         });
-        $('div').on('click', '#close-btn', function(){
-            $('.popover').popover('hide');
-            $('.card-body button').removeAttr('disabled');
-        });
-
-        $('#switch-state').bootstrapSwitch();
-        init_table_option(table, $(this).closest('side-body'));
     });
 </script>

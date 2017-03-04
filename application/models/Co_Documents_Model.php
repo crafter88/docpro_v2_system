@@ -37,4 +37,21 @@ class Co_Documents_Model extends CI_Model{
     public static function get_journals($user){
         return self::$db->from('journals j')->join('co_journals coj', 'coj.j_id=j.j_id')->where(['j.flag' => '1', 'coj.cb_id' => $user->cb_id])->get()->result();
     }
+    public static function get_filter1($user){
+        return self::$db->from('documents d')->join('co_documents cod', 'cod.d_id=d.d_id')->join('journals j', 'j.j_id=d.j_id')->where(['d.flag' => '1', 'cb_id' => $user->main_company->cb_id])->get()->result();
+    }
+    public static function get_filter2($user){
+        return self::$db->from('journals j')->join('co_journals cj', 'cj.j_id = j.j_id')->where(['cj.cb_id' => $user->main_company->cb_id, 'j.flag' => '1'])->get()->result();
+    }
+    public static function filter_table($user, $filter1, $filter2){
+        if($filter1 && $filter2){
+            return self::$db->from('documents d')->join('co_documents cod', 'cod.d_id=d.d_id')->join('journals j', 'j.j_id=d.j_id')->where(['d.flag' => '1', 'cb_id' => $user->main_company->cb_id, 'd.d_class' => $filter1, 'j.j_id' => $filter2])->get()->result();
+        }elseif($filter1){
+            return self::$db->from('documents d')->join('co_documents cod', 'cod.d_id=d.d_id')->join('journals j', 'j.j_id=d.j_id')->where(['d.flag' => '1', 'cb_id' => $user->main_company->cb_id, 'd.d_class' => $filter1])->get()->result();
+        }elseif($filter2){
+            return self::$db->from('documents d')->join('co_documents cod', 'cod.d_id=d.d_id')->join('journals j', 'j.j_id=d.j_id')->where(['d.flag' => '1', 'cb_id' => $user->main_company->cb_id, 'j.j_id' => $filter2])->get()->result();
+        }else{
+            return self::$db->from('documents d')->join('co_documents cod', 'cod.d_id=d.d_id')->join('journals j', 'j.j_id=d.j_id')->where(['d.flag' => '1', 'cb_id' => $user->main_company->cb_id])->get()->result();
+        }
+    }
 }

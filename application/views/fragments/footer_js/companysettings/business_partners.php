@@ -1,29 +1,58 @@
+<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/company_settings/table/business_partners.js"></script>
 <script>
+    var stopPropagation = function(evt) {
+        if (evt.stopPropagation !== undefined) {
+            evt.stopPropagation();
+        } else {
+            evt.cancelBubble = true;
+        }
+    }
     $(document).ready(function(){
+        (function(){
+            $('#business-partners-table thead tr#searchfilterrow th').each( function () {
+                if($(this).index() !== 0){
+                    var title = $('#business-partners-table thead th').eq( $(this).index() ).text();
+                    $(this).html( '<input type="text" onclick="stopPropagation(event);" placeholder="Search '+title+'" />' );
+                }
+            });
+            $("#business-partners-table thead input").on( 'keyup change', function () {
+                table.column($(this).parent().index()+':visible')
+                     .search(this.value)
+                     .draw();
+            } );
+        })();
+
         var table = $('#business-partners-table').DataTable({
             ajax: window_location+'/company_settings/business_partners/get',
             columns:[{
                 mData: null, bSortable: false,
                 mRender: function(data, type, full){
                     if($('input#mc_id').val() === $('input#bc_id').val()){
-                        return "<button type='button' class='btn btn-primary btn-xs btn-raised view title' custom-title='View'><i class='fa fa-eye'></i></button>\n\
-                            <button type='button' class='btn btn-success btn-xs btn-raised edit title' custom-title='Edit'><i class='fa fa-pencil'></i></button>\n\
-                            <button type='button' class='btn btn-warning btn-xs btn-raised update title' custom-title='Update'><i class='fa fa-refresh'></i></button>";
+                        return "<button type='button' class='btn btn-primary btn-xs btn-raised view title' title='View'><i class='fa fa-eye'></i></button>\n\
+                            <button type='button' class='btn btn-success btn-xs btn-raised edit title' title='Edit'><i class='fa fa-pencil'></i></button>\n\
+                            <button type='button' class='btn btn-warning btn-xs btn-raised update title' title='Update'><i class='fa fa-refresh'></i></button>";
                     }
-                    return "<button type='button' class='btn btn-primary btn-xs btn-raised view title' custom-title='View' disabled><i class='fa fa-eye'></i></button>\n\
-                            <button type='button' class='btn btn-success btn-xs btn-raised edit title' custom-title='Edit' disabled><i class='fa fa-pencil'></i></button>\n\
-                            <button type='button' class='btn btn-warning btn-xs btn-raised update title' custom-title='Update' disabled><i class='fa fa-refresh'></i></button>";
+                    return "<button type='button' class='btn btn-primary btn-xs btn-raised view title' title='View' disabled><i class='fa fa-eye'></i></button>\n\
+                            <button type='button' class='btn btn-success btn-xs btn-raised edit title' title='Edit' disabled><i class='fa fa-pencil'></i></button>\n\
+                            <button type='button' class='btn btn-warning btn-xs btn-raised update title' title='Update' disabled><i class='fa fa-refresh'></i></button>";
                 }
             },
             {'data': 'co_bp_seq'}, {'data': 'co_bp_code'}, {'data': 'bp_name'}, {'data': 'co_bp_shortname'}, {'data': 'co_bp_bus_style'}, {'data': 'co_bp_address'}, {'data': 'co_bp_tin'}, {'data': 'co_bp_particulars'}, {'data': 'bpc_class'}, {'data': 'bpt_type'}],
             columnDefs: [{targets: 0, width: '110px'}],
-            order: [['1', 'asc']],
             scrollX: true,
-            initComplete: function(json, src){
-                initRipple();
-                init_tooltip();
+            order: [['2', 'asc']],
+            orderCellsTop: true,
+            bPaginate: false,
+            language: {
+                info: 'Total number of records: <b> _MAX_ </b>',
+                infoEmpty: 'Total number of records: <b> 0 </b>'
             }
         });
+
+        init_table_settings(table);
+        init_filter(table);
+        init_general_search(table);
+        hide_columns(table);
         
         var tmp = $.fn.popover.Constructor.prototype.show;
             $.fn.popover.Constructor.prototype.show = function () {
@@ -49,7 +78,7 @@
                 },
                 callback: function(){
                     var popover = $('.popover.add-modal-body');
-                    var bp_class = $('#add-class').selectize({
+                    var bp_class = popover.find('#add-class').selectize({
                         create: false,
                         sortField: {
                             field: 'text',
@@ -57,7 +86,7 @@
                         },
                         onChange: function(value){
                             var popover = $('.popover.add-modal-body');
-                            var select = $('#add-class').selectize()[0].selectize;
+                            var select = popover.find('#add-class').selectize()[0].selectize;
                             var code = select.options[value].code;
                             if(code === '61'){
                                 popover.find('input[name=new-class]').removeAttr('readonly');
@@ -88,7 +117,7 @@
                             callback(selectOptions);
                         });
                     });
-                    var bp_type = $('#add-type').selectize({
+                    var bp_type = popover.find('#add-type').selectize({
                         create: false,
                         sortField: {
                             field: 'text',
@@ -115,7 +144,7 @@
                             callback(selectOptions);
                         });
                     });
-                    var tax1 = $('#add-tax-1').selectize({
+                    var tax1 = popover.find('#add-tax-1').selectize({
                         create: false,
                         sortField: {
                             field: 'text',
@@ -142,7 +171,7 @@
                             callback(selectOptions);
                         });
                     });
-                    var tax2 = $('#add-tax-2').selectize({
+                    var tax2 = popover.find('#add-tax-2').selectize({
                         create: false,
                         sortField: {
                             field: 'text',
@@ -169,7 +198,7 @@
                             callback(selectOptions);
                         });
                     });
-                    var tax3 = $('#add-tax-3').selectize({
+                    var tax3 = popover.find('#add-tax-3').selectize({
                         create: false,
                         sortField: {
                             field: 'text',
@@ -217,10 +246,10 @@
                         }
                     });
                 },
-                container: '.navbar-body'
+                container: 'body'
             }).on('show.bs.popover', function(){
                 $('.popover').not(this).popover('hide');
-                $('.card-body button').attr('disabled', true);
+                $('.box-body button').attr('disabled', true);
             });
             $(this).popover('toggle');
             initRipple();
@@ -300,10 +329,10 @@
                         }
                     });
                 },
-                container: '.navbar-body'
+                container: 'body'
             }).on('show.bs.popover', function(){
                 $('.popover').not(this).popover('hide');
-                $('.card-body button').attr('disabled', true);
+                $('.box-body button').attr('disabled', true);
             });
             $(this).popover('toggle');
             initRipple();
@@ -325,14 +354,14 @@
                 },
                 callback: function(){
                     var popover = $('.popover.edit-modal-body');
-                    var bp_class = $('#edit-class').selectize({
+                    var bp_class = popover.find('#edit-class').selectize({
                         create: false,
                         sortField: {
                             field: 'text',
                             sort: 'asc'
                         },
                         onChange: function(value){
-                            var select = $('#edit-class').selectize()[0].selectize;
+                            var select = popover.find('#edit-class').selectize()[0].selectize;
                             var code = select.options[value] !== undefined ? select.options[value].code : '';
                             if(code === '61'){
                                 popover.find('input[name=new-class]').removeAttr('readonly');
@@ -365,7 +394,7 @@
                         });
                         bp_class_select.setValue(data.bpc_id);
                     });
-                    var bp_type = $('#edit-type').selectize({
+                    var bp_type = popover.find('#edit-type').selectize({
                         create: false,
                         sortField: {
                             field: 'text',
@@ -528,7 +557,7 @@
                             });  
                         }   
                     });
-                    var tax1 = $('#edit-tax-1').selectize({
+                    var tax1 = popover.find('#edit-tax-1').selectize({
                         create: false,
                         sortField: {
                             field: 'text',
@@ -558,7 +587,7 @@
                             tax1_select.setValue(data.vat[0].t_id);
                         }
                     });
-                    var tax2 = $('#edit-tax-2').selectize({
+                    var tax2 = popover.find('#edit-tax-2').selectize({
                         create: false,
                         sortField: {
                             field: 'text',
@@ -588,7 +617,7 @@
                             tax2_select.setValue(data.ewt[0].t_id);
                         }
                     });
-                    var tax3 = $('#edit-tax-3').selectize({
+                    var tax3 = popover.find('#edit-tax-3').selectize({
                         create: false,
                         sortField: {
                             field: 'text',
@@ -651,10 +680,10 @@
                     });
 
                 },
-                container: '.navbar-body'
+                container: 'body'
             }).on('show.bs.popover', function(){
                 $('.popover').not(this).popover('hide');
-                $('.card-body button').attr('disabled', true);
+                $('.box-body button').attr('disabled', true);
             });
             $(this).popover('toggle');
             initRipple();
@@ -678,14 +707,14 @@
                 },
                 callback: function(){
                     var popover = $('.popover.update-modal-body');
-                    var bp_class = $('#update-class').selectize({
+                    var bp_class = popover.find('#update-class').selectize({
                         create: false,
                         sortField: {
                             field: 'text',
                             sort: 'asc'
                         },
                         onChange: function(value){
-                            var select = $('#update-class').selectize()[0].selectize;
+                            var select = popover.find('#update-class').selectize()[0].selectize;
                             var code = select.options[value] !== undefined ? select.options[value].code : '';
                             if(code === '61'){
                                 popover.find('input[name=new-class]').removeAttr('readonly');
@@ -718,7 +747,7 @@
                         });
                         bp_class_select.setValue(data.bpc_id);
                     });
-                    var bp_type = $('#update-type').selectize({
+                    var bp_type = popover.find('#update-type').selectize({
                         create: false,
                         sortField: {
                             field: 'text',
@@ -881,7 +910,7 @@
                             });  
                         }   
                     });
-                    var tax1 = $('#update-tax-1').selectize({
+                    var tax1 = popover.find('#update-tax-1').selectize({
                         create: false,
                         sortField: {
                             field: 'text',
@@ -911,7 +940,7 @@
                             tax1_select.setValue(data.vat[0].t_id);
                         }
                     });
-                    var tax2 = $('#update-tax-2').selectize({
+                    var tax2 = popover.find('#update-tax-2').selectize({
                         create: false,
                         sortField: {
                             field: 'text',
@@ -941,7 +970,7 @@
                             tax2_select.setValue(data.ewt[0].t_id);
                         }
                     });
-                    var tax3 = $('#update-tax-3').selectize({
+                    var tax3 = popover.find('#update-tax-3').selectize({
                         create: false,
                         sortField: {
                             field: 'text',
@@ -1003,10 +1032,10 @@
                         }
                     });
                 },
-                container: '.navbar-body'
+                container: 'body'
             }).on('show.bs.popover', function(){
                 $('.popover').not(this).popover('hide');
-                $('.card-body button').attr('disabled', true);
+                $('.box-body button').attr('disabled', true);
             });
             $(this).popover('toggle');
             initRipple();
@@ -1147,164 +1176,9 @@
         $('body').on('click', '.remove-fwt-row', function(){
             $(this).closest('tr').remove();
         });
-        $('div').on('click', '.close-popover', function(){
+        $('body').on('click', '.close-popover', function(){
             $('.popover').popover('hide');
-            $('.card-body button').removeAttr('disabled');
+            $('.box-body button').removeAttr('disabled');
         });
-        $('div').on('click', '#close-btn', function(){
-            $('.popover').popover('hide');
-            $('.card-body button').removeAttr('disabled');
-        });
-        $('div').on('click', '.select-option-class', function(){
-            $("input[name='add-class']").attr('readonly', true);
-            $("input[name='add-class']").val($(this)[0].textContent);
-            $("input[name='add-class-id']").val($(this).attr('bpc-id'));
-            $("input[name='add-class-code']").val($(this).attr('bpc-code'));
-            if($(this).attr('bpc-code') === '61'){
-                $("input[name='add-class']").removeAttr('readonly');
-                $("input[name='add-class']").focus().select();
-            }
-        });
-        $('div').on('click', '.select-option-type', function(){
-            $("input[name='add-type']").val($(this)[0].textContent);
-            $("input[name='add-type-id']").val($(this).attr('type-id'));
-            $("input[name='add-type-code']").val($(this).attr('type-code'));
-        });
-        $('div').on('click', '.select-option-tax-1', function(){
-            $("input[name='add-tax-1']").val($(this)[0].textContent);
-            $("input[name='add-tax-1-id']").val($(this).attr('tax-id'));
-            $("input[name='add-tax-1-code']").val($(this).attr('tax-code'));
-        });
-        $('div').on('click', '.select-option-tax-2', function(){
-            $("input[name='add-tax-2']").val($(this)[0].textContent);
-            $("input[name='add-tax-2-id']").val($(this).attr('tax-id'));
-            $("input[name='add-tax-2-code']").val($(this).attr('tax-code'));
-        });
-        $('div').on('click', '.select-option-tax-3', function(){
-            $("input[name='add-tax-3']").val($(this)[0].textContent);
-            $("input[name='add-tax-3-id']").val($(this).attr('tax-id'));
-            $("input[name='add-tax-3-code']").val($(this).attr('tax-code'));
-        });
-       $('div').on('click', '.select-option-class', function(){
-            $("input[name='edit-class']").val($(this)[0].textContent);
-            $("input[name='edit-class-id']").val($(this).attr('bpc-id'));
-            $("input[name='edit-class-code']").val($(this).attr('bpc-code'));
-        });
-        $('div').on('click', '.select-option-type', function(){
-            $("input[name='edit-type']").val($(this)[0].textContent);
-            $("input[name='edit-type-id']").val($(this).attr('type-id'));
-            $("input[name='edit-type-code']").val($(this).attr('type-code'));
-        });
-        $('div').on('click', '.select-option-tax-1', function(){
-            $("input[name='edit-tax-1']").val($(this)[0].textContent);
-            $("input[name='edit-tax-1-id']").val($(this).attr('tax-id'));
-            $("input[name='edit-tax-1-code']").val($(this).attr('tax-code'));
-        });
-        $('div').on('click', '.select-option-tax-2', function(){
-            $("input[name='edit-tax-2']").val($(this)[0].textContent);
-            $("input[name='edit-tax-2-id']").val($(this).attr('tax-id'));
-            $("input[name='edit-tax-2-code']").val($(this).attr('tax-code'));
-        });
-        $('div').on('click', '.select-option-tax-3', function(){
-            $("input[name='edit-tax-3']").val($(this)[0].textContent);
-            $("input[name='edit-tax-3-id']").val($(this).attr('tax-id'));
-            $("input[name='edit-tax-3-code']").val($(this).attr('tax-code'));
-        });
-        $('div').on('click', '.select-option-class', function(){
-            $("input[name='update-class']").val($(this)[0].textContent);
-            $("input[name='update-class-id']").val($(this).attr('bpc-id'));
-            $("input[name='update-class-code']").val($(this).attr('bpc-code'));
-        });
-        $('div').on('click', '.select-option-type', function(){
-            $("input[name='update-type']").val($(this)[0].textContent);
-            $("input[name='update-type-id']").val($(this).attr('type-id'));
-            $("input[name='update-type-code']").val($(this).attr('type-code'));
-        });
-        $('div').on('click', '.select-option-tax-1', function(){
-            $("input[name='update-tax-1']").val($(this)[0].textContent);
-            $("input[name='update-tax-1-id']").val($(this).attr('tax-id'));
-            $("input[name='update-tax-1-code']").val($(this).attr('tax-code'));
-        });
-        $('div').on('click', '.select-option-tax-2', function(){
-            $("input[name='update-tax-2']").val($(this)[0].textContent);
-            $("input[name='update-tax-2-id']").val($(this).attr('tax-id'));
-            $("input[name='update-tax-2-code']").val($(this).attr('tax-code'));
-        });
-        $('div').on('click', '.select-option-tax-3', function(){
-            $("input[name='update-tax-3']").val($(this)[0].textContent);
-            $("input[name='update-tax-3-id']").val($(this).attr('tax-id'));
-            $("input[name='update-tax-3-code']").val($(this).attr('tax-code'));
-        });
-        $('.navbar-body').on('click', '.add-class-btn', function(){
-            $('#add-options').html($('#bp-class-select').html());
-            initRipple();
-        });
-        $('.navbar-body').on('click', '.add-type-btn', function(){
-            $('#add-options').html($('#bp-type-select').html());
-            initRipple();
-        });
-        $('.navbar-body').on('click', '.add-tax-1-btn', function(){
-            $('#add-options').html($('#tax-select-1').html());
-            initRipple();
-        });
-        $('.navbar-body').on('click', '.add-tax-2-btn', function(){
-            $('#add-options').html($('#tax-select-2').html());
-            initRipple();
-        });
-        $('.navbar-body').on('click', '.add-tax-3-btn', function(){
-            $('#add-options').html($('#tax-select-3').html());
-            initRipple();
-        });
-        $('.navbar-body').on('click', '.edit-class-btn', function(){
-            $('#edit-options').html($('#bp-class-select').html());
-            initRipple();
-        });
-        $('.navbar-body').on('click', '.edit-type-btn', function(){
-            $('#edit-options').html($('#bp-type-select').html());
-            initRipple();
-        });
-        $('.navbar-body').on('click', '.edit-tax-1-btn', function(){
-            $('#edit-options').html($('#tax-select-1').html());
-            initRipple();
-        });
-        $('.navbar-body').on('click', '.edit-tax-2-btn', function(){
-            $('#edit-options').html($('#tax-select-2').html());
-            initRipple();
-        });
-        $('.navbar-body').on('click', '.edit-tax-3-btn', function(){
-            $('#edit-options').html($('#tax-select-3').html());
-            initRipple();
-        });
-        $('.navbar-body').on('click', '.update-class-btn', function(){
-            $('#update-options').html($('#bp-class-select').html());
-            initRipple();
-        });
-        $('.navbar-body').on('click', '.update-type-btn', function(){
-            $('#update-options').html($('#bp-type-select').html());
-            initRipple();
-        });
-        $('.navbar-body').on('click', '.update-tax-1-btn', function(){
-            $('#update-options').html($('#tax-select-1').html());
-            initRipple();
-        });
-        $('.navbar-body').on('click', '.update-tax-2-btn', function(){
-            $('#update-options').html($('#tax-select-2').html());
-            initRipple();
-        });
-        $('.navbar-body').on('click', '.update-tax-3-btn', function(){
-            $('#update-options').html($('#tax-select-3').html());
-            initRipple();
-        });
-        $('.navbar-body').on('click', '.form-control', function(){
-            $('#add-options').empty();
-        });
-         $('.navbar-body').on('click', '.form-control', function(){
-            $('#edit-options').empty();
-        });
-        $('.navbar-body').on('click', '.form-control', function(){
-            $('#update-options').empty();
-        });
-        $('#switch-state').bootstrapSwitch();
-        init_table_option(table, $(this).closest('side-body'));
     });
 </script>

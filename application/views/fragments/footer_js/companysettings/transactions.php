@@ -16,10 +16,6 @@
 			$('#update-modal').modal('show');
 		});
 	
-	
-		//Codes Here!
-	
-	
 		initButtonPrevention();
 	});
 	

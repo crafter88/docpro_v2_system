@@ -81,4 +81,8 @@ class Users extends CI_Controller{
         $id = CB_Br_Model::add($data, $this->session->userdata('user'));
         echo json_encode(['id' => $id]);
     }
+    public function filter_table(){
+        $filter1 = $this->input->get('filter1');
+        echo json_encode(['data' => Co_Users_Model::filter_table($this->session->userdata('user'), $filter1)]);
+    }
 }

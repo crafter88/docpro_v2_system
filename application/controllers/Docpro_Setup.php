@@ -7,7 +7,7 @@ class Docpro_Setup extends MY_Controller{
 	}
 
 	public function get_docpro_setup(){
-        $this->load->view($this->layout, ['top_navbar'=>'fragments/top_navbar/global_top_navbar', 'head_css'=>'fragments/head_css/docpro_setup', 'content'=>'fragments/content/docpro_setup', 'back_button'=>'../home', 'active_nav'=>'docpro-setup', 'coa_count'=>COA_Model::coa_count(), 'tax_types_count'=>Tax_Types_Model::tax_types_count(), 'sess_data'=>$this->session->userdata('logged_in'), 'user'=>$this->session->userdata('user')]);
+        $this->load->view($this->layout, ['top_navbar'=>'fragments/top_navbar/global_top_navbar', 'head_css'=>'fragments/head_css/docpro_setup', 'content'=>'fragments/content/docpro_setup', 'back_button'=>'../home', 'active_nav'=>'docpro-setup', 'coa_count'=>COA_Model::coa_count(), 'tax_types_count'=>Tax_Types_Model::tax_types_count(), 'sess_data'=>$this->session->userdata('logged_in'), 'user'=>$this->session->userdata('user'), 'title' => 'DocPro Setup']);
     }	
     public function get_users(){
         $this->load->view($this->layout, ['head_css'=>'fragments/head_css/docprosetup/users', 'top_navbar'=>'fragments/top_navbar/global_top_navbar', 'content'=>'fragments/content/docprosetup/users', 'footer_js'=>'fragments/footer_js/docprosetup/users', 'back_button'=>'../docpro_setup', 'active_nav'=>'docpro-setup', 'company_branches'=>Company_Branches_Model::get(), 'sess_data'=>$this->session->userdata('logged_in'), 'user'=>$this->session->userdata('user')]);
@@ -29,7 +29,7 @@ class Docpro_Setup extends MY_Controller{
         $tt_id = $this->session->flashdata('tt_id') ? $this->session->flashdata('tt_id') : '0';
         $tt_name = $this->session->flashdata('tt_name') ? $this->session->flashdata('tt_name') : '';
         $seq_active = $this->session->flashdata('seq_active') ? $this->session->flashdata('seq_active') : '1';
-        $this->load->view($this->layout, ['head_css'=>'fragments/head_css/docprosetup/taxes', 'top_navbar'=>'fragments/top_navbar/global_top_navbar', 'content'=>'fragments/content/docprosetup/taxes', 'footer_js'=>'fragments/footer_js/docprosetup/taxes', 'back_button'=>'../docpro_setup', 'active_nav'=>'docpro-setup', 'tt_type'=>Tax_Types_Model::get(), 'sess_data'=>$this->session->userdata('logged_in'), 'seq_active' => $seq_active, 'user'=>$this->session->userdata('user'), 'tt_id' => $tt_id, 'tt_name' => $tt_name]);
+        $this->load->view($this->layout, ['head_css'=>'fragments/head_css/docprosetup/taxes', 'top_navbar'=>'fragments/top_navbar/global_top_navbar', 'content'=>'fragments/content/docprosetup/taxes', 'footer_js'=>'fragments/footer_js/docprosetup/taxes', 'back_button'=>'../docpro_setup', 'active_nav'=>'docpro-setup', 'tt_type'=>Tax_Types_Model::get(), 'sess_data'=>$this->session->userdata('logged_in'), 'seq_active' => $seq_active, 'user'=>$this->session->userdata('user'), 'tt_id' => $tt_id, 'tt_name' => $tt_name, 'title' => 'Taxes']);
     }	
     public function get_chart_of_accounts(){
         $seq_active = $this->session->flashdata('seq_active') ? $this->session->flashdata('seq_active') : '1';
@@ -46,7 +46,8 @@ class Docpro_Setup extends MY_Controller{
             'lvl_3_code' => $this->session->flashdata('lvl_3_code'),
             'lvl_1_name' => $this->session->flashdata('lvl_1_name'),
             'lvl_2_name' => $this->session->flashdata('lvl_2_name'),
-            'lvl_3_name' => $this->session->flashdata('lvl_3_name')
+            'lvl_3_name' => $this->session->flashdata('lvl_3_name'),
+            'title' => 'Chart of Accounts'
         ]);
     }	
     public function get_banks(){

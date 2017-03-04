@@ -146,4 +146,57 @@ class Co_Business_Partners_Model extends CI_Model{
     public static function add_bp_fwt($data){
         self::$db->insert('co_business_partners_fwt', $data);
     }
+    public static function get_filter1($user){
+        return self::$db->select('cbp.*, bpc.*, bpt.*')
+                                ->from('co_business_partners cbp')
+                                ->join('business_partners_class bpc', 'bpc.bpc_id=cbp.bpc_id')
+                                ->join('business_partners_type bpt', 'bpt.bpt_id=cbp.bpt_id')
+                                ->where(['cbp.flag' => '1', 'cbp.cb_id' => $user->main_company->cb_id])
+                                ->group_by('bpc.bpc_id')->get()->result();
+    }
+    public static function get_filter2($user){
+        return self::$db->get('business_partners_type')->result();
+    }
+    public static function filter_table($user, $filter1, $filter2){
+        $data = [];
+        if($filter1 && $filter2){
+            $data = self::$db->select('cbp.*, bpc.*, bpt.*')
+                                ->from('co_business_partners cbp')
+                                ->join('business_partners_class bpc', 'bpc.bpc_id=cbp.bpc_id')
+                                ->join('business_partners_type bpt', 'bpt.bpt_id=cbp.bpt_id')
+                                ->where(['cbp.flag' => '1', 'cbp.cb_id' => $user->main_company->cb_id, 'bpc.bpc_id' => $filter1, 'bpt.bpt_id' => $filter2])
+                                ->get()->result();
+        }elseif($filter1){
+            $data = self::$db->select('cbp.*, bpc.*, bpt.*')
+                                ->from('co_business_partners cbp')
+                                ->join('business_partners_class bpc', 'bpc.bpc_id=cbp.bpc_id')
+                                ->join('business_partners_type bpt', 'bpt.bpt_id=cbp.bpt_id')
+                                ->where(['cbp.flag' => '1', 'cbp.cb_id' => $user->main_company->cb_id, 'bpc.bpc_id' => $filter1])
+                                ->get()->result();
+        }elseif($filter2){
+            $data = self::$db->select('cbp.*, bpc.*, bpt.*')
+                                ->from('co_business_partners cbp')
+                                ->join('business_partners_class bpc', 'bpc.bpc_id=cbp.bpc_id')
+                                ->join('business_partners_type bpt', 'bpt.bpt_id=cbp.bpt_id')
+                                ->where(['cbp.flag' => '1', 'cbp.cb_id' => $user->main_company->cb_id, 'bpt.bpt_id' => $filter2])
+                                ->get()->result();
+        }else{
+            $data = self::$db->select('cbp.*, bpc.*, bpt.*')
+                                ->from('co_business_partners cbp')
+                                ->join('business_partners_class bpc', 'bpc.bpc_id=cbp.bpc_id')
+                                ->join('business_partners_type bpt', 'bpt.bpt_id=cbp.bpt_id')
+                                ->where(['cbp.flag' => '1', 'cbp.cb_id' => $user->main_company->cb_id])
+                                ->get()->result();
+        }
+        foreach ($data as $key => &$value) {
+            $value->vat = self::$db->from('taxes t')->join('co_business_partners_vat cobpvat', 'cobpvat.t_id=t.t_id')->where(['cobpvat.co_bp_id' => $value->co_bp_id, 'cobpvat.flag' => '1'])->get()->result();
+        }
+        foreach ($data as $key => &$value) {
+            $value->ewt = self::$db->from('taxes t')->join('co_business_partners_ewt cobpewt', 'cobpewt.t_id=t.t_id')->where(['cobpewt.co_bp_id' => $value->co_bp_id, 'cobpewt.flag' => '1'])->get()->result();
+        }
+        foreach ($data as $key => &$value) {
+            $value->fwt = self::$db->from('taxes t')->join('co_business_partners_fwt cobpfwt', 'cobpfwt.t_id=t.t_id')->where(['cobpfwt.co_bp_id' => $value->co_bp_id, 'cobpfwt.flag' => '1'])->get()->result();
+        }
+        return $data;
+    }
 }

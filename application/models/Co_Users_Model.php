@@ -36,4 +36,10 @@ class Co_Users_Model extends CI_Model{
 	public static function get_branches($user){
 		return self::$db->from('cb_br cbbr')->join('company_branches cb', 'cb.cb_id=cbbr.br_id')->join('company_history ch', 'ch.ch_cb_id=cb.cb_id')->where(['cbbr.cb_id' => $user->cb_id, 'ch.flag' => '1', 'cb.flag' => '1'])->get()->result();
 	}
+	public static function filter_table($user, $filter1){
+        if($filter1){
+            return self::$db->query("SELECT * FROM profiles p JOIN users u ON u.p_id=p.p_id JOIN cb_br cbbr ON cbbr.cbbr_id=u.cbbr_id JOIN company_branches cb ON cb.cb_id=cbbr.br_id JOIN company_history ch ON ch.ch_cb_id=cb.cb_id WHERE ch.flag='1' AND p.flag='1' AND u.u_seq != '0' AND u.u_type='".$filter1."' AND p.cb_id IN (SELECT br_id FROM(SELECT cbbr.br_id FROM cb_br cbbr JOIN company_history ch ON ch.ch_cb_id=cbbr.br_id WHERE ch.flag='1' AND cbbr.cb_id='".$user->main_company->cb_id."' ) t)")->result();
+        }
+        return self::$db->query("SELECT * FROM profiles p JOIN users u ON u.p_id=p.p_id JOIN cb_br cbbr ON cbbr.cbbr_id=u.cbbr_id JOIN company_branches cb ON cb.cb_id=cbbr.br_id JOIN company_history ch ON ch.ch_cb_id=cb.cb_id WHERE ch.flag='1' AND p.flag='1' AND u.u_seq != '0' AND p.cb_id IN (SELECT br_id FROM(SELECT cbbr.br_id FROM cb_br cbbr JOIN company_history ch ON ch.ch_cb_id=cbbr.br_id WHERE ch.flag='1' AND cbbr.cb_id='".$user->main_company->cb_id."') t)")->result();
+    }
 }

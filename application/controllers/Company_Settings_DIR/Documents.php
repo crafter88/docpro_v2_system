@@ -47,4 +47,15 @@ class Documents extends CI_Controller{
     public function get_journals(){
         echo json_encode(Co_Documents_Model::get_journals($this->session->userdata('user')));
     }
+    public function get_filter1(){
+        echo json_encode(Co_Documents_Model::get_filter1($this->session->userdata('user')));
+    }
+    public function get_filter2(){
+        echo json_encode(Co_Documents_Model::get_filter2($this->session->userdata('user')));
+    }
+    public function filter_table(){
+        $filter1 = $this->input->get('filter1');
+        $filter2 = $this->input->get('filter2');
+        echo json_encode(['data'=> Co_Documents_Model::filter_table($this->session->userdata('user'), $filter1, $filter2)]);
+    }
 }

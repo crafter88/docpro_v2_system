@@ -1,5 +1,27 @@
+<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/company_settings/table/users.js"></script>
 <script>
+    var stopPropagation = function(evt) {
+        if (evt.stopPropagation !== undefined) {
+            evt.stopPropagation();
+        } else {
+            evt.cancelBubble = true;
+        }
+    }
     $(document).ready(function(){
+        (function(){
+            $('#users-table thead tr#searchfilterrow th').each( function () {
+                if($(this).index() !== 0){
+                    var title = $('#users-table thead th').eq( $(this).index() ).text();
+                    $(this).html( '<input type="text" onclick="stopPropagation(event);" placeholder="Search '+title+'" />' );
+                }
+            });
+            $("#users-table thead input").on( 'keyup change', function () {
+                table.column($(this).parent().index()+':visible')
+                     .search(this.value)
+                     .draw();
+            } );
+        })();
+
         var table = $('#users-table').DataTable({
             ajax: window_location+'/company_settings/users/get',
             columns: [
@@ -7,18 +29,20 @@
                             mData: null, bSortable: false,
                             mRender: function(data, type, full){
                                 if($('input#mc_id').val() === $('input#bc_id').val()){
-                                    return "<button type='button' class='btn btn-primary btn-xs btn-raised view title' custom-title='View'><i class='fa fa-eye'></i></button>\n\
-                                       <button type='button' class='btn btn-success btn-xs btn-raised edit title' custom-title='Edit'><i class='fa fa-pencil'></i></button>";
+                                    return "<button type='button' class='btn btn-primary btn-xs btn-raised view title' title='View'><i class='fa fa-eye'></i></button>\n\
+                                       <button type='button' class='btn btn-success btn-xs btn-raised edit title' title='Edit'><i class='fa fa-pencil'></i></button>";
                                 }
-                                return "<button type='button' class='btn btn-primary btn-xs btn-raised view title' custom-title='View' disabled><i class='fa fa-eye'></i></button>\n\
-                                       <button type='button' class='btn btn-success btn-xs btn-raised edit title' custom-title='Edit' disabled><i class='fa fa-pencil'></i></button>";
+                                return "<button type='button' class='btn btn-primary btn-xs btn-raised view title' title='View' disabled><i class='fa fa-eye'></i></button>\n\
+                                       <button type='button' class='btn btn-success btn-xs btn-raised edit title' title='Edit' disabled><i class='fa fa-pencil'></i></button>";
                                 
                             }
                         },
                         {'data': 'u_seq'},
-                        {'data': 'p_fname'},
-                        {'data': 'p_mname'},
-                        {'data': 'p_lname'},
+                        {
+                            mRender: function(row, setting, full){
+                                return full.p_fname+' '+full.p_lname;
+                            }
+                        },
                         {'data': 'p_address'},
                         {'data': 'p_cno'},
                         {'data': 'p_email'},
@@ -26,14 +50,21 @@
                         {'data': 'u_type'},
                         {'data': 'u_name'},
             ],
-            columnDefs: [{targets: 0, width: '70px'}],
-            order: [['1', 'asc']],
+            columnDefs: [{targets: 0, width: '100px'}],
             scrollX: true,
-            initComplete: function(settings, json){
-                initRipple();
-                init_tooltip();
+            order: [['2', 'asc']],
+            orderCellsTop: true,
+            bPaginate: false,
+            language: {
+                info: 'Total number of records: <b> _MAX_ </b>',
+                infoEmpty: 'Total number of records: <b> 0 </b>'
             }
         });
+
+        init_table_settings(table);
+        init_filter(table);
+        init_general_search(table);
+        hide_columns(table);
 
         var tmp = $.fn.popover.Constructor.prototype.show;
             $.fn.popover.Constructor.prototype.show = function () {
@@ -144,10 +175,10 @@
 
 
                 },
-                container: '.navbar-body'
+                container: 'body'
             }).on('show.bs.popover', function(){
                 $('.popover').not(this).popover('hide');
-                $('.card-body button').attr('disabled', true);
+                $('.box-body button').attr('disabled', true);
             });
             $(this).popover('toggle');
             initRipple();
@@ -181,20 +212,11 @@
                     popover.find('input[name=view-user-access-lvl]').val(data.u_type);
                     popover.find('input[name=view-username]').val(data.u_name);
                     popover.find('input[name=view-validity-date]').val(new Date(data.u_validity_date).toString('yyyy-MM-dd'));
-                    // popover.find('input[name=view-fname]').val(data.p_fname);
-                    // $('#view-mname').val(data.p_mname);
-                    // $('#view-lname').val(data.p_lname);
-                    // $('#view-cno').val(data.p_cno);
-                    // $('#view-email').val(data.p_email);
-                    // $('#view-address').val(data.p_address);
-                    // $('#view-username').val(data.u_name);
-                    // $('#view-company').val(data.cb_name);
-                    // $('#view-user-type').val(data.u_type);
                 },
-                container: '.navbar-body'
+                container: 'body'
             }).on('show.bs.popover', function(){
                 $('.popover').not(this).popover('hide');
-                $('.card-body button').attr('disabled', true);
+                $('.box-body button').attr('disabled', true);
             });
             $(this).popover('toggle');
             initRipple();
@@ -316,26 +338,19 @@
                         });
                     });
                 },
-                container: '.navbar-body'
+                container: 'body'
             }).on('show.bs.popover', function(){
                 $('.popover').not(this).popover('hide');
-                $('.card-body button').attr('disabled', true);
+                $('.box-body button').attr('disabled', true);
             });
             $(this).popover('toggle');
             initRipple();
             initSingleSubmit();
         });
-        $('div').on('click', '.close-popover', function(){
+        $('body').on('click', '.close-popover', function(){
             $('.popover').popover('hide');
-            $('.card-body button').removeAttr('disabled');
+            $('.box-body button').removeAttr('disabled');
         });
-        $('div').on('click', '#close-btn', function(){
-            $('.popover').popover('hide');
-            $('.card-body button').removeAttr('disabled');
-        });
-
-        $('#switch-state').bootstrapSwitch();
-        init_table_option(table, $(this).closest('side-body'));
 
         $('body').on('click', 'tr.add-branch .no-results-found', function(){
             $('#add-tax-type').selectize({});

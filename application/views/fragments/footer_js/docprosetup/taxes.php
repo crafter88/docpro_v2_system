@@ -1,7 +1,36 @@
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/docpro_setup/tax_setup_seq.js"></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/docpro_setup/table/taxes.js"></script>
 
 <script>
     $(document).ready(function(){
+        (function(){
+            $('#tax-types-table thead tr.searchfilterrow th').each( function () {
+                if($(this).index() !== 0){
+                    var title = $('#tax-types-table thead th').eq( $(this).index() ).text();
+                    $(this).html( '<input type="text" onclick="stopPropagation(event);" placeholder="Search '+title+'" />' );
+                }
+            });
+            $("#tax-types-table thead input").on( 'keyup change', function () {
+                tt_table.column($(this).parent().index()+':visible')
+                     .search(this.value)
+                     .draw();
+            } );
+        })();
+
+        (function(){
+            $('#taxes-table thead tr.searchfilterrow th').each( function () {
+                if($(this).index() !== 0){
+                    var title = $('#taxes-table thead th').eq( $(this).index() ).text();
+                    $(this).html( '<input type="text" onclick="stopPropagation(event);" placeholder="Search '+title+'" />' );
+                }
+            });
+            $("#taxes-table thead input").on( 'keyup change', function () {
+                table.column($(this).parent().index()+':visible')
+                     .search(this.value)
+                     .draw();
+            } );
+        })();
+        
         var tt_id = parseFloat($("input[name=default_tt_id]").val());
         var tt_name = $("input[name=default_tt_name]").val().length > 0 ? $("input[name=default_tt_name]").val() : '';
         var tt_code = '';
@@ -20,35 +49,36 @@
                         {
                             mData: null, bSortable: false,
                             mRender: function(data, type, full){
-                                return "<button type='button' class='btn btn-primary btn-xs btn-raised view title' custom-title='View'><i class='fa fa-eye'></i></button>\n\
-                                        <button type='button' class='btn btn-success btn-xs btn-raised edit title' custom-title='Edit'><i class='fa fa-pencil'></i></button>\n\
-                                        <button type='button' class='btn btn-danger btn-xs btn-raised title delete' custom-title='Delete'><i class='fa fa-times'></i></button>";
+                                return "<button type='button' class='btn btn-primary btn-xs btn-raised view title' title='View'><i class='fa fa-eye'></i></button>\n\
+                                        <button type='button' class='btn btn-success btn-xs btn-raised edit title' title='Edit'><i class='fa fa-pencil'></i></button>\n\
+                                        <button type='button' class='btn btn-danger btn-xs btn-raised title delete' title='Delete'><i class='fa fa-times'></i></button>";
                             }
                         },
                         {'data': 'tt_seq'}, 
                         {'data': 'tt_code'}, 
                         {
                             mRender: function(row, setting, full){
-                                return full.tt_name + "<button type='button' class='btn btn-raised btn-default btn-xs next-level show-lvl-2' title='Show Classifications'><i class='fa fa-angle-right'></i></button>";
+                                return full.tt_name + "<button type='button' class='btn btn-raised btn-default btn-xs next-level show-lvl-2 seq-btn-next' title='Show Classifications'><i class='fa fa-angle-right'></i></button>";
 
                             }
                         }, 
                         {'data': 'tt_shortname'}
                     ],
-                    columnDefs: [{targets: 0, width: '100px'}, {targets: [1,2], width: '80px'}, {targets: 4, width: '120px'}],
-                    order: [['2', 'asc']],
+                    columnDefs: [{targets: 0, width: '100px'}, {targets: [1,2,4], width: '30px'}],
                     scrollX: true,
-                    bLengthChange: false,
+                    order: [['2', 'asc']],
+                    orderCellsTop: true,
+                    bPaginate: false,
+                    language: {
+                        info: 'Total number of records: <b> _MAX_ </b>',
+                        infoEmpty: 'Total number of records: <b> 0 </b>'
+                    },
                     fnDrawCallback: function(oSettings) {
                         $.each(oSettings.aoData, function(index, data){
                             if(data._aData.tt_id+'' === tt_id+''){
                                 $('#tax-types-table tbody tr:eq('+index+')').addClass('selected');
                             }
                         });
-                    },
-                    initComplete: function(json, src){
-                        initRipple();
-                        init_tooltip();
                     }
         });
 
@@ -58,9 +88,9 @@
                         {
                             mData: null, bSortable: false,
                             mRender: function(data, type, full){
-                                return "<button type='button' class='btn btn-primary btn-xs btn-raised title view' custom-title='View'><i class='fa fa-eye'></i></button>\n\
-                                        <button type='button' class='btn btn-success btn-xs btn-raised title edit' custom-title='Edit'><i class='fa fa-pencil'></i></button>\n\
-                                        <button type='button' class='btn btn-danger btn-xs btn-raised title delete' custom-title='Delete'><i class='fa fa-times'></i></button>";
+                                return "<button type='button' class='btn btn-primary btn-xs btn-raised title view' title='View'><i class='fa fa-eye'></i></button>\n\
+                                        <button type='button' class='btn btn-success btn-xs btn-raised title edit' title='Edit'><i class='fa fa-pencil'></i></button>\n\
+                                        <button type='button' class='btn btn-danger btn-xs btn-raised title delete' title='Delete'><i class='fa fa-times'></i></button>";
                             }
                         },
                         {'data': 't_seq'},
@@ -72,10 +102,16 @@
                         {'data': 't_rate'}, 
                         {'data': 't_base'}
                     ],
-                    columnDefs: [{targets: 0, width: '100px'}, {targets: [1,2], width: '40px'}],
+                    columnDefs: [{targets: 0, width: '100px'}, {targets: [1,2,3], width: '30px'}, {targets: [7,8], width: '50px'}],
                     order: [['1', 'asc']],
                     scrollX: true,
-                    bLengthChange: false,
+                    order: [['2', 'asc']],
+                    orderCellsTop: true,
+                    bPaginate: false,
+                    language: {
+                        info: 'Total number of records: <b> _MAX_ </b>',
+                        infoEmpty: 'Total number of records: <b> 0 </b>'
+                    },
                     initComplete: function(json, src){
                         initRipple();
                     },
@@ -88,6 +124,11 @@
                 this.options.callback();
               }
         }
+
+        init_table_settings(tt_table, table);
+        init_general_search(tt_table, '.general-search-tax-type');
+        init_general_search(table, '.general-search-tax');
+        hide_columns(tt_table, table);
 
         var init_breadcrumb = function(){
             $('#tax_breadcrumb').html(
@@ -150,10 +191,10 @@
                         }
                     });
                 },
-                container: '.navbar-body'
+                container: 'body'
             }).on('show.bs.popover', function(){
                 $('.popover').not(this).popover('hide');
-                $('.card-body button').attr('disabled', true);
+                $('.box-body button').attr('disabled', true);
             });
             $(this).popover('toggle');
             initRipple();
@@ -183,10 +224,10 @@
                     popover.find('input[name=tt-view-name]').val(data.tt_name);
                     popover.find('input[name=tt-view-shortname]').val(data.tt_shortname);
                 },
-                container: '.navbar-body'
+                container: 'body'
             }).on('show.bs.popover', function(){
                 $('.popover').not(this).popover('hide');
-                $('.card-body button').attr('disabled', true);
+                $('.box-body button').attr('disabled', true);
             });
             $(this).popover('toggle');
             initRipple();
@@ -232,10 +273,10 @@
                         }
                     });
                 },
-                container: '.navbar-body'
+                container: 'body'
             }).on('show.bs.popover', function(){
                 $('.popover').not(this).popover('hide');
-                $('.card-body button').attr('disabled', true);
+                $('.box-body button').attr('disabled', true);
                
             });
             $(this).popover('toggle');
@@ -261,10 +302,10 @@
                 },
                 callback: function(){
                     var popover = $('.popover.tt-update-modal-body');
-                    $('#tt-update-code').val(data.tt_code);
-                    $('#tt-update-name').val(data.tt_name);
-                    $('#tt-update-shortname').val(data.tt_shortname);
-                    $('#tt-update-id').val(data.tt_id);
+                    popover.find('#tt-update-code').val(data.tt_code);
+                    popover.find('#tt-update-name').val(data.tt_name);
+                    popover.find('#tt-update-shortname').val(data.tt_shortname);
+                    popover.find('#tt-update-id').val(data.tt_id);
                     var restriction = Object.create(v_restriction);
                     restriction.required();
                     restriction.no_space();
@@ -282,10 +323,10 @@
                         }
                     });
                 },
-                container: '.navbar-body'
+                container: 'body'
             }).on('show.bs.popover', function(){
                 $('.popover').not(this).popover('hide');
-                $('.card-body button').attr('disabled', true);
+                $('.box-body button').attr('disabled', true);
             });
             $(this).popover('toggle');
             initRipple();
@@ -316,10 +357,10 @@
                     popover.find('input[name=tt-delete-shortname]').val(data.tt_shortname);
                     popover.find('input[name=tt-delete-id]').val(data.tt_id);
                 },
-                container: '.navbar-body'
+                container: 'body'
             }).on('show.bs.popover', function(){
                 $('.popover').not(this).popover('hide');
-                $('.card-body button').attr('disabled', true);
+                $('.box-body button').attr('disabled', true);
             });
             $(this).popover('toggle');
             initRipple();
@@ -345,7 +386,7 @@
                 },
                 callback: function(){
                     var popover = $('body .popover.add-modal-body');
-                    $('#add-type-select').selectize({
+                    popover.find('#add-type-select').selectize({
                         create: false,
                         sortField: {
                             field: 'text',
@@ -353,12 +394,12 @@
                         },
                         dropdownParent: null,
                         onChange: function(){
-                            var selectize = $('#add-type-select.selectized').selectize()[0].selectize
+                            var selectize = popover.find('#add-type-select.selectized').selectize()[0].selectize
                             var code = selectize.options[tt_id].code;
-                            $('#add-type-code').val(code);
+                            popover.find('#add-type-code').val(code);
                         },
                     });
-                    var selectize = $('#add-type-select.selectized').selectize()[0].selectize;
+                    var selectize = popover.find('#add-type-select.selectized').selectize()[0].selectize;
                     selectize.clear();
                     selectize.clearOptions();
                     $.get(window_location+'/docpro_settings/taxes/get_tax_types', function(response){
@@ -380,9 +421,9 @@
                         });
                         selectize.setValue(tt_id);
                     });
-                    $('#add-type-id').val(tt_id);
-                    $('#add-type-code').val(tt_code);
-                    $('#add-type-name').val(tt_name);
+                    popover.find('#add-type-id').val(tt_id);
+                    popover.find('#add-type-code').val(tt_code);
+                    popover.find('#add-type-name').val(tt_name);
                     if(tt_code === '5'){
                         popover.find('input[name=add-shortname]').attr('readonly', true);
                     }
@@ -405,10 +446,10 @@
                         }
                     });
                 },
-                container: '.navbar-body'
+                container: 'body'
             }).on('show.bs.popover', function(){
                 $('.popover').not(this).popover('hide');
-                $('.card-body button').attr('disabled', true);
+                $('.box-body button').attr('disabled', true);
             });
             $(this).popover('toggle');
             initRipple();
@@ -443,10 +484,10 @@
                     popover.find('input[name=view-rate]').val(data.t_rate);
                     popover.find('input[name=view-base]').val(data.t_base);
                 },
-                container: '.navbar-body'
+                container: 'body'
             }).on('show.bs.popover', function(){
                 $('.popover').not(this).popover('hide');
-                $('.card-body button').attr('disabled', true);
+                $('.box-body button').attr('disabled', true);
             });
             $(this).popover('toggle');
             initRipple();
@@ -467,7 +508,8 @@
                     return $('#edit-popover').html();
                 },
                 callback: function(){
-                    $('#edit-type-select').selectize({
+                    var popover = $('.popover.edit-modal-body');
+                    popover.find('#edit-type-select').selectize({
                         create: false,
                         sortField: {
                             field: 'text',
@@ -475,12 +517,12 @@
                         },
                         dropdownParent: null,
                         onChange: function(){
-                            var selectize = $('#edit-type-select.selectized').selectize()[0].selectize
+                            var selectize = popover.find('#edit-type-select.selectized').selectize()[0].selectize
                             var code = selectize.options[tt_id].code;
                             $('#edit-type-code').val(code);
                         },
                     });
-                    var selectize = $('#edit-type-select.selectized').selectize()[0].selectize;
+                    var selectize = popover.find('#edit-type-select.selectized').selectize()[0].selectize;
                     selectize.clear();
                     selectize.clearOptions();
                     $.get(window_location+'/docpro_settings/taxes/get_tax_types', function(response){
@@ -502,13 +544,12 @@
                         });
                         selectize.setValue(tt_id);
                     });
-                    $('#edit-type-id').val(tt_id);
-                    $('#edit-type-code').val(tt_code);
-                    $('#edit-type-name').val(tt_name);
-                    $('#edit-type-id').val(data.tt_id);
-                    $('#edit-type-code').val(data.tt_code);
+                    popover.find('#edit-type-id').val(tt_id);
+                    popover.find('#edit-type-code').val(tt_code);
+                    popover.find('#edit-type-name').val(tt_name);
+                    popover.find('#edit-type-id').val(data.tt_id);
+                    popover.find('#edit-type-code').val(data.tt_code);
 
-                    var popover = $('.popover.edit-modal-body');
                     popover.find('input[name=edit-seq]').val(data.t_seq);
                     popover.find('input[name=edit-code]').val(data.t_code);
                     popover.find('input[name=edit-atc]').val(data.t_atc);
@@ -539,10 +580,10 @@
                         }
                     });
                 },
-                container: '.navbar-body'
+                container: 'body'
             }).on('show.bs.popover', function(){
                 $('.popover').not(this).popover('hide');
-                $('.card-body button').attr('disabled', true);
+                $('.box-body button').attr('disabled', true);
             });
             $(this).popover('toggle');
             initRipple();
@@ -569,7 +610,7 @@
                 },
                 callback: function(){
                     var popover = $('.popover.update-modal-body');
-                    $('#update-type-select').selectize({
+                    popover.find('#update-type-select').selectize({
                         create: false,
                         sortField: {
                             field: 'text',
@@ -577,12 +618,12 @@
                         },
                         dropdownParent: null,
                         onChange: function(){
-                            var selectize = $('#update-type-select.selectized').selectize()[0].selectize
+                            var selectize = popover.find('#update-type-select.selectized').selectize()[0].selectize
                             var code = selectize.options[tt_id].code;
                             $('#update-type-code').val(code);
                         },
                     });
-                    var selectize = $('#update-type-select.selectized').selectize()[0].selectize;
+                    var selectize = popover.find('#update-type-select.selectized').selectize()[0].selectize;
                     selectize.clear();
                     selectize.clearOptions();
                     $.get(window_location+'/docpro_settings/taxes/get_tax_types', function(response){
@@ -604,19 +645,19 @@
                         });
                         selectize.setValue(tt_id);
                     });
-                    $('#update-type-id').val(tt_id);
-                    $('#update-type-code').val(tt_code);
-                    $('#update-type-name').val(tt_name);
+                    popover.find('#update-type-id').val(tt_id);
+                    popover.find('#update-type-code').val(tt_code);
+                    popover.find('#update-type-name').val(tt_name);
 
-                    $('#update-code').val(data.t_code);
-                    $('#update-atc').val(data.t_atc);
-                    $('#update-name').val(data.t_name);
-                    $('#update-shortname').val(data.t_shortname);
-                    $('#update-rate').val(data.t_rate);
-                    $('#update-base').val(data.t_base);
-                    $('#update-type-id').val(data.tt_id);
-                    $('#update-type-code').val(data.tt_code);
-                    $('#update-id').val(data.t_id);
+                    popover.find('#update-code').val(data.t_code);
+                    popover.find('#update-atc').val(data.t_atc);
+                    popover.find('#update-name').val(data.t_name);
+                    popover.find('#update-shortname').val(data.t_shortname);
+                    popover.find('#update-rate').val(data.t_rate);
+                    popover.find('#update-base').val(data.t_base);
+                    popover.find('#update-type-id').val(data.tt_id);
+                    popover.find('#update-type-code').val(data.tt_code);
+                    popover.find('#update-id').val(data.t_id);
                     var restriction = Object.create(v_restriction);
                     restriction.required();
                     restriction.no_space();
@@ -636,10 +677,10 @@
                         }
                     });
                 },
-                container: '.navbar-body'
+                container: 'body'
             }).on('show.bs.popover', function(){
                 $('.popover').not(this).popover('hide');
-                $('.card-body button').attr('disabled', true);
+                $('.box-body button').attr('disabled', true);
             });
             $(this).popover('toggle');
             initRipple();
@@ -675,14 +716,14 @@
                     popover.find('input[name=delete-rate]').val(data.t_rate);
                     popover.find('input[name=delete-base]').val(data.t_base);
                     popover.find('input[name=delete-id]').val(data.t_id);
-                    $('#delete-type-id').val(data.tt_id);
-                    $('#delete-type-code').val(data.tt_code);
-                    $('#delete-type-name').val(data.tt_name);
+                    popover.find('#delete-type-id').val(data.tt_id);
+                    popover.find('#delete-type-code').val(data.tt_code);
+                    popover.find('#delete-type-name').val(data.tt_name);
                 },
-                container: '.navbar-body'
+                container: 'body'
             }).on('show.bs.popover', function(){
                 $('.popover').not(this).popover('hide');
-                $('.card-body button').attr('disabled', true);
+                $('.box-body button').attr('disabled', true);
             });
             $(this).popover('toggle');
             initRipple();
@@ -692,60 +733,9 @@
             initSingleSubmit();
         });
 
-        $('div').on('click', '.close-popover', function(){
+        $('body').on('click', '.close-popover', function(){
             $('.popover').popover('hide');
-            $('.card-body button').removeAttr('disabled');
+            $('.box-body button').removeAttr('disabled');
         });
-        $('div').on('click', '#close-btn', function(){
-            $('.popover').popover('hide');
-            $('.card-body button').removeAttr('disabled');
-        });
-    });
-</script>
-
-<script>
-    $(document).ready(function(){
-        var tmp = $.fn.popover.Constructor.prototype.show;
-            $.fn.popover.Constructor.prototype.show = function () {
-              tmp.call(this);
-              if (this.options.callback) {
-                this.options.callback();
-              }
-        }
-        
-        $('div').on('click', '.close-popover', function(){
-            $('.popover').popover('hide');
-            $('.card-body button').removeAttr('disabled');
-        });
-        $('div').on('click', '.select-option', function(){
-            $("input[name='add-type']").val($(this)[0].textContent);
-            $("input[name='add-type-id']").val($(this).attr('type-id'));
-            $("input[name='add-type-code']").val($(this).attr('type-code'));
-        });
-        $('div').on('click', '.select-option', function(){
-            $("input[name='edit-type']").val($(this)[0].textContent);
-            $("input[name='edit-type-id']").val($(this).attr('type-id'));
-            $("input[name='edit-type-code']").val($(this).attr('type-code'));
-        });
-        $('div').on('click', '.select-option', function(){
-            $("input[name='update-type']").val($(this)[0].textContent);
-            $("input[name='update-type-id']").val($(this).attr('type-id'));
-            $("input[name='update-type-code']").val($(this).attr('type-code'));
-        });
-        $('.navbar-body').on('click', '.add-type-btn', function(){
-            $('#add-options').html($('#t-type-select').html());
-            initRipple();
-        });
-        $('.navbar-body').on('click', '.edit-type-btn', function(){
-            $('#edit-options').html($('#t-type-select').html());
-            initRipple();
-        });
-        $('.navbar-body').on('click', '.update-type-btn', function(){
-            $('#update-options').html($('#t-type-select').html());
-            initRipple();
-        });
-
-        // $('#switch-state').bootstrapSwitch();
-        // init_table_option(table, $(this).closest('side-body'));
     });
 </script>

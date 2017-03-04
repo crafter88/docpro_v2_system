@@ -69,4 +69,15 @@ class Services extends CI_Controller{
         $id = Co_Profit_Cost_Centers_Model::add($data, $this->session->userdata('user'));
         echo json_encode(['id' => $id]);
     }
+    public function get_filter1(){
+        echo json_encode(Co_Services_Model::get_filter1($this->session->userdata('user')));
+    }
+    public function get_filter2(){
+        echo json_encode(Co_Services_Model::get_filter2($this->session->userdata('user')));
+    }
+    public function filter_table(){
+        $filter1 = $this->input->get('filter1');
+        $filter2 = $this->input->get('filter2');
+        echo json_encode(['data'=> Co_Services_Model::filter_table($this->session->userdata('user'), $filter1, $filter2)]);
+    }
 }

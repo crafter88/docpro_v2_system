@@ -1,3 +1,11 @@
+table th
+{
+	white-space: nowrap;
+}
+table td
+{
+	white-space: nowrap;
+}
 table.dataTable thead th
 {
 	font-size: 12px;
@@ -23,7 +31,98 @@ table.dataTable thead th input
 {
 	background-color: #EEE !important;
 }
-table.dataTable.table-condensed>thead>tr#filterrow>th
+table.dataTable.table-condensed>thead>tr#searchfilterrow>th,
+table.dataTable.table-condensed>thead>tr.searchfilterrow>th
+
 {
 	padding-right: 5px;
+	border-top: 0;
+}
+#searchfilterrow.show-searchfilter,
+.searchfilterrow.show-searchfilter
+{
+	display: table-row;
+}
+#searchfilterrow.hide-searchfilter,
+.searchfilterrow.hide-searchfilter
+{
+	display: none;
+}
+.hide-filter
+{
+	display: none !important;
+}
+.show-filter
+{
+	display: block !important;
+}
+.btn-primary
+{
+	margin-top: 5px;
+}
+.flat-blue table.dataTable tr td:first-child
+{
+	text-align: center;
+}
+.flat-blue table.dataTable .btn
+{
+	background-color: transparent !important;
+	border: none !important;
+	box-shadow: none;
+	padding: 0 !important;
+	font-size: 13px !important;
+	margin: 0;
+}
+.flat-blue table.dataTable .btn + .btn
+{
+	margin-left: 5px;
+}
+.flat-blue table.dataTable .btn.btn-primary
+{
+	color: #000 !important;
+}
+.flat-blue table.dataTable .btn.btn-success
+{
+	color: #009688 !important;
+}
+.flat-blue table.dataTable .btn.btn-warning
+{
+	color: #ffb600 !important;
+}
+
+/*SELECTIZE*/
+.selectize-control.form-control.single
+{
+	z-index: 9 !important;
+	padding: 0;
+}
+.selectize-dropdown.single.form-control
+{
+	top: 0 !important;
+	padding: 0;
+	border: 0 !important;
+}
+.input-group .selectize-input.items
+{
+	background: transparent;
+	box-shadow: none;
+	border: none;
+} 
+.selectize-dropdown-content
+{
+	border: 1px solid #d2d6de !important;
+	background-color: #FFF !important;
+}
+.filter-title
+{
+	font-size: 14px;
+}
+.filter-subtitle
+{
+	font-size: 12px;
+}
+.disable-setting
+{
+	opacity: 0.5; 
+	cursor: initial !important;
 }

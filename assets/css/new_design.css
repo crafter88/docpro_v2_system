@@ -15,14 +15,20 @@
 {
 	float: left; 
 }
+body .navbar
+{
+	z-index: 99999;
+}
 #t_1
 {
 	position: fixed; 
 	width: 100vw;
+	z-index: 9999;
 }
 #t_2_s_1
 {
 	margin-top: -1px;
+	z-index: 99 !important;
 }
 #t_2_s_1 .container
 {
@@ -93,7 +99,7 @@
 .dp-tiles-full,
 .button-group-custom a
 {
-	height: 215px !important;
+	height: 158px !important;
 	background-image: url('../img/background.png') !important;
 	background-repeat: no-repeat;
 	background-position: 0px 100px;
@@ -129,13 +135,64 @@
 {
 	color: blue;
 }
+.dp-tiles span h4:first-child,
+.dp-tiles-full span h4:first-child
+{
+	font-size: 10px !important
+}
+.dp-tiles span h4:last-child,
+.dp-tiles-full span h4:last-child
+{
+	font-size: 13px !important;
+}
 
 .row a[class*="dp-tiles"]
 {
-	margin-left: 0.8%;
+	/*margin-left: 0.8%;*/
+	margin-bottom: 1px !important;
 }
-
-
+.modal-title
+{
+	font-weight: normal !important;
+}
+.popover
+{
+	z-index: 99 !important;
+	background-color: #808080 !important;
+}
+.popover h4.modal-title
+{
+	color: #FFF;
+}
+.popover .modal-footer
+{
+	background-color: #808080 !important;
+}
+.popover input
+{
+	border: 1px solid #CCC !important;
+}
+.popover .close
+{
+	color: #000;
+	opacity: 1;
+}
+.popover input.v-invalid
+{
+	border-color: red !important;
+}
+.popover input.v-invalid-format
+{
+	border-color: orange !important;
+}
+.input-group .selectize-input.items
+{
+	text-align: center !important;
+}
+.popover .selectize-input input
+{
+	border: none !important;
+}
 @media (min-width: 992px)
 {
 	.col-md-3.title-hover
